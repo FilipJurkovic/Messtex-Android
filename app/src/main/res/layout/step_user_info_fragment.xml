@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.view.StepUserInfo">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <AutoCompleteTextView
+            android:id="@+id/firstNameText"
+            android:layout_width="252dp"
+            android:layout_height="39dp"
+            android:layout_marginBottom="24dp"
+            android:text="First name"
+            app:layout_constraintBottom_toTopOf="@+id/lastNameText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <AutoCompleteTextView
+            android:id="@+id/lastNameText"
+            android:layout_width="252dp"
+            android:layout_height="39dp"
+            android:layout_marginBottom="24dp"
+            android:text="Last name"
+            app:layout_constraintBottom_toTopOf="@+id/emailText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <AutoCompleteTextView
+            android:id="@+id/emailText"
+            android:layout_width="252dp"
+            android:layout_height="39dp"
+            android:layout_marginBottom="24dp"
+            android:text="Email address"
+            app:layout_constraintBottom_toTopOf="@+id/phoneNumberText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <AutoCompleteTextView
+            android:id="@+id/phoneNumberText"
+            android:layout_width="252dp"
+            android:layout_height="39dp"
+            android:layout_marginBottom="24dp"
+            android:text="Phone number"
+            app:layout_constraintBottom_toTopOf="@+id/postcodeText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <AutoCompleteTextView
+            android:id="@+id/postcodeText"
+            android:layout_width="252dp"
+            android:layout_height="39dp"
+            android:layout_marginBottom="24dp"
+            android:text="Postcode"
+            app:layout_constraintBottom_toTopOf="@+id/cityText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <AutoCompleteTextView
+            android:id="@+id/cityText"
+            android:layout_width="252dp"
+            android:layout_height="39dp"
+            android:layout_marginBottom="24dp"
+            android:text="City"
+            app:layout_constraintBottom_toTopOf="@+id/addressText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <AutoCompleteTextView
+            android:id="@+id/addressText"
+            android:layout_width="252dp"
+            android:layout_height="39dp"
+            android:layout_marginBottom="70dp"
+            android:text="Address"
+            app:layout_constraintBottom_toTopOf="@+id/submitUserInfoButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/submitUserInfoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp"
+            android:text="Submit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toTopOf="@+id/firstNameText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
