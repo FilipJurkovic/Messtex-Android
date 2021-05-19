@@ -12,7 +12,7 @@ import retrofit2.Response
 
 class MainRepository(private val userDao: UserDao) {
 
-    suspend fun apiPost(post: PostModel): <PostModel> {
+    suspend fun apiPost(post: PostModel): Response<PostModel> {
         return RetrofitInstance.api.apiPost(post)
     }
 

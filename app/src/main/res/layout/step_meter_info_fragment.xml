@@ -11,30 +11,30 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/firstNameText"
+            android:id="@+id/meterIdText"
             android:layout_width="252dp"
             android:layout_height="39dp"
             android:layout_marginBottom="24dp"
             android:text="Meter Serial number"
-            app:layout_constraintBottom_toTopOf="@+id/lastNameText"
+            app:layout_constraintBottom_toTopOf="@+id/meterReadingText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/lastNameText"
+            android:id="@+id/meterReadingText"
             android:layout_width="252dp"
             android:layout_height="39dp"
             android:layout_marginBottom="24dp"
             android:text="Meter Reading"
-            app:layout_constraintBottom_toTopOf="@+id/spinner"
+            app:layout_constraintBottom_toTopOf="@+id/meterTypeList"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent" />
 
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/meterTypeList"
             android:layout_width="252dp"
             android:layout_height="27dp"
             android:layout_marginBottom="52dp"
@@ -48,12 +48,12 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:text="Read with camera"
-            app:layout_constraintBottom_toTopOf="@+id/submitUserInfoButton"
+            app:layout_constraintBottom_toTopOf="@+id/postApi"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/submitUserInfoButton"
+            android:id="@+id/postApi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="70dp"
@@ -67,7 +67,7 @@
             android:layout_width="218dp"
             android:layout_height="189dp"
             android:src="@drawable/logo"
-            app:layout_constraintBottom_toTopOf="@+id/firstNameText"
+            app:layout_constraintBottom_toTopOf="@+id/meterIdText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
