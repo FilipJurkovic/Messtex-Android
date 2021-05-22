@@ -21,6 +21,7 @@ class StepUserInfoViewModel(private val repository: MainRepository) : ViewModel(
 
                  repository.updateUser(user)
              }
+             repository.editPostModelUserData(userData.value!!)
          }
 
     }

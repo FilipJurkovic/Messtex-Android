@@ -35,6 +35,8 @@
 
         <Spinner
             android:id="@+id/meterTypeList"
+            android:entries="@array/meter_types_array"
+
             android:layout_width="252dp"
             android:layout_height="27dp"
             android:layout_marginBottom="52dp"

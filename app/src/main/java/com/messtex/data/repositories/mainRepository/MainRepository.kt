@@ -13,9 +13,7 @@ import okhttp3.Request
 import retrofit2.Response
 
 
-    suspend fun apiPost(post: PostModel): Response<PostModel> {
-        return RetrofitInstance.api.apiPost(post)
-    }
+    private val postModelData = MutableLiveData<PostModelRecord>()
 
     suspend fun takeContactForm(contactFormData: ContactFormData) {
         val body: String = Gson().toJson(contactFormData).toString()
@@ -52,4 +50,13 @@ import retrofit2.Response
         }).build()
         return Picasso.Builder(context).downloader(OkHttp3Downloader(client)).build()
     }
+
+    suspend fun appendUser(user: User) =
+        db.getUserDao().appendNewUser(user)
+
+
+    suspend fun updateUser(user: User) =
+        db.getUserDao().updateUser(user)
+
+
 }
