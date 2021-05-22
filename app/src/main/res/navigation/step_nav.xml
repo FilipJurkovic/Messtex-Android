@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/step_nav"
+    app:startDestination="@id/stepUserInfo">
+
+    <fragment
+        android:id="@+id/stepUserInfo"
+        android:name="com.messtex.ui.fragments.view.StepUserInfo"
+        android:label="step_user_info_fragment"
+        tools:layout="@layout/step_user_info_fragment" >
+        <action
+            android:id="@+id/action_stepUserInfo_to_stepMeterInfo"
+            app:destination="@id/stepMeterInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/stepMeterInfo"
+        android:name="com.messtex.ui.fragments.view.StepMeterInfo"
+        android:label="step_meter_info_fragment"
+        tools:layout="@layout/step_meter_info_fragment" />
+</navigation>

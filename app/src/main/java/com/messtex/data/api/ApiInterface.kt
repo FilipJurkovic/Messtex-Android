@@ -1,6 +1,7 @@
 package com.messtex.data.api
 
 import com.messtex.data.models.PostModel
+import com.messtex.data.models.PostModelRecord
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers
@@ -12,7 +13,7 @@ interface ApiInterface {
         "Authorization : Bearer a0450340-b7f5-11eb-b02b-1dfd491d94c8",
         "Content-Type : application/json"
     )
-    @POST("posts") //TODO: need to add correct endpoint
+    @POST("/yCZezLbXfFAiwR6r3/database/obb9voxdix3h/module/A/records") //TODO: need to add correct endpoint
     suspend fun apiPost(
         @Body post: PostModel
     ): Response<PostModel>

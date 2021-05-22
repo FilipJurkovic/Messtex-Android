@@ -27,32 +27,11 @@
             android:layout_height="39dp"
             android:layout_marginBottom="24dp"
             android:text="Last name"
-            app:layout_constraintBottom_toTopOf="@+id/emailText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <AutoCompleteTextView
-            android:id="@+id/emailText"
-            android:layout_width="252dp"
-            android:layout_height="39dp"
-            android:layout_marginBottom="24dp"
-            android:text="Email address"
-            app:layout_constraintBottom_toTopOf="@+id/phoneNumberText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <AutoCompleteTextView
-            android:id="@+id/phoneNumberText"
-            android:layout_width="252dp"
-            android:layout_height="39dp"
-            android:layout_marginBottom="24dp"
-            android:text="Phone number"
             app:layout_constraintBottom_toTopOf="@+id/postcodeText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent" />
+
 
         <AutoCompleteTextView
             android:id="@+id/postcodeText"

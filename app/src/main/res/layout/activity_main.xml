@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,10 +7,13 @@
     tools:context=".ui.main.view.MainActivity"
     android:theme="@style/Theme.MesstexAndroid">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+    <fragment
+        android:id="@+id/fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="290dp" />
-</LinearLayout>
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/step_nav"
+        tools:layout_editor_absoluteX="207dp"
+        tools:layout_editor_absoluteY="363dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

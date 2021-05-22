@@ -1,4 +1,4 @@
-package com.messtex.ui.fragments.viewmodel
+package com.messtex.ui.main.viewmodel
 
 import android.app.Activity
 import android.content.Intent
@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.messtex.data.models.MeterData
+import com.messtex.data.models.localdb.User
 import com.messtex.data.repositories.mainRepository.MainRepository
 import com.pixolus.meterreading.BuildConfig
 import com.pixolus.meterreading.MeterReadingActivity
@@ -14,13 +15,27 @@ import com.pixolus.meterreading.MeterReadingFragment
 import com.pixolus.meterreading.MeterReadingResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.*
+import java.util.ArrayList
 
+class MainViewModel(private val repository: MainRepository) : ViewModel() {
 
-class StepMeterInfoViewModel(private val repository: MainRepository) : ViewModel() {
-
-
+    val userData = MutableLiveData<User>()
     val meterData = MutableLiveData<MeterData>()
+
+    fun onSubmitted(user: User) {
+        viewModelScope.launch(Dispatchers.IO)
+        {
+            if (true) {
+                repository.appendUser(user)
+            } else {
+
+                repository.updateUser(user)
+            }
+            repository.editPostModelUserData(userData.value!!)
+        }
+
+    }
+
 
     fun onPixolousClicked(view: View) {
         val intent: Intent = Intent(view.context, MeterReadingActivity::class.java)
@@ -64,4 +79,5 @@ class StepMeterInfoViewModel(private val repository: MainRepository) : ViewModel
             repository.apiPost()
         }
     }
+
 }
