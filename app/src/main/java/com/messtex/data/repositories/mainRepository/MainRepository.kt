@@ -13,7 +13,6 @@ import okhttp3.Request
 import retrofit2.Response
 
 
-    private val postModelData = MutableLiveData<PostModelRecord>()
 
     suspend fun takeContactForm(contactFormData: ContactFormData) {
         val body: String = Gson().toJson(contactFormData).toString()
