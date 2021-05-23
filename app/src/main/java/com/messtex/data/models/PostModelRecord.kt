@@ -14,7 +14,9 @@ data class PostModelRecord(
 
     @SerializedName("Zählernummer")val meterId: String?,
     @SerializedName("Zählerstand")val meterValue: String?,
-    @SerializedName("Zähler Typ")val meterType: String?,
-    @SerializedName("Raum")val room: String = "Heizraum"
+    @SerializedName("Zähler Typ")val meterType: String?
 
-)
+
+){
+    @SerializedName("Raum")val room: String = "Heizraum"
+}

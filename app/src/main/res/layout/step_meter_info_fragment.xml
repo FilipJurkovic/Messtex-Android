@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/Theme.MesstexAndroid"
     tools:context=".ui.fragments.view.StepMeterInfo">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +16,7 @@
             android:layout_width="252dp"
             android:layout_height="39dp"
             android:layout_marginBottom="24dp"
-            android:text="Meter Serial number"
+            android:hint="Meter Serial number"
             app:layout_constraintBottom_toTopOf="@+id/meterReadingText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
@@ -26,7 +27,8 @@
             android:layout_width="252dp"
             android:layout_height="39dp"
             android:layout_marginBottom="24dp"
-            android:text="Meter Reading"
+            android:hint="Meter Reading"
+            android:inputType="phone"
             app:layout_constraintBottom_toTopOf="@+id/meterTypeList"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
@@ -35,11 +37,11 @@
 
         <Spinner
             android:id="@+id/meterTypeList"
-            android:entries="@array/meter_types_array"
-
             android:layout_width="252dp"
+
             android:layout_height="27dp"
             android:layout_marginBottom="52dp"
+            android:entries="@array/meter_types_array"
             app:layout_constraintBottom_toTopOf="@+id/openPixolousButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

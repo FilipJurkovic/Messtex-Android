@@ -18,5 +18,18 @@
         android:id="@+id/stepMeterInfo"
         android:name="com.messtex.ui.fragments.view.StepMeterInfo"
         android:label="step_meter_info_fragment"
-        tools:layout="@layout/step_meter_info_fragment" />
+        tools:layout="@layout/step_meter_info_fragment" >
+        <action
+            android:id="@+id/action_stepMeterInfo_to_stepSuccess"
+            app:destination="@id/stepSuccess" />
+    </fragment>
+    <fragment
+        android:id="@+id/stepSuccess"
+        android:name="com.messtex.ui.fragments.view.StepSuccess"
+        android:label="fragment_step_success"
+        tools:layout="@layout/fragment_step_success" >
+        <action
+            android:id="@+id/action_stepSuccess_to_stepUserInfo"
+            app:destination="@id/stepUserInfo" />
+    </fragment>
 </navigation>
