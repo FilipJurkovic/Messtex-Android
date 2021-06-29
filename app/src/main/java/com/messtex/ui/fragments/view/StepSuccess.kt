@@ -29,7 +29,7 @@ class StepSuccess : Fragment() {
         super.onActivityCreated(savedInstanceState)
 //
         button.setOnClickListener(){
-            findNavController().navigate(R.id.action_stepSuccess_to_stepUserInfo)
+//            findNavController().navigate(R.id.action_stepSuccess_to_stepUserInfo)
         }
 
     }

@@ -109,7 +109,7 @@ class StepMeterInfo : Fragment() {
         }
         postApi.setOnClickListener() {
             sharedViewModel.postApi()
-            findNavController().navigate(R.id.action_stepMeterInfo_to_stepSuccess)
+//            findNavController().navigate(R.id.action_stepMeterInfo_to_stepSuccess)
         }
 
 

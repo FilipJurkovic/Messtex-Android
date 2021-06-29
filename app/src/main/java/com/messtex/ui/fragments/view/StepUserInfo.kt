@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.step_user_info_fragment.*
 class StepUserInfo : Fragment() {
 
     companion object {
-        fun newInstance() = StepUserInfo()
+        fun newInstance(fragmentOnboardingOne: Int) = StepUserInfo()
     }
 
     private val sharedViewModel: MainViewModel by activityViewModels()
@@ -55,7 +55,7 @@ class StepUserInfo : Fragment() {
                     addressText.text.toString()
                 )
             )
-            findNavController().navigate(R.id.action_stepUserInfo_to_stepMeterInfo)
+//            findNavController().navigate(R.id.action_stepUserInfo_to_stepMeterInfo)
         }
 
     }
