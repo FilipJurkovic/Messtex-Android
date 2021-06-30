@@ -1,34 +1,33 @@
 package com.messtex
 
-import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.messtex.data.models.MeterReadingData
-import com.messtex.data.models.MeterReceivingData
-import com.messtex.data.models.ViewModelData
-import com.messtex.ui.main.viewmodel.MainViewModel
-import com.pixolus.meterreading.MeterReadingActivity
-import com.pixolus.meterreading.MeterReadingFragment
-import kotlinx.android.synthetic.main.fragment_contact_details.*
-import kotlinx.android.synthetic.main.fragment_manual_input.*
-import java.text.SimpleDateFormat
-import java.util.*
 
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
-class ManualInputFragment() : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ * Use the [ManualInputFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class ManualInputFragment : Fragment() {
+    // TODO: Rename and change types of parameters
+    private var param1: String? = null
+    private var param2: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
     }
-
-    private val sharedViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,79 +37,23 @@ class ManualInputFragment() : Fragment() {
         return inflater.inflate(R.layout.fragment_manual_input, container, false)
     }
 
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        var counterValueFormatted: String = ""
-        val meterIndex = sharedViewModel.meterIndex
-
-        val watcher: TextWatcher = object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-            override fun afterTextChanged(s: Editable) {
-                if (manualInputValue.text.toString() == "") {
-                    nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main_disabled)
-                    nextButtonManualInput.isEnabled = false
-                } else{
-                    nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main)
-                    nextButtonManualInput.isEnabled = true
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment ManualInputFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            ManualInputFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
                 }
             }
-        }
-
-        manualInputBackButton.setOnClickListener {
-            findNavController().navigate(R.id.action_manualInputFragment_to_readingStepsFragment)
-        }
-
-        manualInputValue.addTextChangedListener(watcher)
-            if(manualInputValue.text.toString() == ""){
-                nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main_disabled)
-                nextButtonManualInput.isEnabled = false
-            } else{
-                nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main)
-                nextButtonManualInput.isEnabled = true
-            }
-
-
-        Log.d("Meter index", sharedViewModel.meterIndex.toString())
-
-
-        counterTypeInput.setText(sharedViewModel.userData.value!!.meters?.get(meterIndex)?.counterType)
-        meterTypeText.text = sharedViewModel.userData.value!!.meters?.get(meterIndex)?.counterTypeName
-        counterNumberInput.setText(sharedViewModel.userData.value!!.meters?.get(meterIndex)?.counterNumber)
-
-        val standardFormat = SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH)
-        val formatter = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
-        val date : Date = standardFormat.parse(Date().toString())
-        readingDateInput.setText(formatter.format(date))
-
-        manualInputValue.setText(sharedViewModel.meterValue.value?.replace(".", ""))
-        nextButtonManualInput.setOnClickListener() {
-            counterValueFormatted = if (manualInputValue.text != null) {
-                manualInputValue.text?.substring(
-                    0,
-                    manualInputValue.text?.length!! - 2
-                ) + "." + manualInputValue.text?.substring(
-                    manualInputValue.text?.length!! - 2,
-                    manualInputValue.text?.length!!
-                )
-            }else{
-                "0.0"
-            }
-
-            sharedViewModel.meterValue.value = counterValueFormatted
-
-            sharedViewModel.meterData.add(MeterReadingData(
-                sharedViewModel.userData.value!!.meters?.get(meterIndex)!!.counterNumber,
-                sharedViewModel.userData.value!!.meters?.get(meterIndex)!!.counterType,
-                sharedViewModel.meterValue.value!!.toDouble(),
-                reportMessageInput.text.toString()
-            ))
-            Log.d("Counter value", counterValueFormatted)
-
-            sharedViewModel.readingStepsProgress[meterIndex] = true
-
-            findNavController().navigate(R.id.action_manualInputFragment_to_readingStepsFragment)
-        }
     }
 }

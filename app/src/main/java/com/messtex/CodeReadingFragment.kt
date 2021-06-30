@@ -1,37 +1,33 @@
 package com.messtex
 
-import android.annotation.SuppressLint
-import android.app.ProgressDialog
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import com.messtex.data.models.ContactFormData
-import com.messtex.data.models.UtilizationData
-import com.messtex.ui.main.viewmodel.MainViewModel
-import com.pixolus.meterreading.MeterReadingActivity
-import com.pixolus.meterreading.MeterReadingFragment
-import kotlinx.android.synthetic.main.fragment_code_reading.*
-import kotlinx.android.synthetic.main.fragment_contact_form.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
+
+/**
+ * A simple [Fragment] subclass.
+ * Use the [CodeReadingFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
 class CodeReadingFragment : Fragment() {
+    // TODO: Rename and change types of parameters
+    private var param1: String? = null
+    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
     }
-
-    private val sharedViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,67 +37,23 @@ class CodeReadingFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_code_reading, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        warningText.isVisible = false
-        verification_error_background.isVisible = false
-        verification_input_background.isVisible = true
-
-        backButton.setOnClickListener() {
-            findNavController().navigateUp()
-        }
-
-        previewButton.setOnClickListener() {
-            findNavController().navigate(R.id.action_codeReadingFragment_to_exampleCodeFragment)
-        }
-
-        eyeglass_button.setOnClickListener() {
-            findNavController().navigate(R.id.action_codeReadingFragment_to_exampleCodeFragment)
-        }
-
-        videoLink.setOnClickListener() {
-            findNavController().navigate(R.id.action_codeReadingFragment_to_videoFragment)
-        }
-
-
-        nextButton.setOnClickListener() {
-            sharedViewModel.utilization_code.value =
-                UtilizationData(verificationCode = verificationCode.text.toString(), language = sharedViewModel.language_code)
-            val dialog: ProgressDialog =
-                ProgressDialog.show(this.requireContext(), "", "Loading...", true)
-            GlobalScope.launch(Dispatchers.IO) {
-                try {
-                    sharedViewModel.checkVerificationCode()
-                    MainScope().launch {
-                        if(!(sharedViewModel.userData.value?.firstName == null)) {
-                            dialog.dismiss()
-                            warningText.isVisible = false
-                            verification_error_background.isVisible = false
-                            verification_input_background.isVisible = true
-                            findNavController().navigate(R.id.action_codeReadingFragment_to_readingStepsFragment)
-                        }else{
-                            dialog.dismiss()
-                            warningText.text = sharedViewModel.userData.value?.message
-                            warningText.isVisible = true
-                            verification_error_background.isVisible = true
-                            verification_input_background.isVisible = false
-                        }
-                    }
-
-                } catch (e: Exception) {
-                    Log.d("Error", e.toString())
-                    MainScope().launch {
-                        dialog.dismiss()
-                        warningText.isVisible = true
-                        verification_error_background.isVisible = true
-                        verification_input_background.isVisible = false
-                    }
-
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment CodeReadingFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            CodeReadingFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
                 }
             }
-        }
-
     }
 }
-

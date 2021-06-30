@@ -1,87 +1,59 @@
 package com.messtex
 
-import android.annotation.SuppressLint
-import android.app.ProgressDialog
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.messtex.data.models.PostModelRecord
-import com.messtex.ui.main.viewmodel.MainViewModel
-import kotlinx.android.synthetic.main.contact_confirmation_layout.view.*
-import kotlinx.android.synthetic.main.fragment_data_checking.*
-import kotlinx.android.synthetic.main.fragment_data_checking.sendButton
-import kotlinx.android.synthetic.main.meter_confirmation_layout.view.*
-import kotlinx.android.synthetic.main.reason_of_reading_layout.view.*
-import kotlinx.coroutines.*
 
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
-@DelicateCoroutinesApi
+/**
+ * A simple [Fragment] subclass.
+ * Use the [DataCheckingFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
 class DataCheckingFragment : Fragment() {
-    private val sharedViewModel: MainViewModel by activityViewModels()
+    // TODO: Rename and change types of parameters
+    private var param1: String? = null
+    private var param2: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
+        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_data_checking, container, false)
     }
 
-    @SuppressLint("SetTextI18n")
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        val inflater = LayoutInflater.from(this.requireContext())
-        val meterArray = sharedViewModel.meterData
-        val userData = sharedViewModel.userData.value!!
-
-        val addContact: View = inflater.inflate(R.layout.contact_confirmation_layout, confirmation_list, false)
-
-        for (i in meterArray.indices){
-            val toAdd: View = inflater.inflate(R.layout.meter_confirmation_layout, confirmation_list, false)
-
-            toAdd.confirmation_meter_icon.setImageResource(sharedViewModel.getMeterIcon(meterArray[i].counterType))
-            toAdd.confirmation_meter_name.text = userData.meters?.get(i)?.counterTypeName
-            toAdd.confirmation_meter_number.text = "Nr. ${meterArray[i].counterNumber}"
-            toAdd.confirmation_meter_value.text = meterArray[i].counterValue.toString()
-            confirmation_list.addView(toAdd)
-        }
-
-        addContact.name.text = "${userData.firstName} ${userData.lastName}"
-        addContact.email.text = userData.email
-        addContact.address.text = "${userData.street} ${userData.houseNumber}"
-        addContact.city.text = "${userData.postcode} ${userData.city}"
-        confirmation_list.addView(addContact)
-
-        dataCheckingBackButton.setOnClickListener(){
-            findNavController().navigateUp()
-        }
-
-        sendButton.setOnClickListener(){
-            sharedViewModel
-            val dialog : ProgressDialog = ProgressDialog.show(this.requireContext(), "", "Loading...", true)
-            GlobalScope.launch(Dispatchers.IO) {
-                try {
-                    sharedViewModel.sendReadings()
-                    MainScope().launch {
-
-                        dialog.dismiss()
-                        findNavController().navigate(R.id.action_dataCheckingFragment_to_scanningSuccessFragment)
-                    }
-                } catch (e: Exception) {
-                    Log.d("Error", e.toString())
-                    dialog.dismiss()
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment DataCheckingFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            DataCheckingFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
                 }
             }
-
-        }
-
-
     }
-
 }

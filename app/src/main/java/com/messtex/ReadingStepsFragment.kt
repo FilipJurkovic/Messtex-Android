@@ -1,29 +1,33 @@
 package com.messtex
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.google.gson.Gson
-import com.messtex.data.models.PostModelRecord
-import com.messtex.data.models.ViewModelData
-import com.messtex.ui.main.viewmodel.MainViewModel
-import com.pixolus.meterreading.MeterReadingActivity
-import com.pixolus.meterreading.MeterReadingFragment
-import kotlinx.android.synthetic.main.fragment_reading_steps.*
-import kotlinx.android.synthetic.main.fragment_reading_steps.nextButton
-import kotlinx.android.synthetic.main.reading_step_layout.view.*
 
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
+
+/**
+ * A simple [Fragment] subclass.
+ * Use the [ReadingStepsFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
 class ReadingStepsFragment : Fragment() {
+    // TODO: Rename and change types of parameters
+    private var param1: String? = null
+    private var param2: String? = null
 
-    private val sharedViewModel: MainViewModel by activityViewModels()
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,139 +37,23 @@ class ReadingStepsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_reading_steps, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-//
-
-        val inflater = LayoutInflater.from(this.requireContext())
-        val stepsArray = sharedViewModel.userData.value?.meters
-
-        for (i in (stepsArray?.indices!!)) {
-            val toAdd: View =
-                inflater.inflate(R.layout.reading_step_layout, reading_steps_layout, false)
-                if (sharedViewModel.readingStepsProgress[i]) {
-                    toAdd.readingIndex.text = ""
-                    toAdd.readingIndexShape.setBackgroundResource(R.drawable.bullet_point)
-                } else {
-                    toAdd.readingIndex.text = (i + 1).toString()
-                    toAdd.readingIndex.setTextAppearance(R.style.TextAppearance_Messtex_ParagraphBold)
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment ReadingStepsFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            ReadingStepsFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
                 }
-
-
-                toAdd.meterIcon.setImageResource(sharedViewModel.getMeterIcon(stepsArray[i].counterType))
-                toAdd.meterName.text = stepsArray[i].counterTypeName
-
-                toAdd.meterButton.setOnClickListener {
-                    sharedViewModel.meterIndex = i
-                    if (sharedViewModel.isCameraAllowed) {
-                        startMeterReading(i)
-                    } else {
-                        findNavController().navigate(R.id.action_readingStepsFragment_to_manualInputFragment)
-                    }
-                }
-                if (sharedViewModel.readingStepsProgress[i]) {
-                    toAdd.meterButton.setBackgroundResource(R.drawable.background_button_step_change)
-                    toAdd.meterButton.setTextColor(resources.getColor(R.color.light))
-                    toAdd.meterButton.text = "Change"
-                }
-
-
-            reading_steps_layout.addView(toAdd)
-        }
-
-        val toAdd: View =
-            inflater.inflate(R.layout.reading_step_layout, reading_steps_layout, false)
-
-        if (sharedViewModel.userData.value?.firstName != null) {
-            toAdd.readingIndex.text = ""
-            toAdd.readingIndexShape.setBackgroundResource(R.drawable.bullet_point)
-
-            toAdd.meterButton.setBackgroundResource(R.drawable.background_button_step_change)
-            toAdd.meterButton.setTextColor(resources.getColor(R.color.light))
-            toAdd.meterButton.text = "Change"
-
-            sharedViewModel.readingStepsProgress[sharedViewModel.readingStepsProgress.size-1] = true
-        }
-        toAdd.meterIcon.isVisible = false
-        toAdd.meterName.text = "Contact and contract data"
-        toAdd.reading_steps_connector.isVisible = false
-
-        toAdd.meterButton.setOnClickListener {
-            findNavController().navigate(R.id.action_readingStepsFragment_to_contactDetailsFragment)
-        }
-
-        reading_steps_layout.addView(toAdd)
-
-
-        if (sharedViewModel.meterData.size == sharedViewModel.userData.value?.meters?.size && sharedViewModel.userData.value?.firstName != null) {
-            nextButton.setBackgroundResource(R.drawable.background_button_main)
-            nextButton.isEnabled = true
-        } else {
-            nextButton.setBackgroundResource(R.drawable.background_button_main_disabled)
-            nextButton.isEnabled = false
-        }
-
-        stepsBackButton.setOnClickListener {
-            findNavController().navigateUp()
-        }
-
-        nextButton.setOnClickListener {
-            Log.d(
-                "viewmodel", Gson().toJson(
-                    PostModelRecord(
-                        sharedViewModel.utilization_code.value!!.verificationCode,
-                        sharedViewModel.language_code,
-                        sharedViewModel.meterData.toTypedArray(),
-                        sharedViewModel.userData.value!!.firstName!!,
-                        sharedViewModel.userData.value!!.lastName!!,
-                        sharedViewModel.userData.value!!.email!!,
-                        sharedViewModel.userData.value!!.phone!!,
-                        true,
-                        false,
-                        false
-                    ).toString()
-                )
-            )
-            findNavController().navigate(R.id.action_readingStepsFragment_to_dataCheckingFragment)
-        }
-
+            }
     }
-
-    private fun startMeterReading(meterIndex: Int) {
-        val intent: Intent = Intent(this.requireActivity(), MeterScanningActivity::class.java)
-            .putExtra(MeterReadingActivity.EXTRA_INTEGER_DIGITS, MeterReadingFragment.AUTOMATIC)
-            .putExtra(
-                MeterReadingActivity.EXTRA_FRACTION_DIGITS,
-                MeterReadingFragment.AUTOMATIC
-            )
-            .putExtra(
-                MeterReadingActivity.EXTRA_NUMBER_OF_COUNTERS,
-                MeterReadingFragment.AUTOMATIC
-            )
-            .putExtra(MeterReadingActivity.EXTRA_TIMEOUT_UNREADABLE_COUNTER, 0)
-            .putExtra(MeterReadingActivity.EXTRA_TIMEOUT_AFTER_LAST_DETECTION, 0)
-            .putExtra(MeterReadingActivity.EXTRA_TIMEOUT, 0)
-            .putExtra(MeterReadingActivity.EXTRA_ALLOWS_ROTATION, true)
-            .putExtra(MeterReadingActivity.EXTRA_ZOOM, 1.3)
-            .putExtra(MeterReadingActivity.EXTRA_IS_RESULTS_OVERLAY_VISIBLE, true)
-            .putExtra(MeterReadingActivity.EXTRA_IS_DEBUG_OVERLAY_VISIBLE, BuildConfig.DEBUG)
-
-        intent.putExtra(
-            "ViewModel", ViewModelData(
-                sharedViewModel.userData.value,
-                sharedViewModel.co2_data.value,
-                sharedViewModel.meterData,
-                sharedViewModel.utilization_code.value,
-                sharedViewModel.meterValue.value,
-                sharedViewModel.faq.value,
-                sharedViewModel.readingStepsProgress,
-                meterIndex,
-                sharedViewModel.isCameraAllowed
-            )
-        )
-
-        startActivity(intent)
-    }
-
-
 }

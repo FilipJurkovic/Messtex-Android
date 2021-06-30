@@ -7,16 +7,15 @@
     android:background="@color/dark"
     tools:context=".ExampleCodeFragment">
 
-    <TextView
-        android:id="@+id/exitButton"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="43dp"
         android:clickable="true"
-        android:focusable="true"
-        android:background="@drawable/background_floating_exit_button"
-        android:foreground="@drawable/foreground_button_round"
+        android:src="@drawable/ic_round_clear_24"
+        app:fabSize="mini"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

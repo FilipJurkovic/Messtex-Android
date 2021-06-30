@@ -1,23 +1,33 @@
 package com.messtex
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.messtex.data.models.UserData
-import com.messtex.ui.main.viewmodel.MainViewModel
-import kotlinx.android.synthetic.main.fragment_contact_details.*
-import kotlinx.android.synthetic.main.fragment_contact_details.emailInput
 
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
+/**
+ * A simple [Fragment] subclass.
+ * Use the [ContactDetailsFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
 class ContactDetailsFragment : Fragment() {
+    // TODO: Rename and change types of parameters
+    private var param1: String? = null
+    private var param2: String? = null
 
-    private val sharedViewModel: MainViewModel by activityViewModels()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,56 +37,23 @@ class ContactDetailsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_contact_details, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        val watcher: TextWatcher = object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-            override fun afterTextChanged(s: Editable) {
-                    contactDetailsNextButton.setBackgroundResource(R.drawable.background_button_main)
-                    contactDetailsNextButton.isEnabled = true
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment ContactDetailsFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            ContactDetailsFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
             }
-        }
-
-        firstNameInput.setText(sharedViewModel.userData.value?.firstName)
-        surnameInput.setText(sharedViewModel.userData.value?.lastName)
-        emailInput.setText(sharedViewModel.userData.value?.email)
-        phoneNumberInput.setText(sharedViewModel.userData.value?.phone)
-        streetInput.setText(sharedViewModel.userData.value?.street)
-        houseNumberInput.setText(sharedViewModel.userData.value?.houseNumber)
-        plzInput.setText(sharedViewModel.userData.value?.postcode.toString())
-        cityInput.setText(sharedViewModel.userData.value?.city)
-        floorInput.setText(sharedViewModel.userData.value?.floor)
-
-
-        firstNameInput.addTextChangedListener(watcher)
-        surnameInput.addTextChangedListener(watcher)
-
-        contactDetailsBackButton.setOnClickListener() {
-            findNavController().navigateUp()
-        }
-
-        contactDetailsNextButton.setOnClickListener() {
-            sharedViewModel.userData.value = UserData(
-                firstNameInput.text.toString(),
-                surnameInput.text.toString(),
-                emailInput.text.toString(),
-                phoneNumberInput.text.toString(),
-                streetInput.text.toString(),
-                houseNumberInput.text.toString(),
-                plzInput.text.toString().toInt(),
-                cityInput.text.toString(),
-                floorInput.text.toString(),
-                sharedViewModel.userData.value!!.readingReason,
-                sharedViewModel.userData.value!!.meters,
-                false,
-                ""
-            )
-            sharedViewModel.sendCopy = emailCopy.isChecked
-            findNavController().navigate(R.id.action_contactDetailsFragment_to_readingStepsFragment)
-        }
-
     }
-
 }
