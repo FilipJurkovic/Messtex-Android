@@ -8,7 +8,7 @@
     tools:context=".DataCheckingFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+        android:id="@+id/dataCheckingBackButton"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginStart="24dp"
@@ -96,7 +96,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
                         <ImageView
@@ -156,7 +156,7 @@
                     app:layout_constraintTop_toBottomOf="@id/break1">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
                         <ImageView
@@ -216,7 +216,7 @@
                     app:layout_constraintTop_toBottomOf="@id/break2">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
                         <ImageView
@@ -368,13 +368,13 @@
 
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/sendButton"
                 style="@style/TextAppearance.Messtex.ParagraphBold"
                 android:layout_width="327dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="38dp"
                 android:layout_marginBottom="75dp"
-                android:text="Next"
+                android:text="Send"
                 android:textColor="@color/light"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

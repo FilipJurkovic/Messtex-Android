@@ -2,8 +2,9 @@ package com.messtex.data.models
 
 data class MeterData(
 
-    val meterId: String?,
-    val meterValue: String?,
-    val meterType: String?
+    val counterNumber: String?,
+    val counterType: String?,
+    val counterValue: String?,
+    val userMessage: String?
 
 )

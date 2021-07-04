@@ -29,35 +29,35 @@ class StepUserInfo : Fragment() {
         return inflater.inflate(R.layout.step_user_info_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+//        super.onActivityCreated(savedInstanceState)
+////
+//        sharedViewModel.userData.observe(viewLifecycleOwner, Observer {
+//            if (it != null) {
+//                firstNameText.setText(it.firstName)
+//                lastNameText.setText(it.secondName)
+//                homeNumerText.setText(it.houseNumber.toString())
+//                postcodeText.setText(it.postcode.toString())
+//                cityText.setText(it.city)
+//                addressText.setText(it.street)
+//            }
 //
-        sharedViewModel.userData.observe(viewLifecycleOwner, Observer {
-            if (it != null) {
-                firstNameText.setText(it.firstName)
-                lastNameText.setText(it.secondName)
-                homeNumerText.setText(it.houseNumber.toString())
-                postcodeText.setText(it.postcode.toString())
-                cityText.setText(it.city)
-                addressText.setText(it.street)
-            }
-
-        })
-
-        submitUserInfoButton.setOnClickListener() {
-            sharedViewModel.userData.postValue(
-                UserData(
-                    firstNameText.text.toString(),
-                    lastNameText.text.toString(),
-                    homeNumerText.text.toString().toInt(),
-                    postcodeText.text.toString().toInt(),
-                    cityText.text.toString(),
-                    addressText.text.toString()
-                )
-            )
-//            findNavController().navigate(R.id.action_stepUserInfo_to_stepMeterInfo)
-        }
-
-    }
+//        })
+//
+//        submitUserInfoButton.setOnClickListener() {
+//            sharedViewModel.userData.postValue(
+//                UserData(
+//                    firstNameText.text.toString(),
+//                    lastNameText.text.toString(),
+//                    homeNumerText.text.toString().toInt(),
+//                    postcodeText.text.toString().toInt(),
+//                    cityText.text.toString(),
+//                    addressText.text.toString()
+//                )
+//            )
+////            findNavController().navigate(R.id.action_stepUserInfo_to_stepMeterInfo)
+//        }
+//
+//    }
 
 }

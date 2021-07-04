@@ -5,55 +5,53 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.messtex.ui.main.viewmodel.MainViewModel
+import kotlinx.android.synthetic.main.fragment_code_reading.*
+import kotlinx.android.synthetic.main.fragment_meter_reading.*
+import kotlinx.android.synthetic.main.fragment_modal_bottom_sheet.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class ModalBottomSheetFragment : BottomSheetDialogFragment() {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ModalBottomSheetFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ModalBottomSheetFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private val sharedViewModel: MainViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_modal_bottom_sheet, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ModalBottomSheetFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ModalBottomSheetFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        val bottomSheetIndex = sharedViewModel.meterIndex
+
+        infoExitButton.setOnClickListener(){
+            findNavController().navigateUp()
+        }
+
+        when (bottomSheetIndex) {
+            0 -> {
+                meterImage.setImageResource(R.drawable.watermeter_illustration)
+                explanation.text = "Please enter your meter number first. It is usually located at the top of your counter and usually consists of 9 numbers (no letters). On your notification card you will find the last 4 digits and the respective room in which the meter is located as a little help"
+                readingExplanation.text = "Then enter your meter reading in the corresponding field. Please enter both the numbers in front of the comma (here in the gray area) and the numbers after they come (here in the red area). The counter reading in this example is: 00984.562"
             }
+            1 -> {
+                meterImage.setImageResource(R.drawable.gasmeter_illustration)
+                explanation.text = "Please enter your meter number first. It is usually located above or below the display and consists of 9 numbers (no letters). On your notification card you will find the last 4 digits and the respective room in which the meter is located as a small aid."
+                readingExplanation.text = "To be able to read the counter reading, press the button on your counter. Your meter reading will now appear on the display. Please enter this in the corresponding field on the homepage. The counter reading in this example is: 14652"
+
+            }
+            2 -> {
+                meterImage.setImageResource(R.drawable.electricity_illustration)
+                explanation.text = "Please enter your meter number first. It is usually located at the top of your counter and usually consists of 9 numbers (no letters). On your notification card you will find the last 4 digits and the respective room in which the meter is located as a little help"
+                readingExplanation.text = "To be able to read the counter reading, press the button on your counter. Your meter reading will now appear on the display. Please enter this in the corresponding field on the homepage. The counter reading in this example is: 14562."
+
+            }
+        }
     }
+
 }

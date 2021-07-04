@@ -124,7 +124,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/learnMoreButton"
             android:layout_width="142dp"
             android:layout_height="34dp"
             android:layout_marginTop="20dp"
@@ -133,7 +133,7 @@
             tools:ignore="HardcodedText" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/backToHomeButton"
             style="@style/TextAppearance.Messtex.ParagraphBold"
             android:layout_width="327dp"
             android:layout_height="wrap_content"

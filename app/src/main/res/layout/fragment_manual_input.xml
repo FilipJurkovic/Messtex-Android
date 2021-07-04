@@ -144,7 +144,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/meterTypeText"
                 style="@style/TextAppearance.Messtex.ParagraphBold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
                 android:layout_marginTop="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2">
+                app:layout_constraintTop_toBottomOf="@+id/meterTypeText">
 
                 <ImageView
                     android:id="@+id/imageView22"
@@ -174,7 +174,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.alimuzaffar.lib.pin.PinEntryEditText
-                    android:id="@+id/txt_pin_entry"
+                    android:id="@+id/counterValue"
                     android:layout_width="286dp"
                     android:layout_height="wrap_content"
                     android:cursorVisible="true"
@@ -233,7 +233,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/nextButtonManualInput"
                 android:layout_width="327dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="47dp"

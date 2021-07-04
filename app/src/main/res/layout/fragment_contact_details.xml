@@ -8,14 +8,15 @@
     tools:context=".ContactDetailsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+        android:id="@+id/contactDetailsBackButton"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="30dp"
         android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="true">
 
         <ImageView
             android:id="@+id/imageView14"
@@ -286,7 +287,7 @@
 
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/contactDetailsNextButton"
                 style="@style/TextAppearance.Messtex.ParagraphBold"
                 android:layout_width="327dp"
                 android:layout_height="50dp"

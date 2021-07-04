@@ -5,29 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.messtex.data.models.MeterData
+import com.messtex.ui.main.viewmodel.MainViewModel
+import kotlinx.android.synthetic.main.fragment_manual_input.*
+import kotlinx.android.synthetic.main.fragment_modal_bottom_sheet.*
+import kotlinx.android.synthetic.main.fragment_reading_steps.*
+import java.text.SimpleDateFormat
+import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ManualInputFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ManualInputFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
+class ManualInputFragment() : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
+
+    private val sharedViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,23 +31,50 @@ class ManualInputFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_manual_input, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ManualInputFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ManualInputFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+         var meterType : String = ""
+
+        when (sharedViewModel.meterIndex) {
+            0 -> {
+                meterType = "Heat meter"
+            }
+            1 -> {
+                meterType = "Heat meter allocator"
+            }
+            2 -> {
+                meterType = "Water meter"
+            }
+        }
+
+        counterTypeInput.setText(meterType)
+        meterTypeText.text = meterType
+
+        val formatter = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+        formatter.timeZone = TimeZone.getTimeZone("UTC")
+        readingDateInput.setText(formatter.parse(Date().toString()).toString())
+
+
+        nextButtonManualInput.setOnClickListener() {
+            if (counterNumberInput.text != null && counterTypeInput.text != null && readingDateInput.text != null && counterValue.text != null){
+                    sharedViewModel.meterData.add(MeterData(counterNumberInput.text.toString(), meterType, counterValue.toString(),reportMessageInput.text.toString()))
+            }
+
+            when (sharedViewModel.meterIndex) {
+                0 -> {
+                    sharedViewModel.heat_meter_step = true
+                }
+                1 -> {
+                    sharedViewModel.heat_allocator_step = true
+                }
+                2 -> {
+                    sharedViewModel.water_meter_step = true
                 }
             }
+
+            findNavController().navigate(R.id.action_manualInputFragment_to_readingStepsFragment)
+        }
     }
+
 }
