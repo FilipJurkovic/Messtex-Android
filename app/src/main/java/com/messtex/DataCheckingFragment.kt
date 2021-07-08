@@ -6,9 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.messtex.data.models.ContactFormData
 import com.messtex.ui.main.viewmodel.MainViewModel
+import kotlinx.android.synthetic.main.fragment_contact_form.*
 import kotlinx.android.synthetic.main.fragment_data_checking.*
+import kotlinx.android.synthetic.main.fragment_data_checking.email
+import kotlinx.android.synthetic.main.fragment_data_checking.sendButton
+import kotlinx.coroutines.launch
 
 
 class DataCheckingFragment : Fragment() {
@@ -39,7 +45,9 @@ class DataCheckingFragment : Fragment() {
         }
 
         sendButton.setOnClickListener(){
-            //TODO("add api call")
+            lifecycleScope.launch {
+                sharedViewModel.co2_data.value = sharedViewModel.sendReadings()
+            }
             findNavController().navigate(R.id.action_dataCheckingFragment_to_scanningSuccessFragment)
         }
 

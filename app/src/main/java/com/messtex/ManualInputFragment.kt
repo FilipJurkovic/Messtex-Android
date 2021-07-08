@@ -1,11 +1,10 @@
 package com.messtex
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.messtex.data.models.MeterData
@@ -13,6 +12,7 @@ import com.messtex.ui.main.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_manual_input.*
 import kotlinx.android.synthetic.main.fragment_modal_bottom_sheet.*
 import kotlinx.android.synthetic.main.fragment_reading_steps.*
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -54,6 +54,15 @@ class ManualInputFragment() : Fragment() {
         val formatter = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
         formatter.timeZone = TimeZone.getTimeZone("UTC")
         readingDateInput.setText(formatter.parse(Date().toString()).toString())
+
+        val numberFormat = DecimalFormat()
+        numberFormat.isGroupingUsed = true
+        numberFormat.maximumIntegerDigits = 6
+        numberFormat.maximumFractionDigits = 2
+        numberFormat.minimumFractionDigits = 2
+
+        val meterValue = numberFormat.format(sharedViewModel.meterValue.value)
+
 
 
         nextButtonManualInput.setOnClickListener() {

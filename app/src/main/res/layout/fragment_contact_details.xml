@@ -131,6 +131,23 @@
                     android:hint="Email" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <Switch
+                android:id="@+id/emailCopy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/email"
+                app:layout_constraintTop_toBottomOf="@+id/email" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Please send me the overview as an email copy"
+                style="@style/TextAppearance.Messtex.Paragraph"
+                app:layout_constraintEnd_toEndOf="@+id/email"
+                app:layout_constraintStart_toEndOf="@+id/emailCopy"
+                app:layout_constraintTop_toBottomOf="@+id/email" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/phoneNumber"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -139,7 +156,7 @@
                 android:layout_margin="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email">
+                app:layout_constraintTop_toBottomOf="@+id/emailCopy">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/phoneNumberInput"

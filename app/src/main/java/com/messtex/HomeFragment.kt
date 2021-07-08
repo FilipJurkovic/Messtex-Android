@@ -122,4 +122,8 @@ class HomeFragment : Fragment() {
         return ContextCompat.checkSelfPermission(context, permissionArray) == PackageManager.PERMISSION_GRANTED
     }
 
+    fun checkPermission(context: Context, permissionArray: String): Boolean{
+        return ContextCompat.checkSelfPermission(context, permissionArray) == PackageManager.PERMISSION_GRANTED
+    }
+
 }

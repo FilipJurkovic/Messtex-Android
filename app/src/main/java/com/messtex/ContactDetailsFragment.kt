@@ -50,7 +50,7 @@ class ContactDetailsFragment : Fragment() {
                 plzInput.text.toString().toInt(),
                 cityInput.text.toString(),
                 floorInput.text.toString(),
-                false,
+                emailCopy.isChecked,
                 readingReason.text.toString()
             )
             findNavController().navigate(R.id.action_contactDetailsFragment_to_readingStepsFragment)

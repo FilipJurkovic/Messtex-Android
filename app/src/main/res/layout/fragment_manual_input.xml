@@ -186,6 +186,7 @@
                     android:textColor="@color/primary"
                     android:textIsSelectable="true"
                     android:textSize="40sp"
+                    android:textDirection="rtl"
                     app:layout_constraintEnd_toEndOf="@+id/imageView22"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"

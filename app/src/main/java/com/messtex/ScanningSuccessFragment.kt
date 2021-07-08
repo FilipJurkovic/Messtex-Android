@@ -18,11 +18,17 @@ class ScanningSuccessFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        return inflater.inflate(R.layout.fragment_scanning_success, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
         co2_livedata.text = sharedViewModel.co2_data.value?.co2Level.toString()
         backToHomeButton.setOnClickListener(){
             findNavController().navigate(R.id.action_scanningSuccessFragment_to_home2)
         }
-        return inflater.inflate(R.layout.fragment_scanning_success, container, false)
     }
 
 
