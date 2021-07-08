@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ScanButton">
+        <item name="android:background">@drawable/scan_button</item>
+        <item name="android:src">@drawable/ic_scan_icon</item>
+    </style>
+
+    <style name="PrimaryButton" parent="android:style/Widget.Button">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/light</item>
+
+    </style>
+
+    <style name="OutlineButton" parent="android:style/Widget.Button">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/primary_tint</item>
+
+
+    </style>
+
+</resources>

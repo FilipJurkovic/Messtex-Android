@@ -1,0 +1,89 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MesstexAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_30</item>
+        <item name="colorOnPrimary">@color/light</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary_30</item>
+        <item name="colorOnSecondary">@color/light</item>
+        <!-- Background color. -->
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorOnBackground">@color/dark</item>
+        <!-- Error color. -->
+        <item name="colorError">@color/danger</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <item name="textAppearanceHeadline1">@style/TextAppearance.Messtex.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.Messtex.Headline2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Messtex.Paragraph</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.Messtex.ParagraphBold</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Messtex.Small</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.Messtex.SmallBold</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.Messtex.Tiny</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.Messtex.TinyBold</item>
+
+
+    </style>
+
+    <style name="TextAppearance.Messtex.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        ...
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextAppearance.Messtex.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        ...
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.Messtex.Paragraph" parent="TextAppearance.MaterialComponents.Body1">
+        ...
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Messtex.ParagraphBold" parent="TextAppearance.MaterialComponents.Body1">
+        ...
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Messtex.Small" parent="TextAppearance.MaterialComponents.Body2">
+        ...
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Messtex.SmallBold" parent="TextAppearance.MaterialComponents.Body2">
+        ...
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Messtex.Tiny" parent="TextAppearance.MaterialComponents.Caption">
+        ...
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextAppearance.Messtex.TinyBold" parent="TextAppearance.MaterialComponents.Caption">
+        ...
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
+</resources>

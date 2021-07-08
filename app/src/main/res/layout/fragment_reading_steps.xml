@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".ReadingStepsFragment">
+
+
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="72dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="30dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/imageView16"
+                android:layout_width="114dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="99dp"
+                android:src="@drawable/reading_graphics"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView22"
+                style="@style/TextAppearance.Messtex.Headline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="41dp"
+                android:text="Start reading"
+                android:textColor="@color/primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView16" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="328dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="42dp"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView23">
+
+
+                <ImageView
+                    android:layout_width="37dp"
+                    android:layout_height="240dp"
+                    android:src="@drawable/steps" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView19"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_heat_meter" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            style="@style/TextAppearance.Messtex.ParagraphBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="9dp"
+                            android:text="Heat meter"
+                            android:textColor="@color/primary" />
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="5dp"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/heat_meter_button"
+                            style="@style/TextAppearance.Messtex.TinyBold"
+                            android:layout_width="76dp"
+                            android:layout_height="34dp"
+                            android:text="Submit" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView20"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_heat_alocator" />
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            style="@style/TextAppearance.Messtex.ParagraphBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="9dp"
+                            android:text="Heat cost allocator"
+                            android:textColor="@color/primary" />
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="5dp"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/heat_allocator_button"
+                            style="@style/TextAppearance.Messtex.TinyBold"
+                            android:layout_width="76dp"
+                            android:layout_height="34dp"
+                            android:text="Submit" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView21"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_water_meter" />
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            style="@style/TextAppearance.Messtex.ParagraphBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="9dp"
+                            android:text="Water meter"
+                            android:textColor="@color/primary" />
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="5dp"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/water_meter_button"
+                            style="@style/TextAppearance.Messtex.TinyBold"
+                            android:layout_width="76dp"
+                            android:layout_height="34dp"
+                            android:text="Submit" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:id="@+id/textView"
+                            style="@style/TextAppearance.Messtex.ParagraphBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Contact and contract data"
+                            android:textColor="@color/primary" />
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="5dp"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/contact_button"
+                            style="@style/TextAppearance.Messtex.TinyBold"
+                            android:layout_width="76dp"
+                            android:layout_height="34dp"
+                            android:text="Submit" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/textView23"
+                style="@style/TextAppearance.Messtex.Paragraph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_horizontal"
+                android:text="You have 3 counters to be read from.\nPlease send us the following three meter\nreadings:"
+                android:textColor="@color/dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+            <ImageView
+                android:id="@+id/heat_meter_step_success"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="381dp"
+                android:layout_weight="1"
+                android:src="@drawable/bullet_point"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/contact_step_success"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="585dp"
+                android:layout_weight="1"
+                android:src="@drawable/bullet_point"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/water_meter_step_success"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="517dp"
+                android:layout_weight="1"
+                android:src="@drawable/bullet_point"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/heat_allcator_step_success"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="449dp"
+                android:layout_weight="1"
+                android:src="@drawable/bullet_point"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <Button
+                android:id="@+id/nextButton"
+                style="@style/TextAppearance.Messtex.ParagraphBold"
+                android:layout_width="327dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="47dp"
+                android:layout_marginBottom="29dp"
+                android:text="Next"
+                android:textColor="@color/light"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/stepsBackButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.529"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/step_nav"
+    app:startDestination="@id/home2">
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.messtex.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home2_to_codeReadingFragment"
+            app:destination="@id/codeReadingFragment" />
+        <action
+            android:id="@+id/action_home2_to_moreFragment2"
+            app:destination="@id/moreFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.messtex.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/codeReadingFragment"
+        android:name="com.messtex.CodeReadingFragment"
+        android:label="fragment_code_reading"
+        tools:layout="@layout/fragment_code_reading" >
+        <action
+            android:id="@+id/action_codeReadingFragment_to_home2"
+            app:destination="@id/home2" />
+        <action
+            android:id="@+id/action_codeReadingFragment_to_readingStepsFragment"
+            app:destination="@id/readingStepsFragment" />
+        <action
+            android:id="@+id/action_codeReadingFragment_to_exampleCodeFragment"
+            app:destination="@id/exampleCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.messtex.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
+    <fragment
+        android:id="@+id/contactDetailsFragment"
+        android:name="com.messtex.ContactDetailsFragment"
+        android:label="fragment_contact_details"
+        tools:layout="@layout/fragment_contact_details" >
+        <action
+            android:id="@+id/action_contactDetailsFragment_to_readingStepsFragment"
+            app:destination="@id/readingStepsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactFormFragment"
+        android:name="com.messtex.ContactFormFragment"
+        android:label="fragment_contact_form"
+        tools:layout="@layout/fragment_contact_form" />
+    <fragment
+        android:id="@+id/dataCheckingFragment"
+        android:name="com.messtex.DataCheckingFragment"
+        android:label="fragment_data_checking"
+        tools:layout="@layout/fragment_data_checking" >
+        <action
+            android:id="@+id/action_dataCheckingFragment_to_scanningSuccessFragment"
+            app:destination="@id/scanningSuccessFragment" />
+        <action
+            android:id="@+id/action_dataCheckingFragment_to_readingStepsFragment"
+            app:destination="@id/readingStepsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exampleCodeFragment"
+        android:name="com.messtex.ExampleCodeFragment"
+        android:label="fragment_example_code"
+        tools:layout="@layout/fragment_example_code" />
+    <fragment
+        android:id="@+id/faqFragment"
+        android:name="com.messtex.FaqFragment"
+        android:label="fragment_faq"
+        tools:layout="@layout/fragment_faq" />
+    <fragment
+        android:id="@+id/imprintFragment"
+        android:name="com.messtex.ImprintFragment"
+        android:label="fragment_imprint"
+        tools:layout="@layout/fragment_imprint" />
+    <fragment
+        android:id="@+id/manualInputFragment"
+        android:name="com.messtex.ManualInputFragment"
+        android:label="fragment_manual_input"
+        tools:layout="@layout/fragment_manual_input" >
+        <action
+            android:id="@+id/action_manualInputFragment_to_readingStepsFragment"
+            app:destination="@id/readingStepsFragment" />
+
+    </fragment>
+    <dialog
+        android:id="@+id/modalBottomSheetFragment"
+        android:name="com.messtex.ModalBottomSheetFragment"
+        android:label="fragment_modal_bottom_sheet"
+        tools:layout="@layout/fragment_modal_bottom_sheet" >
+        <action
+            android:id="@+id/action_modalBottomSheetFragment_to_meterReadingFragment"
+            app:destination="@id/meterReadingFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/privacyFragment"
+        android:name="com.messtex.PrivacyFragment"
+        android:label="fragment_privacy"
+        tools:layout="@layout/fragment_privacy" />
+    <fragment
+        android:id="@+id/readingStepsFragment"
+        android:name="com.messtex.ReadingStepsFragment"
+        android:label="fragment_reading_steps"
+        tools:layout="@layout/fragment_reading_steps" >
+        <action
+            android:id="@+id/action_readingStepsFragment_to_contactDetailsFragment"
+            app:destination="@id/contactDetailsFragment" />
+        <action
+            android:id="@+id/action_readingStepsFragment_to_dataCheckingFragment"
+            app:destination="@id/dataCheckingFragment" />
+        <action
+            android:id="@+id/action_readingStepsFragment_to_meterReadingFragment"
+            app:destination="@id/meterReadingFragment" />
+        <action
+            android:id="@+id/action_readingStepsFragment_to_manualInputFragment"
+            app:destination="@id/manualInputFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scanningSuccessFragment"
+        android:name="com.messtex.ScanningSuccessFragment"
+        android:label="fragment_scanning_success"
+        tools:layout="@layout/fragment_scanning_success" >
+        <action
+            android:id="@+id/action_scanningSuccessFragment_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
+    <fragment
+        android:id="@+id/moreFragment2"
+        android:name="com.messtex.MoreFragment"
+        android:label="fragment_more"
+        tools:layout="@layout/fragment_more" >
+        <action
+            android:id="@+id/action_moreFragment2_to_home2"
+            app:destination="@id/home2" />
+        <action
+            android:id="@+id/action_moreFragment2_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_moreFragment2_to_contactFragment"
+            app:destination="@id/contactFragment" />
+        <action
+            android:id="@+id/action_moreFragment2_to_contactFormFragment"
+            app:destination="@id/contactFormFragment" />
+        <action
+            android:id="@+id/action_moreFragment2_to_faqFragment"
+            app:destination="@id/faqFragment" />
+        <action
+            android:id="@+id/action_moreFragment2_to_imprintFragment"
+            app:destination="@id/imprintFragment" />
+        <action
+            android:id="@+id/action_moreFragment2_to_privacyFragment"
+            app:destination="@id/privacyFragment" />
+        <action
+            android:id="@+id/action_moreFragment2_to_codeReadingFragment"
+            app:destination="@id/codeReadingFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/meterReadingFragment"
+        android:name="com.messtex.MeterReadingActivity"
+        android:label="fragment_meter_reading"
+        tools:layout="@layout/fragment_meter_reading" >
+    </activity>
+</navigation>

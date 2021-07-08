@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ModalBottomSheetFragment"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+
+    <LinearLayout
+        android:layout_marginTop="31dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/infoExitButton"
+            android:layout_marginEnd="26dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:fabSize="mini"
+            android:clickable="true"
+            android:src="@drawable/ic_round_clear_24" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/TextAppearance.Messtex.Headline1"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:text="How to read the water meter?"
+        android:textAlignment="center"
+        android:textColor="@color/primary"
+         />
+
+    <ImageView
+        android:id="@+id/meterImage"
+        android:layout_width="287dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="34dp"
+        android:src="@drawable/watermeter_illustration"
+     />
+
+    <TextView
+        android:id="@+id/meterNumber"
+        style="@style/TextAppearance.Messtex.ParagraphBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:layout_marginStart="24dp"
+        android:text="Meter number:"
+        android:layout_gravity="start"
+        android:textColor="@color/primary"
+        app:layout_constraintStart_toStartOf="@+id/firstName"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+
+    <TextView
+        android:id="@+id/explanation"
+        style="@style/TextAppearance.Messtex.Paragraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="Please enter your meter number first. It is usually located at the top of your counter and usually consists of 9 numbers (no letters). On your notification card you will find the last 4 digits and the respective room in which the meter is located as a little help."
+        android:layout_gravity="start"
+        android:textColor="@color/dark"
+        app:layout_constraintStart_toStartOf="@+id/firstName"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+
+    <TextView
+        android:id="@+id/meterReading"
+        style="@style/TextAppearance.Messtex.ParagraphBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:layout_marginStart="24dp"
+        android:text="Meter reading:"
+        android:layout_gravity="start"
+        android:textColor="@color/primary"
+        app:layout_constraintStart_toStartOf="@+id/firstName"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+
+    <TextView
+        android:id="@+id/readingExplanation"
+        style="@style/TextAppearance.Messtex.Paragraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="Then enter your meter reading in the corresponding field. Please enter both the numbers in front of the comma (here in the gray area) and the numbers after they come (here in the red area). The counter reading in this example is: 00984.562"
+        android:layout_gravity="start"
+        android:textColor="@color/dark"
+        app:layout_constraintStart_toStartOf="@+id/firstName"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+</LinearLayout>
