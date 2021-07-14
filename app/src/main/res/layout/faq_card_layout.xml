@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:id="@+id/faq_card_layout">
+
+<com.github.florent37.expansionpanel.ExpansionHeader
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="25dp"
+    app:expansion_headerIndicator="@id/headerIndicator"
+    app:expansion_layout="@id/expansionLayout"
+    app:expansion_toggleOnClick="true">
+
+
+    <TextView
+        android:id="@+id/card_question"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/headerIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginLeft="16dp"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/ic_more_icon" />
+
+
+</com.github.florent37.expansionpanel.ExpansionHeader>
+
+<com.github.florent37.expansionpanel.ExpansionLayout
+    android:id="@+id/expansionLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="25dp">
+
+    <TextView
+        android:id="@+id/card_answer"
+        style="@style/TextAppearance.Messtex.Paragraph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+</com.github.florent37.expansionpanel.ExpansionLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="27dp"/>
+    <View
+        android:id="@+id/questionBreak"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="15dp"
+        android:background="@color/tertiary"
+        />
+</LinearLayout>

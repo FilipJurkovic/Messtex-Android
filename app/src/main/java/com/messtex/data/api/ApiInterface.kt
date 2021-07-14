@@ -9,26 +9,26 @@ import retrofit2.http.POST
 
 interface ApiInterface {
 
-    @Headers(
-        "Authorization : Bearer eecf7fd0-cee9-11eb-b752-fde919688281",
-        "Content-Type : application/json"
-    )
-    @POST("/yCZezLbXfFAiwR6r3/api/v1/databases/qmz4hgc0o1bh/query HTTP/1.1")
+    @Headers("Authorization:Bearer eecf7fd0-cee9-11eb-b752-fde919688281")
+    @POST("/v1/teams/yCZezLbXfFAiwR6r3/databases/qmz4hgc0o1bh/query")
     suspend fun getUtilizationUnitData(
         @Body post: PostModel
     ): Response<UserData>
 
-    @POST("/yCZezLbXfFAiwR6r3/api/v1/databases/qmz4hgc0o1bh/query HTTP/1.1")
+    @Headers("Authorization:Bearer eecf7fd0-cee9-11eb-b752-fde919688281")
+    @POST("/v1/teams/yCZezLbXfFAiwR6r3/databases/qmz4hgc0o1bh/query")
     suspend fun takeMeterReadings(
         @Body post: PostModel
     ): Response<CarbonData>
 
-    @POST("/yCZezLbXfFAiwR6r3/api/v1/databases/qmz4hgc0o1bh/query HTTP/1.1")
+    @Headers("Authorization:Bearer eecf7fd0-cee9-11eb-b752-fde919688281")
+    @POST("/v1/teams/yCZezLbXfFAiwR6r3/databases/qmz4hgc0o1bh/query")
     suspend fun takeContactForm(
         @Body post: PostModel
     )
 
-    @GET("/yCZezLbXfFAiwR6r3/api/v1/databases/qmz4hgc0o1bh/query HTTP/1.1")
+    @Headers("Authorization:Bearer eecf7fd0-cee9-11eb-b752-fde919688281")
+    @POST("/v1/teams/yCZezLbXfFAiwR6r3/databases/qmz4hgc0o1bh/query")
     suspend fun getFAQs(
         @Body post: PostModel
     ): Response<FaqModel>

@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
     private val retrofit by lazy {
-        val baseUrl = "https://api.ninoxdb.de/"
+        val baseUrl = "https://api.ninoxdb.de"
 
         Retrofit.Builder()
             .baseUrl(baseUrl)

@@ -45,15 +45,19 @@
             android:textColor="@color/primary"
             tools:ignore="HardcodedText" />
 
-        <Button
+        <TextView
             android:id="@+id/startReadingButton"
             style="@style/TextAppearance.Messtex.ParagraphBold"
             android:layout_width="327dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="208dp"
-
             android:text="Start reading"
+            android:gravity="center"
+            android:background="@drawable/background_button_main"
             android:textColor="@color/light"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             tools:ignore="HardcodedText" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -165,6 +169,27 @@
             android:textColor="@color/primary"
             tools:ignore="HardcodedText" />
 
+        <LinearLayout
+            android:id="@+id/homeFaq"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
+
+        <TextView
+            android:id="@+id/faqMoreButton"
+            android:layout_width="142dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="21dp"
+            style="@style/TextAppearance.Messtex.TinyBold"
+            android:background="@drawable/background_button_outlined"
+            android:textColor="@color/primary_tint"
+            android:gravity="center"
+            android:text="Show more"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            tools:ignore="HardcodedText" />
+
         <TextView
             android:id="@+id/textView8"
             style="@style/TextAppearance.Messtex.Headline2"
@@ -185,13 +210,20 @@
             android:src="@drawable/contact_graphics"
             tools:ignore="HardcodedText" />
 
-        <Button
+        <TextView
             android:id="@+id/shareButton"
             android:layout_width="142dp"
             android:layout_height="34dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="208dp"
+            style="@style/TextAppearance.Messtex.TinyBold"
+            android:background="@drawable/background_button_outlined"
+            android:textColor="@color/primary_tint"
+            android:gravity="center"
             android:text="Share the App"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             tools:ignore="HardcodedText" />
 
     </LinearLayout>

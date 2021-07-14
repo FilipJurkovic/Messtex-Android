@@ -14,6 +14,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="30dp"
         android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:focusable="true">
@@ -93,7 +94,7 @@
                     android:id="@+id/firstNameInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="First name" />
+                    android:hint="First name*" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -111,7 +112,7 @@
                     android:id="@+id/surnameInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Surname" />
+                    android:hint="Surname*" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -131,22 +132,35 @@
                     android:hint="Email" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Switch
-                android:id="@+id/emailCopy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@+id/email"
-                app:layout_constraintTop_toBottomOf="@+id/email" />
-
-            <TextView
-                android:id="@+id/textView28"
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Please send me the overview as an email copy"
-                style="@style/TextAppearance.Messtex.Paragraph"
-                app:layout_constraintEnd_toEndOf="@+id/email"
-                app:layout_constraintStart_toEndOf="@+id/emailCopy"
-                app:layout_constraintTop_toBottomOf="@+id/email" />
+                android:id="@+id/linearLAyout"
+                android:layout_height="64dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/email"
+                app:layout_constraintStart_toStartOf="@id/email"
+                app:layout_constraintTop_toBottomOf="@id/email">
+                <Switch
+                    android:id="@+id/emailCopy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:trackTint="@color/primary"
+                    android:thumbTint="@color/light"
+                    app:layout_constraintStart_toStartOf="@+id/email"
+                    app:layout_constraintTop_toBottomOf="@+id/email" />
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Please send me the overview as an email copy"
+                    style="@style/TextAppearance.Messtex.Paragraph"
+                    app:layout_constraintEnd_toEndOf="@+id/email"
+                    app:layout_constraintStart_toEndOf="@+id/emailCopy"
+                    app:layout_constraintTop_toBottomOf="@+id/email" />
+            </LinearLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/phoneNumber"
@@ -156,7 +170,7 @@
                 android:layout_margin="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/emailCopy">
+                app:layout_constraintTop_toBottomOf="@+id/linearLAyout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/phoneNumberInput"
@@ -191,7 +205,7 @@
                     android:id="@+id/streetInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Street" />
+                    android:hint="Street*" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -208,7 +222,7 @@
                     android:id="@+id/houseNumberInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="House number" />
+                    android:hint="House number*" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -225,7 +239,7 @@
                     android:id="@+id/plzInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="PLZ" />
+                    android:hint="PLZ*" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -242,7 +256,7 @@
                     android:id="@+id/cityInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="City" />
+                    android:hint="City*" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -271,7 +285,7 @@
                 android:text="Reason for reading"
                 android:textColor="@color/primary"
                 app:layout_constraintStart_toStartOf="@+id/firstName"
-                app:layout_constraintTop_toBottomOf="@+id/floor" />
+                app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
             <RadioGroup
                 android:id="@+id/reasonOfReading"
@@ -286,24 +300,27 @@
                     android:id="@+id/annualBilling"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:buttonTint="@color/primary"
                     android:text="Annual billing" />
 
                 <RadioButton
                     android:id="@+id/changeOfSupplier"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:buttonTint="@color/primary"
                     android:text="Change of supplier" />
 
                 <RadioButton
                     android:id="@+id/controlReading"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:buttonTint="@color/primary"
                     android:text="Control reading" />
 
             </RadioGroup>
 
 
-            <Button
+            <TextView
                 android:id="@+id/contactDetailsNextButton"
                 style="@style/TextAppearance.Messtex.ParagraphBold"
                 android:layout_width="327dp"
@@ -315,7 +332,23 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reasonOfReading" />
+                app:layout_constraintTop_toBottomOf="@+id/reasonOfReading"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:background="@drawable/background_button_main"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="* Required fields"
+                style="@style/TextAppearance.Messtex.Small"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="@+id/floor"
+                app:layout_constraintTop_toBottomOf="@+id/floor" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

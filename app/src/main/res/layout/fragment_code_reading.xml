@@ -69,15 +69,13 @@
 
             <com.alimuzaffar.lib.pin.PinEntryEditText
                 android:id="@+id/verificationCode"
-                android:layout_width="286dp"
+                android:layout_width="345dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
                 android:cursorVisible="true"
-                android:digits="1234567890"
                 android:fontFamily="@font/roboto_bold"
-                android:inputType="number"
                 android:layoutDirection="ltr"
-                android:maxLength="5"
+                android:maxLength="6"
                 android:textColor="@color/primary"
                 android:textIsSelectable="true"
                 android:textSize="56sp"
@@ -92,17 +90,29 @@
                 app:pinLineStroke="2dp"
                 app:pinTextBottomPadding="8dp" />
 
+            <TextView
+                android:id="@+id/warningText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="Code is invalid"
+                style="@style/TextAppearance.Messtex.Paragraph"
+                android:textColor="@color/danger"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/verificationCode" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/previewButton"
                 android:layout_width="178dp"
-android:clickable="true"
-
                 android:layout_height="236dp"
+
                 android:layout_marginTop="44dp"
+                android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/verificationCode"
-                android:focusable="true">
+                app:layout_constraintTop_toBottomOf="@+id/warningText">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="172dp"
@@ -123,15 +133,16 @@ android:clickable="true"
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                <TextView
                     android:id="@+id/floatingActionButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/background_button_round_primary_search"
                     android:clickable="true"
-                    android:src="@drawable/ic_search_icon"
-                    app:fabSize="mini"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"></TextView>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -150,7 +161,7 @@ android:clickable="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/previewButton" />
 
-            <Button
+            <TextView
                 android:id="@+id/nextButton"
                 android:layout_width="327dp"
                 android:layout_height="50dp"
@@ -162,6 +173,11 @@ android:clickable="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/background_button_main"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@+id/textView21" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
@@ -173,6 +189,7 @@ android:clickable="true"
         android:layout_marginStart="24dp"
         android:layout_marginTop="30dp"
         android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:focusable="true">

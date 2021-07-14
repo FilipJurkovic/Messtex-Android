@@ -1,5 +1,7 @@
 package com.messtex.data.models
 
+import java.io.Serializable
+
 data class UserData(
 
     val firstName: String,
@@ -13,5 +15,5 @@ data class UserData(
     val floor: String,
     var sendCopy: Boolean,
     val readingReason: String
-)
+): Serializable
 

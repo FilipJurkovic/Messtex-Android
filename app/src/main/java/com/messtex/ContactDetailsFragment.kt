@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.messtex.data.models.UserData
 import com.messtex.ui.main.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_contact_details.*
+import kotlinx.android.synthetic.main.fragment_manual_input.*
 import kotlinx.android.synthetic.main.fragment_reading_steps.*
 
 
@@ -30,8 +31,23 @@ class ContactDetailsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        val isFirstNameEmpty: Boolean = firstNameInput.text.toString() == ""
+        val isLastNameEmpty: Boolean = surnameInput.text.toString() == ""
+        val isStreetEmpty: Boolean = streetInput.text.toString() == ""
+        val isHouseNumberEmpty: Boolean = plzInput.text.toString() == ""
+        val isPlzEmpty: Boolean = cityInput.text.toString() == ""
+
+
         contactDetailsBackButton.setOnClickListener() {
             findNavController().navigateUp()
+        }
+
+        if(isFirstNameEmpty || isLastNameEmpty || isStreetEmpty || isHouseNumberEmpty || isPlzEmpty){
+            contactDetailsNextButton.setBackgroundResource(R.drawable.background_button_main_disabled)
+            contactDetailsNextButton.isEnabled = false
+        } else{
+            contactDetailsNextButton.setBackgroundResource(R.drawable.background_button_main)
+            contactDetailsNextButton.isEnabled = true
         }
 
         val rGroup = reasonOfReading as RadioGroup
@@ -53,6 +69,7 @@ class ContactDetailsFragment : Fragment() {
                 emailCopy.isChecked,
                 readingReason.text.toString()
             )
+            sharedViewModel.contact_step = true
             findNavController().navigate(R.id.action_contactDetailsFragment_to_readingStepsFragment)
         }
 

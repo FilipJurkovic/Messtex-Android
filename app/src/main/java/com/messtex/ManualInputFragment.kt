@@ -1,6 +1,7 @@
 package com.messtex
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.messtex.data.models.MeterData
 import com.messtex.ui.main.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_manual_input.*
-import kotlinx.android.synthetic.main.fragment_modal_bottom_sheet.*
-import kotlinx.android.synthetic.main.fragment_reading_steps.*
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -36,6 +35,18 @@ class ManualInputFragment() : Fragment() {
         super.onActivityCreated(savedInstanceState)
          var meterType : String = ""
 
+        var isCounterValueSet : Boolean = false
+
+        if(!isCounterValueSet){
+            nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main_disabled)
+            nextButtonManualInput.isEnabled = false
+        } else{
+            nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main)
+            nextButtonManualInput.isEnabled = true
+        }
+
+        Log.d("Meter index", sharedViewModel.meterIndex.toString())
+
         when (sharedViewModel.meterIndex) {
             0 -> {
                 meterType = "Heat meter"
@@ -51,24 +62,21 @@ class ManualInputFragment() : Fragment() {
         counterTypeInput.setText(meterType)
         meterTypeText.text = meterType
 
+        val standardFormat = SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH)
         val formatter = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
-        formatter.timeZone = TimeZone.getTimeZone("UTC")
-        readingDateInput.setText(formatter.parse(Date().toString()).toString())
+        val date : Date = standardFormat.parse(Date().toString())
+        readingDateInput.setText(formatter.format(date))
 
-        val numberFormat = DecimalFormat()
-        numberFormat.isGroupingUsed = true
-        numberFormat.maximumIntegerDigits = 6
-        numberFormat.maximumFractionDigits = 2
-        numberFormat.minimumFractionDigits = 2
-
-        val meterValue = numberFormat.format(sharedViewModel.meterValue.value)
-
-
-
+        counterValue.setText(sharedViewModel.meterValue.value?.replace(".", ""))
         nextButtonManualInput.setOnClickListener() {
             if (counterNumberInput.text != null && counterTypeInput.text != null && readingDateInput.text != null && counterValue.text != null){
-                    sharedViewModel.meterData.add(MeterData(counterNumberInput.text.toString(), meterType, counterValue.toString(),reportMessageInput.text.toString()))
+
             }
+
+            val counterValueFormatted : String = counterValue.toString().substring(0, counterValue.toString().length-2)+"."+counterValue.toString().substring(counterValue.toString().length-2, counterValue.toString().length)
+            sharedViewModel.meterData.add(MeterData(counterNumberInput.text.toString(), meterType, sharedViewModel.meterValue.value!! , reportMessageInput.text.toString()))
+
+            Log.d("Counter value", counterValueFormatted)
 
             when (sharedViewModel.meterIndex) {
                 0 -> {

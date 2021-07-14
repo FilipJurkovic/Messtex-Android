@@ -11,10 +11,25 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_home2_to_codeReadingFragment"
-            app:destination="@id/codeReadingFragment" />
+            app:destination="@id/codeReadingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_home2_to_moreFragment2"
-            app:destination="@id/moreFragment2" />
+            app:destination="@id/moreFragment2"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_home2_to_faqFragment"
+            app:destination="@id/faqFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>/>
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -28,19 +43,32 @@
         tools:layout="@layout/fragment_code_reading" >
         <action
             android:id="@+id/action_codeReadingFragment_to_home2"
-            app:destination="@id/home2" />
+            app:destination="@id/home2"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_codeReadingFragment_to_readingStepsFragment"
-            app:destination="@id/readingStepsFragment" />
+            app:destination="@id/readingStepsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_codeReadingFragment_to_exampleCodeFragment"
-            app:destination="@id/exampleCodeFragment" />
+            app:destination="@id/exampleCodeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/contactFragment"
         android:name="com.messtex.ContactFragment"
         android:label="fragment_contact"
-        tools:layout="@layout/fragment_contact" />
+        tools:layout="@layout/fragment_contact"
+        />
     <fragment
         android:id="@+id/contactDetailsFragment"
         android:name="com.messtex.ContactDetailsFragment"
@@ -48,7 +76,11 @@
         tools:layout="@layout/fragment_contact_details" >
         <action
             android:id="@+id/action_contactDetailsFragment_to_readingStepsFragment"
-            app:destination="@id/readingStepsFragment" />
+            app:destination="@id/readingStepsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/contactFormFragment"
@@ -62,10 +94,18 @@
         tools:layout="@layout/fragment_data_checking" >
         <action
             android:id="@+id/action_dataCheckingFragment_to_scanningSuccessFragment"
-            app:destination="@id/scanningSuccessFragment" />
+            app:destination="@id/scanningSuccessFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_dataCheckingFragment_to_readingStepsFragment"
-            app:destination="@id/readingStepsFragment" />
+            app:destination="@id/readingStepsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/exampleCodeFragment"
@@ -89,7 +129,11 @@
         tools:layout="@layout/fragment_manual_input" >
         <action
             android:id="@+id/action_manualInputFragment_to_readingStepsFragment"
-            app:destination="@id/readingStepsFragment" />
+            app:destination="@id/readingStepsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
 
     </fragment>
     <dialog
@@ -99,7 +143,11 @@
         tools:layout="@layout/fragment_modal_bottom_sheet" >
         <action
             android:id="@+id/action_modalBottomSheetFragment_to_meterReadingFragment"
-            app:destination="@id/meterReadingFragment" />
+            app:destination="@id/meterReadingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </dialog>
     <fragment
         android:id="@+id/privacyFragment"
@@ -113,16 +161,32 @@
         tools:layout="@layout/fragment_reading_steps" >
         <action
             android:id="@+id/action_readingStepsFragment_to_contactDetailsFragment"
-            app:destination="@id/contactDetailsFragment" />
+            app:destination="@id/contactDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_readingStepsFragment_to_dataCheckingFragment"
-            app:destination="@id/dataCheckingFragment" />
+            app:destination="@id/dataCheckingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_readingStepsFragment_to_meterReadingFragment"
-            app:destination="@id/meterReadingFragment" />
+            app:destination="@id/meterReadingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_readingStepsFragment_to_manualInputFragment"
-            app:destination="@id/manualInputFragment" />
+            app:destination="@id/manualInputFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/scanningSuccessFragment"
@@ -131,7 +195,11 @@
         tools:layout="@layout/fragment_scanning_success" >
         <action
             android:id="@+id/action_scanningSuccessFragment_to_home2"
-            app:destination="@id/home2" />
+            app:destination="@id/home2"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
         android:id="@+id/moreFragment2"
@@ -140,33 +208,66 @@
         tools:layout="@layout/fragment_more" >
         <action
             android:id="@+id/action_moreFragment2_to_home2"
-            app:destination="@id/home2" />
+            app:destination="@id/home2"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_moreFragment2_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
+            app:destination="@id/aboutFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_moreFragment2_to_contactFragment"
-            app:destination="@id/contactFragment" />
+            app:destination="@id/contactFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_moreFragment2_to_contactFormFragment"
-            app:destination="@id/contactFormFragment" />
+            app:destination="@id/contactFormFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_moreFragment2_to_faqFragment"
-            app:destination="@id/faqFragment" />
+            app:destination="@id/faqFragment" app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_moreFragment2_to_imprintFragment"
-            app:destination="@id/imprintFragment" />
+            app:destination="@id/imprintFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_moreFragment2_to_privacyFragment"
-            app:destination="@id/privacyFragment" />
+            app:destination="@id/privacyFragment" app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_moreFragment2_to_codeReadingFragment"
-            app:destination="@id/codeReadingFragment" />
+            app:destination="@id/codeReadingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
-    <activity
+    <fragment
         android:id="@+id/meterReadingFragment"
-        android:name="com.messtex.MeterReadingActivity"
+        android:name="com.messtex.MeterScanningActivity"
         android:label="fragment_meter_reading"
         tools:layout="@layout/fragment_meter_reading" >
-    </activity>
+        <action
+            android:id="@+id/action_meterReadingFragment_to_manualInputFragment"
+            app:destination="@id/manualInputFragment" />
+    </fragment>
 </navigation>

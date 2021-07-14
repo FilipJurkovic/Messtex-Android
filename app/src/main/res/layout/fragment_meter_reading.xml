@@ -4,15 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MeterReadingActivity">
-
-    <com.pixolus.meterreading.MeterReadingView
-        android:id="@+id/meterreadingview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-    </com.pixolus.meterreading.MeterReadingView>
+    tools:context=".MeterScanningActivity">
 
     <View
         android:layout_width="match_parent"
@@ -28,24 +20,28 @@
         android:layout_marginBottom="50dp"
         android:orientation="horizontal">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <TextView
             android:id="@+id/flashlightButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:src="@drawable/ic_bulb" />
+            android:focusable="true"
+            android:background="@drawable/background_button_round_primary_flash"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"/>
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <TextView
             android:id="@+id/infoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:src="@drawable/ic_info" />
+            android:focusable="true"
+            android:background="@drawable/background_button_round_primary_info"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"/>
     </LinearLayout>
 
     <LinearLayout
@@ -55,13 +51,15 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <TextView
             android:id="@+id/returnButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:clickable="true"
-            android:src="@drawable/ic_round_clear_24" />
+            android:focusable="true"
+            android:background="@drawable/background_floating_exit_button"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"/>
 
         <TextView
             android:id="@+id/dateView"

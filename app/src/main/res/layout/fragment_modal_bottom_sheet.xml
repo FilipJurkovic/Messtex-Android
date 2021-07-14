@@ -16,15 +16,15 @@
         android:orientation="horizontal"
         android:gravity="end">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <TextView
             android:id="@+id/infoExitButton"
             android:layout_marginEnd="26dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:fabSize="mini"
             android:clickable="true"
-            android:src="@drawable/ic_round_clear_24" />
+            android:focusable="true"
+            android:background="@drawable/background_floating_exit_button"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"/>
     </LinearLayout>
 
     <TextView
@@ -92,6 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:text="Then enter your meter reading in the corresponding field. Please enter both the numbers in front of the comma (here in the gray area) and the numbers after they come (here in the red area). The counter reading in this example is: 00984.562"
