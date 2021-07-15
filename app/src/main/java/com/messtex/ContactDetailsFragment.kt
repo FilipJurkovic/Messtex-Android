@@ -1,6 +1,8 @@
 package com.messtex
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,20 +36,33 @@ class ContactDetailsFragment : Fragment() {
         val isFirstNameEmpty: Boolean = firstNameInput.text.toString() == ""
         val isLastNameEmpty: Boolean = surnameInput.text.toString() == ""
         val isStreetEmpty: Boolean = streetInput.text.toString() == ""
-        val isHouseNumberEmpty: Boolean = plzInput.text.toString() == ""
-        val isPlzEmpty: Boolean = cityInput.text.toString() == ""
+        val isHouseNumberEmpty: Boolean = houseNumberInput.text.toString() == ""
+        val isPlzEmpty: Boolean = plzInput.text.toString() == ""
+        val isCityEmpty: Boolean = cityInput.text.toString() == ""
 
+        val watcher: TextWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable) {
+                if(isFirstNameEmpty && isLastNameEmpty && isStreetEmpty && isHouseNumberEmpty && isPlzEmpty && isCityEmpty){
+                    contactDetailsNextButton.setBackgroundResource(R.drawable.background_button_main_disabled)
+                    contactDetailsNextButton.isEnabled = false
+                } else{
+                    contactDetailsNextButton.setBackgroundResource(R.drawable.background_button_main)
+                    contactDetailsNextButton.isEnabled = true
+                }
+            }
+        }
+
+        firstNameInput.addTextChangedListener(watcher)
+        surnameInput.addTextChangedListener(watcher)
+        streetInput.addTextChangedListener(watcher)
+        plzInput.addTextChangedListener(watcher)
+        cityInput.addTextChangedListener(watcher)
+        houseNumberInput.addTextChangedListener(watcher)
 
         contactDetailsBackButton.setOnClickListener() {
             findNavController().navigateUp()
-        }
-
-        if(isFirstNameEmpty || isLastNameEmpty || isStreetEmpty || isHouseNumberEmpty || isPlzEmpty){
-            contactDetailsNextButton.setBackgroundResource(R.drawable.background_button_main_disabled)
-            contactDetailsNextButton.isEnabled = false
-        } else{
-            contactDetailsNextButton.setBackgroundResource(R.drawable.background_button_main)
-            contactDetailsNextButton.isEnabled = true
         }
 
         val rGroup = reasonOfReading as RadioGroup

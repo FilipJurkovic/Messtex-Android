@@ -158,7 +158,7 @@
         android:textColor="@color/light"
         android:gravity="center"
         android:background="@drawable/background_button_main"
-        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:foreground="@drawable/foreground_button_main"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"

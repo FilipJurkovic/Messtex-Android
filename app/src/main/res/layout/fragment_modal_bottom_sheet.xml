@@ -24,7 +24,7 @@
             android:clickable="true"
             android:focusable="true"
             android:background="@drawable/background_floating_exit_button"
-            android:foreground="?android:attr/selectableItemBackgroundBorderless"/>
+            android:foreground="@drawable/foreground_button_round"/>
     </LinearLayout>
 
     <TextView

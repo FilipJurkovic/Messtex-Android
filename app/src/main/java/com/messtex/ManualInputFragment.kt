@@ -1,6 +1,8 @@
 package com.messtex
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +12,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.messtex.data.models.MeterData
 import com.messtex.ui.main.viewmodel.MainViewModel
+import kotlinx.android.synthetic.main.fragment_contact_details.*
 import kotlinx.android.synthetic.main.fragment_manual_input.*
-import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class ManualInputFragment() : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,15 +38,29 @@ class ManualInputFragment() : Fragment() {
         super.onActivityCreated(savedInstanceState)
          var meterType : String = ""
 
-        var isCounterValueSet : Boolean = false
-
-        if(!isCounterValueSet){
-            nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main_disabled)
-            nextButtonManualInput.isEnabled = false
-        } else{
-            nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main)
-            nextButtonManualInput.isEnabled = true
+        val watcher: TextWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable) {
+                if (counterValue.text.toString() == "") {
+                    nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main_disabled)
+                    nextButtonManualInput.isEnabled = false
+                } else{
+                    nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main)
+                    nextButtonManualInput.isEnabled = true
+                }
+            }
         }
+
+        counterValue.addTextChangedListener(watcher)
+//            if(counterValue.text.toString() == ""){
+//                nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main_disabled)
+//                nextButtonManualInput.isEnabled = false
+//            } else{
+//                nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main)
+//                nextButtonManualInput.isEnabled = true
+//            }
+
 
         Log.d("Meter index", sharedViewModel.meterIndex.toString())
 
@@ -69,10 +86,6 @@ class ManualInputFragment() : Fragment() {
 
         counterValue.setText(sharedViewModel.meterValue.value?.replace(".", ""))
         nextButtonManualInput.setOnClickListener() {
-            if (counterNumberInput.text != null && counterTypeInput.text != null && readingDateInput.text != null && counterValue.text != null){
-
-            }
-
             val counterValueFormatted : String = counterValue.toString().substring(0, counterValue.toString().length-2)+"."+counterValue.toString().substring(counterValue.toString().length-2, counterValue.toString().length)
             sharedViewModel.meterData.add(MeterData(counterNumberInput.text.toString(), meterType, sharedViewModel.meterValue.value!! , reportMessageInput.text.toString()))
 

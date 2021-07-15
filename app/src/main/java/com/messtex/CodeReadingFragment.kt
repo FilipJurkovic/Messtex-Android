@@ -54,28 +54,29 @@ class CodeReadingFragment : Fragment() {
             findNavController().navigate(R.id.action_codeReadingFragment_to_exampleCodeFragment)
         }
 
+
         nextButton.setOnClickListener() {
             sharedViewModel.utilization_code.value =
                 UtilizationData(verificationCode = verificationCode.text.toString())
-//            val dialog: ProgressDialog =
-//                ProgressDialog.show(this.requireContext(), "", "Loading...", true)
-//            GlobalScope.launch(Dispatchers.IO) {
-//                try {
-//                    sharedViewModel.checkVerificationCode()
-//                    MainScope().launch {
-//                        dialog.dismiss()
-//                        findNavController().navigate(R.id.action_codeReadingFragment_to_readingStepsFragment)
-//                    }
-//
-//                } catch (e: Exception) {
-//                    Log.d("Error", e.toString())
-//                    MainScope().launch {
-//                        warningText.isVisible = true
-//                        verificationCode.setPinBackground(resources.getDrawable(R.drawable.invalid_pin_background))
-//                    }
-//
-//                }
-//            }
+            val dialog: ProgressDialog =
+                ProgressDialog.show(this.requireContext(), "", "Loading...", true)
+            GlobalScope.launch(Dispatchers.IO) {
+                try {
+                    sharedViewModel.checkVerificationCode()
+                    MainScope().launch {
+                        dialog.dismiss()
+                        findNavController().navigate(R.id.action_codeReadingFragment_to_readingStepsFragment)
+                    }
+
+                } catch (e: Exception) {
+                    Log.d("Error", e.toString())
+                    MainScope().launch {
+                        warningText.isVisible = true
+                        verificationCode.setPinBackground(resources.getDrawable(R.drawable.invalid_pin_background))
+                    }
+
+                }
+            }
             findNavController().navigate(R.id.action_codeReadingFragment_to_readingStepsFragment)
         }
 

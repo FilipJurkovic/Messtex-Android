@@ -1,6 +1,7 @@
 package com.messtex.ui.main.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -52,7 +53,6 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
 
     var meterIndex: Int = 0
     var isCameraAllowed: Boolean = false
-
 
     suspend fun checkVerificationCode() {
         val response = repository.getUtilizationUnitData(utilization_code.value!!).body()!!
