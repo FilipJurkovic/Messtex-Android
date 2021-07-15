@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+        <shape android:shape="oval">
+            <size android:height="56dp"
+                android:width="56dp"/>
+        </shape>
+    </item>
+    <item android:drawable="@drawable/scan_button" />
+    <item android:drawable="@drawable/ic_scan_icon"
+        android:width="21dp"
+        android:height="17dp"
+        android:gravity="center"/>
+</layer-list>
