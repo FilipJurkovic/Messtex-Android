@@ -1,5 +1,6 @@
 package com.messtex
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,12 +23,23 @@ class ScanningSuccessFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_scanning_success, container, false)
     }
 
+    @SuppressLint("ResourceType")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        val paragraph: String = getString(R.string.success_subtitle, sharedViewModel.userData.value?.firstName)
+
+        successParagraph.text = paragraph
+
         co2_livedata.text = sharedViewModel.co2_data.value?.co2Level.toString()
         backToHomeButton.setOnClickListener(){
+            sharedViewModel.scanningSuccessful = true
             findNavController().navigate(R.id.action_scanningSuccessFragment_to_home2)
+        }
+
+        learnMoreButton.setOnClickListener(){
+            sharedViewModel.scanningSuccessful = true
+            findNavController().navigate(R.id.action_scanningSuccessFragment_to_aboutFragment)
         }
     }
 

@@ -10,7 +10,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.messtex.data.models.MeterData
+import com.messtex.data.models.MeterReadingData
+import com.messtex.data.models.MeterReceivingData
 import com.messtex.ui.main.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_contact_details.*
 import kotlinx.android.synthetic.main.fragment_manual_input.*
@@ -36,13 +37,14 @@ class ManualInputFragment() : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-         var meterType : String = ""
+        var counterValueFormatted: String = ""
+        val meterIndex = sharedViewModel.meterIndex
 
         val watcher: TextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable) {
-                if (counterValue.text.toString() == "") {
+                if (manualInputValue.text.toString() == "") {
                     nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main_disabled)
                     nextButtonManualInput.isEnabled = false
                 } else{
@@ -52,56 +54,57 @@ class ManualInputFragment() : Fragment() {
             }
         }
 
-        counterValue.addTextChangedListener(watcher)
-//            if(counterValue.text.toString() == ""){
-//                nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main_disabled)
-//                nextButtonManualInput.isEnabled = false
-//            } else{
-//                nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main)
-//                nextButtonManualInput.isEnabled = true
-//            }
+        manualInputBackButton.setOnClickListener {
+            findNavController().navigate(R.id.action_manualInputFragment_to_readingStepsFragment)
+        }
+
+        manualInputValue.addTextChangedListener(watcher)
+            if(manualInputValue.text.toString() == ""){
+                nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main_disabled)
+                nextButtonManualInput.isEnabled = false
+            } else{
+                nextButtonManualInput.setBackgroundResource(R.drawable.background_button_main)
+                nextButtonManualInput.isEnabled = true
+            }
 
 
         Log.d("Meter index", sharedViewModel.meterIndex.toString())
 
-        when (sharedViewModel.meterIndex) {
-            0 -> {
-                meterType = "Heat meter"
-            }
-            1 -> {
-                meterType = "Heat meter allocator"
-            }
-            2 -> {
-                meterType = "Water meter"
-            }
-        }
 
-        counterTypeInput.setText(meterType)
-        meterTypeText.text = meterType
+        counterTypeInput.setText(sharedViewModel.userData.value!!.meters[meterIndex].counterType)
+        meterTypeText.text = sharedViewModel.userData.value!!.meters[meterIndex].counterTypeName
+        counterNumberInput.setText(sharedViewModel.userData.value!!.meters[meterIndex].counterNumber)
 
         val standardFormat = SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH)
         val formatter = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
         val date : Date = standardFormat.parse(Date().toString())
         readingDateInput.setText(formatter.format(date))
 
-        counterValue.setText(sharedViewModel.meterValue.value?.replace(".", ""))
+        manualInputValue.setText(sharedViewModel.meterValue.value?.replace(".", ""))
         nextButtonManualInput.setOnClickListener() {
-            val counterValueFormatted : String = counterValue.toString().substring(0, counterValue.toString().length-2)+"."+counterValue.toString().substring(counterValue.toString().length-2, counterValue.toString().length)
-            sharedViewModel.meterData.add(MeterData(counterNumberInput.text.toString(), meterType, sharedViewModel.meterValue.value!! , reportMessageInput.text.toString()))
+            counterValueFormatted = if (manualInputValue.text != null) {
+                manualInputValue.text?.substring(
+                    0,
+                    manualInputValue.text?.length!! - 2
+                ) + "." + manualInputValue.text?.substring(
+                    manualInputValue.text?.length!! - 2,
+                    manualInputValue.text?.length!!
+                )
+            }else{
+                "0.0"
+            }
 
+            sharedViewModel.meterValue.value = counterValueFormatted
+
+            sharedViewModel.meterData.add(MeterReadingData(
+                sharedViewModel.userData.value!!.meters[meterIndex].counterNumber,
+                sharedViewModel.userData.value!!.meters[meterIndex].counterType,
+                sharedViewModel.meterValue.value!!.toDouble(),
+                reportMessageInput.text.toString()
+            ))
             Log.d("Counter value", counterValueFormatted)
 
-            when (sharedViewModel.meterIndex) {
-                0 -> {
-                    sharedViewModel.heat_meter_step = true
-                }
-                1 -> {
-                    sharedViewModel.heat_allocator_step = true
-                }
-                2 -> {
-                    sharedViewModel.water_meter_step = true
-                }
-            }
+            sharedViewModel.readingStepsProgress[meterIndex] = true
 
             findNavController().navigate(R.id.action_manualInputFragment_to_readingStepsFragment)
         }

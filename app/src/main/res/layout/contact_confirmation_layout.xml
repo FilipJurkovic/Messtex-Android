@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start"
+    android:gravity="start"
+    android:orientation="vertical">
+    <LinearLayout
+    android:id="@+id/contactLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="17dp">
+
+
+
+    <TextView
+        android:id="@+id/contact"
+        style="@style/TextAppearance.Messtex.ParagraphBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contact"
+        android:textColor="@color/primary" />
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/TextAppearance.Messtex.Paragraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Jessica Miessen"
+        android:textColor="@color/dark" />
+    <TextView
+        android:id="@+id/email"
+        style="@style/TextAppearance.Messtex.Paragraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="jessica.miessen@messtex.de"
+        android:textColor="@color/dark" />
+    <TextView
+        android:id="@+id/address"
+        style="@style/TextAppearance.Messtex.Paragraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Hopfenweg 21"
+        android:textColor="@color/dark" />
+    <TextView
+        android:id="@+id/city"
+        style="@style/TextAppearance.Messtex.Paragraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="85276 Pfaffenhofen"
+        android:textColor="@color/dark" />
+</LinearLayout>
+
+    <View
+        android:id="@+id/break1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="18dp"
+        android:background="@color/tertiary"
+        />
+</LinearLayout>

@@ -21,8 +21,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -48,251 +49,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="41dp"
-                android:text="Start reading"
+                android:text="@string/reading_steps_title"
                 android:textColor="@color/primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
             <LinearLayout
-                android:id="@+id/linearLayout"
+                android:id="@+id/reading_steps_layout"
                 android:layout_width="328dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="42dp"
                 android:background="@android:color/transparent"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView23">
 
 
-                <ImageView
-                    android:layout_width="37dp"
-                    android:layout_height="240dp"
-                    android:src="@drawable/steps" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageView19"
-                            android:layout_width="19dp"
-                            android:layout_height="18dp"
-                            android:src="@drawable/ic_heat_meter" />
-
-                        <TextView
-                            android:id="@+id/textView2"
-                            style="@style/TextAppearance.Messtex.ParagraphBold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="9dp"
-                            android:text="Heat meter"
-                            android:textColor="@color/primary" />
-
-                        <View
-                            android:layout_width="10dp"
-                            android:layout_height="5dp"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:id="@+id/heat_meter_button"
-                            style="@style/TextAppearance.Messtex.TinyBold"
-                            android:layout_width="76dp"
-                            android:layout_height="34dp"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:background="@drawable/background_button_step_submit"
-                            android:foreground="@drawable/foreground_button_step"
-                            android:textColor="@color/primary_tint"
-                            android:gravity="center"
-                            android:text="Submit" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageView20"
-                            android:layout_width="19dp"
-                            android:layout_height="18dp"
-                            android:src="@drawable/ic_heat_alocator" />
-
-                        <TextView
-                            android:id="@+id/textView3"
-                            style="@style/TextAppearance.Messtex.ParagraphBold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="9dp"
-                            android:text="Heat cost allocator"
-                            android:textColor="@color/primary" />
-
-                        <View
-                            android:layout_width="10dp"
-                            android:layout_height="5dp"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:id="@+id/heat_allocator_button"
-                            style="@style/TextAppearance.Messtex.TinyBold"
-                            android:layout_width="76dp"
-                            android:layout_height="34dp"
-                            android:text="Submit"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:background="@drawable/background_button_step_submit"
-                            android:foreground="@drawable/foreground_button_step"
-                            android:textColor="@color/primary_tint"
-                            android:gravity="center"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageView21"
-                            android:layout_width="19dp"
-                            android:layout_height="18dp"
-                            android:src="@drawable/ic_water_meter" />
-
-                        <TextView
-                            android:id="@+id/textView4"
-                            style="@style/TextAppearance.Messtex.ParagraphBold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="9dp"
-                            android:text="Water meter"
-                            android:textColor="@color/primary" />
-
-                        <View
-                            android:layout_width="10dp"
-                            android:layout_height="5dp"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:id="@+id/water_meter_button"
-                            style="@style/TextAppearance.Messtex.TinyBold"
-                            android:layout_width="76dp"
-                            android:layout_height="34dp"
-                            android:text="Submit"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:background="@drawable/background_button_step_submit"
-                            android:foreground="@drawable/foreground_button_step"
-                            android:textColor="@color/primary_tint"
-                            android:gravity="center"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-
-                        <TextView
-                            android:id="@+id/textView"
-                            style="@style/TextAppearance.Messtex.ParagraphBold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Contact and contract data"
-                            android:textColor="@color/primary" />
-
-                        <View
-                            android:layout_width="10dp"
-                            android:layout_height="5dp"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:id="@+id/contact_button"
-                            style="@style/TextAppearance.Messtex.TinyBold"
-                            android:layout_width="76dp"
-                            android:layout_height="34dp"
-                            android:text="Submit"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:background="@drawable/background_button_step_submit"
-                            android:foreground="@drawable/foreground_button_step"
-                            android:textColor="@color/primary_tint"
-                            android:gravity="center"/>
-                    </LinearLayout>
-                </LinearLayout>
 
             </LinearLayout>
-
 
 
             <TextView
                 android:id="@+id/textView23"
                 style="@style/TextAppearance.Messtex.Paragraph"
-                android:layout_width="wrap_content"
+                android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:gravity="center_horizontal"
-                android:text="You have 3 counters to be read from.\nPlease send us the following three meter\nreadings:"
+                android:text="@string/reading_steps_subtitle"
                 android:textColor="@color/dark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-            <ImageView
-                android:id="@+id/heat_meter_step_success"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:src="@drawable/bullet_point"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout"
-                app:layout_constraintTop_toTopOf="@+id/linearLayout" />
-
-            <ImageView
-                android:id="@+id/heat_allcator_step_success"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginTop="32dp"
-                android:layout_weight="1"
-                android:src="@drawable/bullet_point"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout"
-                app:layout_constraintTop_toBottomOf="@+id/heat_meter_step_success" />
-
-            <ImageView
-                android:id="@+id/water_meter_step_success"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginTop="32dp"
-                android:layout_weight="1"
-                android:src="@drawable/bullet_point"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout"
-                app:layout_constraintTop_toBottomOf="@+id/heat_allcator_step_success" />
-
-            <ImageView
-                android:id="@+id/contact_step_success"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:src="@drawable/bullet_point"
-                app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout" />
 
             <TextView
                 android:id="@+id/nextButton"
@@ -301,29 +91,30 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="47dp"
                 android:layout_marginBottom="29dp"
-                android:text="Submit meter readings"
-                android:textColor="@color/light"
+                android:background="@drawable/background_button_main"
                 android:clickable="true"
                 android:focusable="true"
-                android:background="@drawable/background_button_main"
                 android:foreground="?android:attr/selectableItemBackgroundBorderless"
                 android:gravity="center"
+                android:text="@string/submit_meter_readings"
+                android:textColor="@color/light"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/reading_steps_layout" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/stepsBackButton"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="24dp"
         android:clickable="true"
+        android:foreground="@drawable/foreground_button_round"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:foreground="@drawable/foreground_button_round">
+        android:focusable="true">
 
         <ImageView
             android:id="@+id/imageView14"

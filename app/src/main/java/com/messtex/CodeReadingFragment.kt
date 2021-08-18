@@ -54,10 +54,18 @@ class CodeReadingFragment : Fragment() {
             findNavController().navigate(R.id.action_codeReadingFragment_to_exampleCodeFragment)
         }
 
+        eyeglass_button.setOnClickListener() {
+            findNavController().navigate(R.id.action_codeReadingFragment_to_exampleCodeFragment)
+        }
+
+        videoLink.setOnClickListener() {
+            findNavController().navigate(R.id.action_codeReadingFragment_to_videoFragment)
+        }
+
 
         nextButton.setOnClickListener() {
             sharedViewModel.utilization_code.value =
-                UtilizationData(verificationCode = verificationCode.text.toString())
+                UtilizationData(verificationCode = verificationCode.text.toString(), language = sharedViewModel.language_code)
             val dialog: ProgressDialog =
                 ProgressDialog.show(this.requireContext(), "", "Loading...", true)
             GlobalScope.launch(Dispatchers.IO) {
@@ -71,13 +79,13 @@ class CodeReadingFragment : Fragment() {
                 } catch (e: Exception) {
                     Log.d("Error", e.toString())
                     MainScope().launch {
+                        dialog.dismiss()
                         warningText.isVisible = true
                         verificationCode.setPinBackground(resources.getDrawable(R.drawable.invalid_pin_background))
                     }
 
                 }
             }
-            findNavController().navigate(R.id.action_codeReadingFragment_to_readingStepsFragment)
         }
 
     }

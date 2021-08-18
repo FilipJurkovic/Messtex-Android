@@ -1,6 +1,7 @@
-package com.messtex
+package com.messtex.ui.onboarding.view
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.messtex.R
+import com.messtex.ViewPagerAdapter
+import com.messtex.ui.main.view.MainActivity
 import kotlinx.android.synthetic.main.fragment_onboarding.*
 import kotlinx.android.synthetic.main.fragment_onboarding.view.*
 
@@ -25,11 +29,9 @@ class OnboardingFragment : Fragment() {
             OnboardingStepOneFragment(),
             OnboardingStepTwoFragment(),
             OnboardingStepThreeFragment()
-           // OnbardingPermissionFragment()
         )
 
         val adapter = ViewPagerAdapter(fragmentList, requireActivity().supportFragmentManager, lifecycle)
-
         view.onboardingViewPager.adapter = adapter
 
         view.onboardingViewPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
@@ -44,8 +46,9 @@ class OnboardingFragment : Fragment() {
         view.onboardingButton.setOnClickListener {
 
             if (view.onboardingViewPager?.currentItem == 2){
-                findNavController().navigate(R.id.action_onboardingFragment_to_home2)
+                startActivity(Intent(this.context, MainActivity::class.java))
                 onboardingFinished()
+
             }else{
                 view.onboardingViewPager?.currentItem = view.onboardingViewPager?.currentItem!! + 1
             }
@@ -54,7 +57,7 @@ class OnboardingFragment : Fragment() {
         }
 
         view.skipButton.setOnClickListener {
-            findNavController().navigate(R.id.action_onboardingFragment_to_home2)
+            startActivity(Intent(this.context, MainActivity::class.java))
             onboardingFinished()
         }
         return view

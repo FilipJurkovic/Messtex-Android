@@ -73,13 +73,42 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/manual_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/buttonLayout"
+        android:layout_marginTop="42dp"
+        android:layout_marginBottom="46dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@drawable/background_manual_reading_button"
+        android:foreground="@drawable/foreground_button_manual"
+        android:clickable="true"
+        android:focusable="true">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_manually"
+        style="@style/TextAppearance.Messtex.ParagraphBold"
+        android:textColor="@color/light"
+        android:drawableRight="@drawable/ic_scan_icon"
+        android:drawablePadding="13dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        />
+    </LinearLayout>
+
+
     <TextView
         android:id="@+id/counterNumberView"
         style="@style/TextAppearance.Messtex.Paragraph"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonLayout"
-        android:layout_marginBottom="165dp"
+        android:layout_above="@+id/manual_button"
+
         android:gravity="center"
         android:text="Please scan the counter:\nNr. 01572496259"
         android:textColor="@color/light" />

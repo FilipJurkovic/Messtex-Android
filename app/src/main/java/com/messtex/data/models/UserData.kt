@@ -5,7 +5,7 @@ import java.io.Serializable
 data class UserData(
 
     val firstName: String,
-    val secondName: String,
+    val lastName: String,
     val email: String,
     val phone: String,
     val street: String,
@@ -13,7 +13,7 @@ data class UserData(
     val postcode: Int,
     val city: String,
     val floor: String,
-    var sendCopy: Boolean,
-    val readingReason: String
+    val readingReason: String,
+    val meters: Array<MeterReceivingData>
 ): Serializable
 

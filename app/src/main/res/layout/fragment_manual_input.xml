@@ -8,15 +8,16 @@
     tools:context=".ManualInputFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="30dp"
+        android:id="@+id/manualInputBackButton"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
         android:clickable="true"
         android:foreground="@drawable/foreground_button_round"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="true">
 
         <ImageView
             android:id="@+id/imageView14"
@@ -69,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="41dp"
-                android:text="Manual input"
+                android:text="@string/manual_input_title"
                 android:textColor="@color/primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,11 +79,11 @@
             <TextView
                 android:id="@+id/textView23"
                 style="@style/TextAppearance.Messtex.Paragraph"
-                android:layout_width="wrap_content"
+                android:layout_width="315dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:gravity="center_horizontal"
-                android:text="Now enter the meter reading of your meter\nmanually without any decimal places:."
+                android:text="@string/manual_input_subtitle"
                 android:textColor="@color/dark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -94,17 +95,22 @@
                 android:layout_width="327dp"
 
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_marginTop="29dp"
+                android:layout_margin="29dp"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:editable="false"
+                android:focusable="false"
                 app:layout_constraintTop_toBottomOf="@+id/textView23">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/counterNumberInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Counter number" />
+                    android:hint="@string/counter_number"
+                    android:editable="false"
+                    android:focusable="false"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -116,14 +122,17 @@
                 android:layout_margin="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:editable="false"
+                android:focusable="false"
                 app:layout_constraintTop_toBottomOf="@+id/counterNumber">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/counterTypeInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/counter_type"
                     android:editable="false"
-                    android:hint="Counter type" />
+                    android:focusable="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -134,14 +143,17 @@
                 android:layout_margin="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/counterType">
-
+                app:layout_constraintTop_toBottomOf="@+id/counterType"
+                android:editable="false"
+                android:focusable="false"
+                app:boxStrokeColor="@color/tertiary">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/readingDateInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/reading_date"
                     android:editable="false"
-                    android:hint="Reading date" />
+                    android:focusable="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -150,7 +162,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Heat meter"
+
                 android:textColor="@color/primary"
                 app:layout_constraintStart_toStartOf="@+id/readingDate"
                 app:layout_constraintTop_toBottomOf="@+id/readingDate" />
@@ -175,22 +187,27 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/counterValue"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginEnd="4dp"
-                    android:background="@android:color/transparent"
+                <com.alimuzaffar.lib.pin.PinEntryEditText
+                    android:id="@+id/manualInputValue"
+                    android:layout_width="288dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:cursorVisible="true"
                     android:fontFamily="@font/roboto"
-                    android:inputType="number"
-                    android:letterSpacing="0.35"
+                    android:layoutDirection="rtl"
+                    android:maxLength="8"
                     android:textColor="@color/primary_tint"
-                    android:textDirection="rtl"
-                    android:textSize="40dp"
+                    android:textIsSelectable="false"
+                    android:textSize="40sp"
+                    android:inputType="phone"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView22"
-                    app:layout_constraintStart_toStartOf="@+id/imageView22"
-                    app:layout_constraintTop_toTopOf="@+id/imageView22" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:pinAnimationType="popIn"
+                    app:pinBackgroundDrawable="@android:color/transparent"
+                    app:pinBackgroundIsSquare="false"
+                    app:pinCharacterSpacing="10dp"
+                    tools:ignore="RtlHardcoded" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -200,7 +217,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:text="Report comments or defects"
+                android:text="@string/report_comments_or_defects"
                 android:textColor="@color/primary"
                 app:layout_constraintStart_toStartOf="@+id/readingDate"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
@@ -223,7 +240,7 @@
                     android:gravity="top|left"
                     android:maxLines="10"
                     android:scrollbars="vertical"
-                    android:hint="Message" />
+                    android:hint="@string/message" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -232,7 +249,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="47dp"
                 android:layout_marginBottom="29dp"
-                android:text="Next"
+                android:text="@string/next"
                 android:textColor="@color/light"
                 style="@style/TextAppearance.Messtex.ParagraphBold"
                 android:clickable="true"

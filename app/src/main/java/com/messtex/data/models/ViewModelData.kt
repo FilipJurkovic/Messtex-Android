@@ -7,17 +7,11 @@ data class ViewModelData
     (
     val userData: UserData?,
     val co2_data: CarbonData?,
-    val meterData: ArrayList<MeterData>?,
+    val meterData: ArrayList<MeterReadingData>?,
     val utilizationData: UtilizationData?,
     val meterValue: String?,
     val faq: FaqModel?,
-
-    val heat_meter_step : Boolean,
-    val water_meter_step : Boolean,
-    val heat_allocator_step: Boolean,
-    val contact_step : Boolean,
-    val steps_finished : Boolean,
-
+    val readingStepsProgress: Array<Boolean>,
     val meterIndex: Int,
     val isCameraAllowed : Boolean
 

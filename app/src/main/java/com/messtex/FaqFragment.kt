@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -36,9 +37,6 @@ class FaqFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         val inflater = LayoutInflater.from(this.requireContext())
-        val mockFAQ = arrayOf(QuestionModel(1, "Where can I find my warm water meter?", "You can usually find the water meters in your apartment in the kitchen, bathroom and / or toilet."),
-            QuestionModel(2, "Where can I find my cold water meter?", "You can usually find the water meters in your apartment in the kitchen, bathroom and / or toilet.\""),
-            QuestionModel(3, "Where can I find my RMVs?", "You can usually find the RMWs in your apartment."))
         val questionArray = sharedViewModel.faq.value?.faqs
         for (i in questionArray?.indices!!){
             val toAdd: View = inflater.inflate(R.layout.faq_card_layout, faq_layout, false)

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/home2"
-    android:title="Home"
+    android:title="@string/home"
     android:icon="@drawable/ic_home_icon" />
 
     <item android:id="@+id/codeReadingFragment"
-        android:title="Scan"
+        android:title="@string/scan"
        />
 
     <item android:id="@+id/moreFragment2"
-        android:title="More"
+        android:title="@string/more"
         android:icon="@drawable/ic_more" />
 
 </menu>

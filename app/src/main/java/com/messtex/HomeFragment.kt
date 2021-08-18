@@ -42,11 +42,21 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        if (!sharedViewModel.scanningSuccessful){
+            startReadingButton.isVisible = false
+            postScanningCard.isVisible = true
+            postScanningButton.isVisible = true
+        }else{
+            startReadingButton.isVisible = true
+            postScanningCard.isVisible = false
+            postScanningButton.isVisible = false
+        }
 //
         sharedViewModel.co2_data.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 //co2_livedata.text = it.co2Level.toString()
-                co2_livedata.text = "12345.34"
+                co2_livedata.text = it.co2Level.toString()
             }
 
         })
@@ -69,23 +79,23 @@ class HomeFragment : Fragment() {
         }
 
         val inflater = LayoutInflater.from(this.requireContext())
-        val mockFAQ = arrayOf(
+        val faqSubarray = sharedViewModel.faq.value?.faqs?.copyOfRange(0, 3) ?: arrayOf(
             QuestionModel(1, "Where can I find my warm water meter?", "You can usually find the water meters in your apartment in the kitchen, bathroom and / or toilet."),
             QuestionModel(2, "Where can I find my cold water meter?", "You can usually find the water meters in your apartment in the kitchen, bathroom and / or toilet.\""),
             QuestionModel(3, "Where can I find my RMVs?", "You can usually find the RMWs in your apartment.")
         )
         val questionArray = sharedViewModel.faq.value?.faqs
-        for (i in mockFAQ.indices){
+        for (i in faqSubarray.indices){
             val toAdd: View = inflater.inflate(R.layout.faq_card_layout, homeFaq, false)
 
-            if (i == mockFAQ.lastIndex){
+            if (i == faqSubarray.lastIndex){
                 toAdd.questionBreak.isVisible = false
             }
 
-            toAdd.card_question.text = mockFAQ[i].question
+            toAdd.card_question.text = faqSubarray[i].question
             toAdd.card_question.setTextAppearance(R.style.TextAppearance_Messtex_Paragraph)
 
-            toAdd.card_answer.text = mockFAQ[i].answer
+            toAdd.card_answer.text = faqSubarray[i].answer
             toAdd.card_answer.setTextAppearance(R.style.TextAppearance_Messtex_Paragraph)
 
             toAdd.expansionLayout.addListener(){ expansionLayout: ExpansionLayout, b: Boolean ->
@@ -94,7 +104,7 @@ class HomeFragment : Fragment() {
                     toAdd.questionBreak.isVisible = false
                 }else{
                     toAdd.card_question.setTextAppearance(R.style.TextAppearance_Messtex_Paragraph)
-                    if(i != mockFAQ.lastIndex){
+                    if(i != faqSubarray.lastIndex){
                         toAdd.questionBreak.isVisible = true
                     }
                 }

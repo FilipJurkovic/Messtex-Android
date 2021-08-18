@@ -27,7 +27,6 @@
         <item name="textAppearanceSubtitle2">@style/TextAppearance.Messtex.TinyBold</item>
 
         <item name="buttonStyle">@style/TextAppearance.Messtex.ScanButton</item>
-        <item name="bottomSheetDialogTheme">@style/AppModalStyle</item>
     </style>
 
     <style name="TextAppearance.Messtex.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
@@ -91,17 +90,17 @@
         <item name="background">@drawable/scan_button</item>
     </style>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+    <style name="Theme.MesstexAndroid.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppBottomSheetDialogTheme"
-        parent="Theme.Design.Light.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    <style name="SpinnerTheme" parent="android:Widget.Spinner">
+        <item name="android:background">@drawable/bg_spinner</item>
     </style>
 
-    <style name="AppModalStyle"
-        parent="Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@drawable/bottom_sheet_shape</item>
-    </style>
+
+    <style name="Theme.MesstexAndroid.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MesstexAndroid.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

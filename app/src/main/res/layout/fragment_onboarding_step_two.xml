@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OnboardingStepTwoFragment">
+    tools:context=".ui.onboarding.view.OnboardingStepTwoFragment">
 
     <ImageView
         android:id="@+id/imageView"
@@ -18,10 +18,10 @@
 
     <TextView
         android:id="@+id/textView31"
-        android:layout_width="wrap_content"
+        android:layout_width="231dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
-        android:text="Without appointment,\nvia the app"
+        android:text="@string/onboarding_title_two"
         style="@style/TextAppearance.Messtex.Headline1"
         android:gravity="center"
         android:textColor="@color/primary"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:gravity="center"
-        android:text="Measure your meter reading from the comfort of your own home, without waiting, without formal clean-ups and without intruding into your privacy."
+        android:text="@string/onboarding_subtitle_two"
         style="@style/TextAppearance.Messtex.Paragraph"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

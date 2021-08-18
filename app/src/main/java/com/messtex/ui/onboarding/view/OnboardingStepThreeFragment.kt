@@ -1,14 +1,13 @@
-package com.messtex
+package com.messtex.ui.onboarding.view
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import kotlinx.android.synthetic.main.fragment_onboarding_step_one.view.*
+import com.messtex.R
+
 class OnboardingStepThreeFragment : Fragment() {
 
 

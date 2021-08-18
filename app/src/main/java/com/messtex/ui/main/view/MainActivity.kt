@@ -3,30 +3,33 @@ package com.messtex.ui.main.view
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.messtex.R
+import com.messtex.data.models.CarbonData
 import com.messtex.data.models.ViewModelData
 import com.messtex.data.repositories.mainRepository.MainRepository
 import com.messtex.ui.main.viewmodel.MainViewModel
 import com.messtex.utils.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_contact_form.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,14 +46,32 @@ class MainActivity : AppCompatActivity() {
         val factory = ViewModelFactory(repository)
         val viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
 
+        viewModel.language_code = getLocale(this.applicationContext) ?: "en"
+
         GlobalScope.launch(Dispatchers.IO) {
                 try {
                     viewModel.faq.postValue(viewModel.getFaq())
-                    Log.d("response", viewModel.faq.value!!.faqs[0].answer)
+                    Log.d("response", viewModel.faq.value.toString())
+                    viewModel.co2_data.postValue(CarbonData(viewModel.getCO2_Level() ?:  0.0))
                 } catch (e: Exception) {
                     Log.d("Error", e.toString())
                 }
             }
+
+        val updateInterval: Long = 5000
+        val handler = Handler()
+        val repeatingCode = Runnable {
+            kotlin.run {
+                GlobalScope.launch(Dispatchers.IO) {
+                    try {
+                        viewModel.co2_data.postValue(CarbonData(viewModel.getCO2_Level() ?:  0.0))
+                    } catch (e: Exception) {
+                        Log.d("Error", e.toString())
+                    }
+                }
+                }
+        }
+        handler.postDelayed(repeatingCode, updateInterval);
 
         if (!checkPermission(this.applicationContext, Manifest.permission.CAMERA)){
             requestPermissions(arrayOf(Manifest.permission.CAMERA), 10)
@@ -87,32 +108,41 @@ class MainActivity : AppCompatActivity() {
             Log.d("Transformed reading", viewModel.meterValue.value.toString())
             navController.navigate(R.id.manualInputFragment, null, navBuilder.build())
         }
-
-
-
-//        lifecycleScope.launch {
-//            viewModel.getFaq()
-//            viewModel.getCO2_Level()
-//        }
-
-//        val updateInterval: Long = 20000
-//        val handler = Handler()
-//        val repeatingCode = Runnable {
-//            kotlin.run {
-//                lifecycleScope.launch {
-//            viewModel.getCO2_Level()
-//        }
-//
-//                }
-//        }
-//        handler.postDelayed(repeatingCode, updateInterval);
-
-
     }
 
-    fun checkPermission(context: Context, permissionArray: String): Boolean{
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(updateBaseContextLocale(newBase))
+    }
+
+    private fun checkPermission(context: Context, permissionArray: String): Boolean{
         return ContextCompat.checkSelfPermission(context, permissionArray) == PackageManager.PERMISSION_GRANTED
     }
+    private fun getLocale(context: Context?): String? {
+        val sharedPref = context?.getSharedPreferences("locale", Context.MODE_PRIVATE)
+        return sharedPref?.getString("language", "en")
+    }
 
+    private fun updateBaseContextLocale(context: Context?): Context? {
+        val language: String =  getLocale(context) ?: "en"
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
+            updateResourcesLocale(context, locale)
+        } else updateResourcesLocaleLegacy(context, locale)
+    }
+
+    private fun updateResourcesLocale(context: Context?, locale: Locale): Context? {
+        val configuration: Configuration = Configuration(context?.resources?.configuration)
+        configuration.setLocale(locale);
+        return context?.createConfigurationContext(configuration);
+    }
+
+    private fun updateResourcesLocaleLegacy(context: Context?, locale: Locale): Context? {
+        val resources = context?.resources
+        val configuration = resources?.configuration
+        configuration?.locale = locale
+        resources?.updateConfiguration(configuration, resources.displayMetrics)
+        return context
+    }
 
 }

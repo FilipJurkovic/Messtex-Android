@@ -1,8 +1,5 @@
 package com.messtex
 
-import android.Manifest
-import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,26 +9,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import com.messtex.data.models.PostModelRecord
-import com.messtex.data.models.UtilizationData
 import com.messtex.data.models.ViewModelData
 import com.messtex.ui.main.viewmodel.MainViewModel
 import com.pixolus.meterreading.MeterReadingActivity
 import com.pixolus.meterreading.MeterReadingFragment
-import kotlinx.android.synthetic.main.fragment_code_reading.*
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_manual_input.*
 import kotlinx.android.synthetic.main.fragment_reading_steps.*
 import kotlinx.android.synthetic.main.fragment_reading_steps.nextButton
+import kotlinx.android.synthetic.main.reading_step_layout.view.*
 
 class ReadingStepsFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     private val sharedViewModel: MainViewModel by activityViewModels()
 
@@ -47,97 +36,100 @@ class ReadingStepsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 //
-        heat_meter_step_success.isVisible = sharedViewModel.heat_meter_step
-        heat_allcator_step_success.isVisible = sharedViewModel.heat_allocator_step
-        water_meter_step_success.isVisible = sharedViewModel.water_meter_step
-        contact_step_success.isVisible = sharedViewModel.contact_step
 
-         if(!sharedViewModel.heat_meter_step  || !sharedViewModel.heat_allocator_step  || !sharedViewModel.water_meter_step  || !sharedViewModel.contact_step){
-             nextButton.setBackgroundResource(R.drawable.background_button_main_disabled)
-             nextButton.isEnabled = false
-        } else{
-             nextButton.setBackgroundResource(R.drawable.background_button_main)
-             nextButton.isEnabled = true
-        }
+        val inflater = LayoutInflater.from(this.requireContext())
+        val stepsArray = sharedViewModel.userData.value?.meters
 
-        if (sharedViewModel.heat_meter_step){
-            heat_meter_button.setBackgroundResource(R.drawable.background_button_step_change)
-            heat_meter_button.setTextColor(getResources().getColor(R.color.light))
-        }
-
-        if (sharedViewModel.water_meter_step){
-            water_meter_button.setBackgroundResource(R.drawable.background_button_step_change)
-            water_meter_button.setTextColor(getResources().getColor(R.color.light))
-        }
-
-        if (sharedViewModel.heat_allocator_step){
-            heat_allocator_button.setBackgroundResource(R.drawable.background_button_step_change)
-            heat_allocator_button.setTextColor(getResources().getColor(R.color.light))
-        }
-
-        if (sharedViewModel.contact_step){
-            contact_button.setBackgroundResource(R.drawable.background_button_step_change)
-            contact_button.setTextColor(getResources().getColor(R.color.light))
-        }
-
-        stepsBackButton.setOnClickListener() {
-            findNavController().navigateUp()
-        }
-
-        heat_meter_button.setOnClickListener() {
-                sharedViewModel.meterIndex = 0
-                if(sharedViewModel.isCameraAllowed){
-                    startMeterReading(0)
-                }else{
-                    findNavController().navigate(R.id.action_readingStepsFragment_to_manualInputFragment)
+        for (i in (stepsArray?.indices!!)) {
+            val toAdd: View =
+                inflater.inflate(R.layout.reading_step_layout, reading_steps_layout, false)
+                if (sharedViewModel.readingStepsProgress[i]) {
+                    toAdd.readingIndex.text = ""
+                    toAdd.readingIndexShape.setBackgroundResource(R.drawable.bullet_point)
+                } else {
+                    toAdd.readingIndex.text = (i + 1).toString()
+                    toAdd.readingIndex.setTextAppearance(R.style.TextAppearance_Messtex_ParagraphBold)
                 }
-            }
 
-        heat_allocator_button.setOnClickListener() {
-            sharedViewModel.meterIndex = 1
-            if(sharedViewModel.isCameraAllowed){
-                startMeterReading(1)
-            }else{
-                findNavController().navigate(R.id.action_readingStepsFragment_to_manualInputFragment)
-            }
+
+                toAdd.meterIcon.setImageResource(sharedViewModel.getMeterIcon(stepsArray[i].counterType))
+                toAdd.meterName.text = stepsArray[i].counterTypeName
+
+                toAdd.meterButton.setOnClickListener {
+                    sharedViewModel.meterIndex = i
+                    if (sharedViewModel.isCameraAllowed) {
+                        startMeterReading(i)
+                    } else {
+                        findNavController().navigate(R.id.action_readingStepsFragment_to_manualInputFragment)
+                    }
+                }
+                if (sharedViewModel.readingStepsProgress[i]) {
+                    toAdd.meterButton.setBackgroundResource(R.drawable.background_button_step_change)
+                    toAdd.meterButton.setTextColor(resources.getColor(R.color.light))
+                    toAdd.meterButton.text = "Change"
+                }
+
+
+            reading_steps_layout.addView(toAdd)
         }
 
-        water_meter_button.setOnClickListener() {
-            sharedViewModel.meterIndex = 2
-            if(sharedViewModel.isCameraAllowed){
-                startMeterReading(2)
-            }else{
-                findNavController().navigate(R.id.action_readingStepsFragment_to_manualInputFragment)
-            }
-        }
+        val toAdd: View =
+            inflater.inflate(R.layout.reading_step_layout, reading_steps_layout, false)
 
-        contact_button.setOnClickListener() {
+        if (sharedViewModel.userData.value?.firstName != null) {
+            toAdd.readingIndex.text = ""
+            toAdd.readingIndexShape.setBackgroundResource(R.drawable.bullet_point)
+
+            toAdd.meterButton.setBackgroundResource(R.drawable.background_button_step_change)
+            toAdd.meterButton.setTextColor(resources.getColor(R.color.light))
+            toAdd.meterButton.text = "Change"
+
+            sharedViewModel.readingStepsProgress[sharedViewModel.readingStepsProgress.size-1] = true
+        }
+        toAdd.meterIcon.isVisible = false
+        toAdd.meterName.text = "Contact and contract data"
+        toAdd.reading_steps_connector.isVisible = false
+
+        toAdd.meterButton.setOnClickListener {
             findNavController().navigate(R.id.action_readingStepsFragment_to_contactDetailsFragment)
         }
 
-        nextButton.setOnClickListener() {
-            Log.d("viewmodel",  Gson().toJson(
-                PostModelRecord(
-                sharedViewModel.utilization_code.value!!.verificationCode,
-                sharedViewModel.meterData.toTypedArray(),
-                sharedViewModel.userData.value!!.firstName,
-                sharedViewModel.userData.value!!.secondName,
-                sharedViewModel.userData.value!!.email,
-                sharedViewModel.userData.value!!.phone,
-                sharedViewModel.userData.value!!.street,
-                sharedViewModel.userData.value!!.houseNumber,
-                sharedViewModel.userData.value!!.postcode,
-                sharedViewModel.userData.value!!.city,
-                sharedViewModel.userData.value!!.floor,
-                sharedViewModel.userData.value!!.sendCopy,
-                sharedViewModel.userData.value!!.readingReason
-            ).toString()))
-                findNavController().navigate(R.id.action_readingStepsFragment_to_dataCheckingFragment)
+        reading_steps_layout.addView(toAdd)
+
+
+        if (sharedViewModel.meterData.size == sharedViewModel.userData.value?.meters?.size && sharedViewModel.userData.value?.firstName != null) {
+            nextButton.setBackgroundResource(R.drawable.background_button_main)
+            nextButton.isEnabled = true
+        } else {
+            nextButton.setBackgroundResource(R.drawable.background_button_main_disabled)
+            nextButton.isEnabled = false
+        }
+
+        stepsBackButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        nextButton.setOnClickListener {
+            Log.d(
+                "viewmodel", Gson().toJson(
+                    PostModelRecord(
+                        sharedViewModel.utilization_code.value!!.verificationCode,
+                        sharedViewModel.language_code,
+                        sharedViewModel.meterData.toTypedArray(),
+                        sharedViewModel.userData.value!!.firstName,
+                        sharedViewModel.userData.value!!.lastName,
+                        sharedViewModel.userData.value!!.email,
+                        sharedViewModel.userData.value!!.phone,
+                        true
+                    ).toString()
+                )
+            )
+            findNavController().navigate(R.id.action_readingStepsFragment_to_dataCheckingFragment)
         }
 
     }
 
-    private fun startMeterReading(meterIndex: Int){
+    private fun startMeterReading(meterIndex: Int) {
         val intent: Intent = Intent(this.requireActivity(), MeterScanningActivity::class.java)
             .putExtra(MeterReadingActivity.EXTRA_INTEGER_DIGITS, MeterReadingFragment.AUTOMATIC)
             .putExtra(
@@ -156,21 +148,18 @@ class ReadingStepsFragment : Fragment() {
             .putExtra(MeterReadingActivity.EXTRA_IS_RESULTS_OVERLAY_VISIBLE, true)
             .putExtra(MeterReadingActivity.EXTRA_IS_DEBUG_OVERLAY_VISIBLE, BuildConfig.DEBUG)
 
-        intent.putExtra("ViewModel", ViewModelData(
-            sharedViewModel.userData.value,
-            sharedViewModel.co2_data.value,
-            sharedViewModel.meterData,
-            sharedViewModel.utilization_code.value,
-            sharedViewModel.meterValue.value,
-            sharedViewModel.faq.value,
-            sharedViewModel.heat_meter_step,
-            sharedViewModel.water_meter_step,
-            sharedViewModel.heat_allocator_step,
-            sharedViewModel.contact_step,
-            sharedViewModel.steps_finished,
-            sharedViewModel.meterIndex,
-            sharedViewModel.isCameraAllowed
-        )
+        intent.putExtra(
+            "ViewModel", ViewModelData(
+                sharedViewModel.userData.value,
+                sharedViewModel.co2_data.value,
+                sharedViewModel.meterData,
+                sharedViewModel.utilization_code.value,
+                sharedViewModel.meterValue.value,
+                sharedViewModel.faq.value,
+                sharedViewModel.readingStepsProgress,
+                meterIndex,
+                sharedViewModel.isCameraAllowed
+            )
         )
 
         startActivity(intent)

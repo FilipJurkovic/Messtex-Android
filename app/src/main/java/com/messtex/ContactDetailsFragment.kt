@@ -6,16 +6,13 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.messtex.data.models.UserData
 import com.messtex.ui.main.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_contact_details.*
-import kotlinx.android.synthetic.main.fragment_manual_input.*
-import kotlinx.android.synthetic.main.fragment_reading_steps.*
+import kotlinx.android.synthetic.main.fragment_contact_details.emailInput
 
 
 class ContactDetailsFragment : Fragment() {
@@ -35,16 +32,12 @@ class ContactDetailsFragment : Fragment() {
 
         val isFirstNameEmpty: Boolean = firstNameInput.text.toString() == ""
         val isLastNameEmpty: Boolean = surnameInput.text.toString() == ""
-        val isStreetEmpty: Boolean = streetInput.text.toString() == ""
-        val isHouseNumberEmpty: Boolean = houseNumberInput.text.toString() == ""
-        val isPlzEmpty: Boolean = plzInput.text.toString() == ""
-        val isCityEmpty: Boolean = cityInput.text.toString() == ""
 
         val watcher: TextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable) {
-                if(isFirstNameEmpty && isLastNameEmpty && isStreetEmpty && isHouseNumberEmpty && isPlzEmpty && isCityEmpty){
+                if(isFirstNameEmpty && isLastNameEmpty){
                     contactDetailsNextButton.setBackgroundResource(R.drawable.background_button_main_disabled)
                     contactDetailsNextButton.isEnabled = false
                 } else{
@@ -54,21 +47,23 @@ class ContactDetailsFragment : Fragment() {
             }
         }
 
+        firstNameInput.setText(sharedViewModel.userData.value?.firstName)
+        surnameInput.setText(sharedViewModel.userData.value?.lastName)
+        emailInput.setText(sharedViewModel.userData.value?.email)
+        phoneNumberInput.setText(sharedViewModel.userData.value?.phone)
+        streetInput.setText(sharedViewModel.userData.value?.street)
+        houseNumberInput.setText(sharedViewModel.userData.value?.houseNumber)
+        plzInput.setText(sharedViewModel.userData.value?.postcode.toString())
+        cityInput.setText(sharedViewModel.userData.value?.city)
+        floorInput.setText(sharedViewModel.userData.value?.floor)
+
+
         firstNameInput.addTextChangedListener(watcher)
         surnameInput.addTextChangedListener(watcher)
-        streetInput.addTextChangedListener(watcher)
-        plzInput.addTextChangedListener(watcher)
-        cityInput.addTextChangedListener(watcher)
-        houseNumberInput.addTextChangedListener(watcher)
 
         contactDetailsBackButton.setOnClickListener() {
             findNavController().navigateUp()
         }
-
-        val rGroup = reasonOfReading as RadioGroup
-        val readingReason: RadioButton =
-            rGroup.findViewById<View>(rGroup.checkedRadioButtonId) as RadioButton
-
 
         contactDetailsNextButton.setOnClickListener() {
             sharedViewModel.userData.value = UserData(
@@ -81,10 +76,10 @@ class ContactDetailsFragment : Fragment() {
                 plzInput.text.toString().toInt(),
                 cityInput.text.toString(),
                 floorInput.text.toString(),
-                emailCopy.isChecked,
-                readingReason.text.toString()
+                sharedViewModel.userData.value!!.readingReason,
+                sharedViewModel.userData.value!!.meters
             )
-            sharedViewModel.contact_step = true
+            sharedViewModel.sendCopy = emailCopy.isChecked
             findNavController().navigate(R.id.action_contactDetailsFragment_to_readingStepsFragment)
         }
 

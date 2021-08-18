@@ -46,24 +46,28 @@
 
               <TextView
                   android:id="@+id/textView9"
-                  android:layout_width="wrap_content"
+                  style="@style/TextAppearance.Messtex.Headline2"
+                  android:layout_width="0dp"
                   android:layout_height="wrap_content"
                   android:layout_marginStart="21dp"
-                  android:layout_marginTop="17dp"
-                  android:text="More about\nMesstex"
-                  style="@style/TextAppearance.Messtex.Headline2"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginEnd="8dp"
+                  android:text="@string/more_about_messtex"
                   android:textColor="@color/primary"
+                  app:layout_constraintEnd_toEndOf="parent"
                   app:layout_constraintStart_toEndOf="@+id/imageView5"
                   app:layout_constraintTop_toTopOf="parent" />
 
               <TextView
                   android:id="@+id/textView10"
-                  android:layout_width="wrap_content"
+                  style="@style/TextAppearance.Messtex.Small"
+                  android:layout_width="0dp"
                   android:layout_height="wrap_content"
                   android:layout_marginStart="21dp"
                   android:layout_marginTop="8dp"
-                  style="@style/TextAppearance.Messtex.Paragraph"
-                  android:text="We want to digitize every\nmanual reading in\nGermany!"
+                  android:layout_marginEnd="10dp"
+                  android:text="@string/more_about_subtitle"
+                  app:layout_constraintEnd_toEndOf="parent"
                   app:layout_constraintStart_toEndOf="@+id/imageView5"
                   app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -81,6 +85,46 @@
                   android:foreground="@drawable/foreground_button_round"/>
           </androidx.constraintlayout.widget.ConstraintLayout>
       </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/textView33"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginHorizontal="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless">
+
+            <TextView
+                android:id="@+id/textView34"
+                style="@style/TextAppearance.Messtex.Paragraph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/language"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+
+            <Spinner
+                android:id="@+id/language_spinner"
+
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/tertiary_30"
+            android:layout_marginHorizontal="12dp"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/faqButton"
@@ -136,7 +180,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="4dp"
-                android:text="Contact"
+                android:text="@string/contact"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText" />
@@ -174,7 +218,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="4dp"
-                android:text="Contact Form"
+                android:text="@string/contact_form"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText" />
@@ -212,7 +256,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="4dp"
-                android:text="Privacy"
+                android:text="@string/privacy"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText" />
@@ -249,7 +293,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="4dp"
-                android:text="Imprint"
+                android:text="@string/imprint"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText" />
@@ -273,6 +317,7 @@
             />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/restart_button"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginHorizontal="12dp"
@@ -287,7 +332,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="4dp"
-                android:text="Restart Onboarding"
+                android:text="@string/restart_onboarding"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText" />
@@ -326,7 +371,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="4dp"
-                android:text="Share App"
+                android:text="@string/share_app"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText" />

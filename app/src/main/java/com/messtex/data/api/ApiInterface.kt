@@ -1,15 +1,13 @@
 package com.messtex.data.api
 
 import com.messtex.data.models.*
+import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiInterface {
 
-    @Headers("Authorization:Bearer eecf7fd0-cee9-11eb-b752-fde919688281")
+    @Headers("Authorization: Bearer eecf7fd0-cee9-11eb-b752-fde919688281")
     @POST("/v1/teams/yCZezLbXfFAiwR6r3/databases/qmz4hgc0o1bh/query")
     suspend fun getUtilizationUnitData(
         @Body post: PostModel
@@ -32,4 +30,11 @@ interface ApiInterface {
     suspend fun getFAQs(
         @Body post: PostModel
     ): Response<FaqModel>
+
+    @Headers("Authorization:Bearer eecf7fd0-cee9-11eb-b752-fde919688281")
+    @POST("/v1/teams/yCZezLbXfFAiwR6r3/databases/qmz4hgc0o1bh/query")
+    suspend fun getCO2Level(
+        @Body post: PostModel
+    ): Response<Double>
+
 }

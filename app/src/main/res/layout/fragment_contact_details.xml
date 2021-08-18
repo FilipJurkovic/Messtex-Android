@@ -9,10 +9,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contactDetailsBackButton"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
         android:clickable="true"
         android:foreground="@drawable/foreground_button_round"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
                 style="@style/TextAppearance.Messtex.Headline2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Contact details"
+                android:text="@string/contact_details"
                 android:textColor="@color/primary"
                 app:layout_constraintStart_toStartOf="@+id/firstName"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -69,12 +69,13 @@
             <TextView
                 android:id="@+id/textView23"
                 style="@style/TextAppearance.Messtex.Paragraph"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:gravity="start"
-                android:text="In order to assign your details correctly, we need\nyour contact details:"
+                android:text="@string/contact_details_subtitle"
                 android:textColor="@color/dark"
+                app:layout_constraintEnd_toEndOf="@+id/firstName"
                 app:layout_constraintStart_toStartOf="@+id/firstName"
                 app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
@@ -84,7 +85,7 @@
                 android:layout_width="327dp"
 
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="7dp"
                 android:layout_marginTop="29dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +95,7 @@
                     android:id="@+id/firstNameInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="First name*" />
+                    android:hint="@string/first_name" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -103,7 +104,7 @@
                 android:layout_width="327dp"
 
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/firstName">
@@ -112,7 +113,7 @@
                     android:id="@+id/surnameInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Surname*" />
+                    android:hint="@string/surname" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -120,7 +121,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/surname">
@@ -136,6 +137,7 @@
                 android:layout_width="0dp"
                 android:id="@+id/linearLAyout"
                 android:layout_height="64dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="@id/email"
                 app:layout_constraintStart_toStartOf="@id/email"
@@ -154,7 +156,7 @@
                     android:id="@+id/textView28"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Please send me the overview as an email copy"
+                    android:text="@string/contact_copy"
                     style="@style/TextAppearance.Messtex.Paragraph"
                     app:layout_constraintEnd_toEndOf="@+id/email"
                     app:layout_constraintStart_toEndOf="@+id/emailCopy"
@@ -167,7 +169,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLAyout">
@@ -176,7 +178,7 @@
                     android:id="@+id/phoneNumberInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Phone number" />
+                    android:hint="@string/phone_number" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -186,7 +188,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="31dp"
-                android:text="Address"
+                android:text="@string/address"
                 android:textColor="@color/primary"
                 app:layout_constraintStart_toStartOf="@+id/firstName"
                 app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
@@ -196,16 +198,20 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:editable="false"
+                android:focusable="false"
                 app:layout_constraintTop_toBottomOf="@+id/addressText">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/streetInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Street*" />
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="@string/street" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -213,16 +219,19 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:editable="false"
                 app:layout_constraintTop_toBottomOf="@+id/street">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/houseNumberInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="House number*" />
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="@string/house_number" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -230,16 +239,20 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:editable="false"
+                android:focusable="false"
                 app:layout_constraintTop_toBottomOf="@+id/houseNumber">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/plzInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="PLZ*" />
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="@string/plz" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -247,16 +260,20 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:editable="false"
+                android:focusable="false"
                 app:layout_constraintTop_toBottomOf="@+id/plz">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/cityInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="City*" />
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="@string/city" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -264,61 +281,21 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:editable="false"
+                android:focusable="false"
                 app:layout_constraintTop_toBottomOf="@+id/city">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/floorInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Floor (optional)" />
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="@string/floor" />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/readingText"
-                style="@style/TextAppearance.Messtex.Headline2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="31dp"
-                android:text="Reason for reading"
-                android:textColor="@color/primary"
-                app:layout_constraintStart_toStartOf="@+id/firstName"
-                app:layout_constraintTop_toBottomOf="@+id/textView29" />
-
-            <RadioGroup
-                android:id="@+id/reasonOfReading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
-                android:checkedButton="@+id/annualBilling"
-                app:layout_constraintStart_toStartOf="@+id/floor"
-                app:layout_constraintTop_toBottomOf="@+id/readingText">
-
-                <RadioButton
-                    android:id="@+id/annualBilling"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:buttonTint="@color/primary"
-                    android:text="Annual billing" />
-
-                <RadioButton
-                    android:id="@+id/changeOfSupplier"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:buttonTint="@color/primary"
-                    android:text="Change of supplier" />
-
-                <RadioButton
-                    android:id="@+id/controlReading"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:buttonTint="@color/primary"
-                    android:text="Control reading" />
-
-            </RadioGroup>
-
 
             <TextView
                 android:id="@+id/contactDetailsNextButton"
@@ -327,12 +304,12 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="58dp"
                 android:layout_marginBottom="29dp"
-                android:text="Next"
+                android:text="@string/next"
                 android:textColor="@color/light"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reasonOfReading"
+                app:layout_constraintTop_toBottomOf="@+id/floor"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="@drawable/foreground_button_main"
@@ -343,8 +320,8 @@
                 android:id="@+id/textView29"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="* Required fields"
+                android:layout_marginTop="7dp"
+                android:text="@string/required_fields"
                 style="@style/TextAppearance.Messtex.Small"
                 android:textColor="@android:color/darker_gray"
                 app:layout_constraintStart_toStartOf="@+id/floor"

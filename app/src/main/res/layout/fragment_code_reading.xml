@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="41dp"
-                android:text="Reading code"
+                android:text="@string/code_reading_title"
                 android:textColor="@color/primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,38 +57,59 @@
             <TextView
                 android:id="@+id/textView23"
                 style="@style/TextAppearance.Messtex.Paragraph"
-                android:layout_width="wrap_content"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:gravity="center_horizontal"
-                android:text="Please enter the five digit code from the reading\ncertificate."
+                android:text="@string/code_reading_subtitle"
                 android:textColor="@color/dark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
-            <com.alimuzaffar.lib.pin.PinEntryEditText
-                android:id="@+id/verificationCode"
-                android:layout_width="345dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/verification_layout"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:cursorVisible="true"
-                android:fontFamily="@font/roboto_bold"
-                android:layoutDirection="ltr"
-                android:maxLength="6"
-                android:textColor="@color/primary"
-                android:textIsSelectable="true"
-                android:textSize="56sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView23"
-                app:pinAnimationType="popIn"
-                app:pinBackgroundDrawable="@drawable/pin_background"
-                app:pinBackgroundIsSquare="false"
-                app:pinCharacterSpacing="7dp"
-                app:pinLineColors="@color/primary_tint"
-                app:pinLineStroke="2dp"
-                app:pinTextBottomPadding="8dp" />
+                android:layout_marginTop="26dp">
+
+                <com.alimuzaffar.lib.pin.PinEntryEditText
+                    android:id="@+id/verificationCode"
+                    android:layout_width="345dp"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="true"
+                    android:fontFamily="@font/roboto_bold"
+                    android:layoutDirection="ltr"
+                    android:maxLength="6"
+                    android:textColor="@color/primary"
+                    android:textIsSelectable="false"
+                    android:textSize="46sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:pinAnimationType="popIn"
+                    app:pinBackgroundDrawable="@android:color/transparent"
+                    app:pinBackgroundIsSquare="false"
+                    app:pinCharacterSpacing="20dp"
+                    app:pinLineColors="@color/primary_tint" />
+
+                <include
+                    android:id="@+id/include"
+                    layout="@layout/verification_code_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/verificationCode"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
             <TextView
                 android:id="@+id/warningText"
@@ -100,7 +121,7 @@
                 android:textColor="@color/danger"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/verificationCode" />
+                app:layout_constraintTop_toBottomOf="@+id/verification_layout" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/previewButton"
@@ -123,8 +144,8 @@
 
                     <ImageView
                         android:id="@+id/imageView17"
-                        android:layout_width="132dp"
-                        android:layout_height="186dp"
+                        android:layout_width="129dp"
+                        android:layout_height="183dp"
                         android:src="@drawable/example_brief"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -134,7 +155,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
-                    android:id="@+id/floatingActionButton2"
+                    android:id="@+id/eyeglass_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_button_round_primary_search"
@@ -148,7 +169,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/videoLink"
                 style="@style/TextAppearance.Messtex.Paragraph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -167,7 +188,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="47dp"
                 android:layout_marginBottom="29dp"
-                android:text="Next"
+                android:text="@string/next"
                 android:textColor="@color/light"
                 style="@style/TextAppearance.Messtex.ParagraphBold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -178,16 +199,16 @@
                 android:background="@drawable/background_button_main"
                 android:foreground="@drawable/foreground_button_main"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                app:layout_constraintTop_toBottomOf="@+id/videoLink" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/backButton"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="24dp"
         android:clickable="true"
         android:foreground="@drawable/foreground_button_round"
         app:layout_constraintStart_toStartOf="parent"
