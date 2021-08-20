@@ -11,10 +11,11 @@
         android:id="@+id/contactDetailsBackButton"
         android:layout_width="44dp"
         android:layout_height="44dp"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="20dp"
         android:clickable="true"
         android:foreground="@drawable/foreground_button_round"
+        android:background="@drawable/background_button_round"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:focusable="true">
@@ -31,25 +32,15 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="72dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="41dp"
-        android:layout_marginEnd="30dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="732dp"
-        android:layout_marginTop="28dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15">
+        app:layout_constraintTop_toBottomOf="@+id/contactDetailsBackButton">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -85,7 +76,7 @@
                 android:layout_width="327dp"
 
                 android:layout_height="wrap_content"
-                android:layout_margin="7dp"
+                android:layout_margin="19dp"
                 android:layout_marginTop="29dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -134,30 +125,31 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
                 android:id="@+id/linearLAyout"
+                android:layout_width="0dp"
                 android:layout_height="64dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="@id/email"
                 app:layout_constraintStart_toStartOf="@id/email"
                 app:layout_constraintTop_toBottomOf="@id/email">
+
                 <Switch
                     android:id="@+id/emailCopy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:trackTint="@color/primary"
-                    android:thumbTint="@color/light"
+                    style="@style/SwitchTheme"
                     app:layout_constraintStart_toStartOf="@+id/email"
                     app:layout_constraintTop_toBottomOf="@+id/email" />
 
                 <TextView
                     android:id="@+id/textView28"
+                    style="@style/TextAppearance.Messtex.Paragraph"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
                     android:text="@string/contact_copy"
-                    style="@style/TextAppearance.Messtex.Paragraph"
                     app:layout_constraintEnd_toEndOf="@+id/email"
                     app:layout_constraintStart_toEndOf="@+id/emailCopy"
                     app:layout_constraintTop_toBottomOf="@+id/email" />
@@ -169,7 +161,6 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="7dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLAyout">
@@ -198,11 +189,11 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="7dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="14dp"
                 android:editable="false"
                 android:focusable="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/addressText">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -220,9 +211,9 @@
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
+                android:editable="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:editable="false"
                 app:layout_constraintTop_toBottomOf="@+id/street">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -240,10 +231,10 @@
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 android:editable="false"
                 android:focusable="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/houseNumber">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -261,10 +252,10 @@
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 android:editable="false"
                 android:focusable="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/plz">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -282,10 +273,10 @@
                 android:layout_width="327dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 android:editable="false"
                 android:focusable="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/city">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -304,25 +295,25 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="58dp"
                 android:layout_marginBottom="29dp"
+                android:background="@drawable/background_button_main"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="@drawable/foreground_button_main"
+                android:gravity="center"
                 android:text="@string/next"
                 android:textColor="@color/light"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/floor"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="@drawable/foreground_button_main"
-                android:background="@drawable/background_button_main"
-                android:gravity="center"/>
+                app:layout_constraintTop_toBottomOf="@+id/floor" />
 
             <TextView
                 android:id="@+id/textView29"
+                style="@style/TextAppearance.Messtex.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:text="@string/required_fields"
-                style="@style/TextAppearance.Messtex.Small"
                 android:textColor="@android:color/darker_gray"
                 app:layout_constraintStart_toStartOf="@+id/floor"
                 app:layout_constraintTop_toBottomOf="@+id/floor" />

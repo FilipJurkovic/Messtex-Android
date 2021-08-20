@@ -1,5 +1,6 @@
 package com.messtex
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,7 +13,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.messtex.data.models.MeterReadingData
 import com.messtex.data.models.MeterReceivingData
+import com.messtex.data.models.ViewModelData
 import com.messtex.ui.main.viewmodel.MainViewModel
+import com.pixolus.meterreading.MeterReadingActivity
+import com.pixolus.meterreading.MeterReadingFragment
 import kotlinx.android.synthetic.main.fragment_contact_details.*
 import kotlinx.android.synthetic.main.fragment_manual_input.*
 import java.text.SimpleDateFormat
@@ -71,9 +75,9 @@ class ManualInputFragment() : Fragment() {
         Log.d("Meter index", sharedViewModel.meterIndex.toString())
 
 
-        counterTypeInput.setText(sharedViewModel.userData.value!!.meters[meterIndex].counterType)
-        meterTypeText.text = sharedViewModel.userData.value!!.meters[meterIndex].counterTypeName
-        counterNumberInput.setText(sharedViewModel.userData.value!!.meters[meterIndex].counterNumber)
+        counterTypeInput.setText(sharedViewModel.userData.value!!.meters?.get(meterIndex)?.counterType)
+        meterTypeText.text = sharedViewModel.userData.value!!.meters?.get(meterIndex)?.counterTypeName
+        counterNumberInput.setText(sharedViewModel.userData.value!!.meters?.get(meterIndex)?.counterNumber)
 
         val standardFormat = SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH)
         val formatter = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
@@ -97,8 +101,8 @@ class ManualInputFragment() : Fragment() {
             sharedViewModel.meterValue.value = counterValueFormatted
 
             sharedViewModel.meterData.add(MeterReadingData(
-                sharedViewModel.userData.value!!.meters[meterIndex].counterNumber,
-                sharedViewModel.userData.value!!.meters[meterIndex].counterType,
+                sharedViewModel.userData.value!!.meters?.get(meterIndex)!!.counterNumber,
+                sharedViewModel.userData.value!!.meters?.get(meterIndex)!!.counterType,
                 sharedViewModel.meterValue.value!!.toDouble(),
                 reportMessageInput.text.toString()
             ))
@@ -109,5 +113,4 @@ class ManualInputFragment() : Fragment() {
             findNavController().navigate(R.id.action_manualInputFragment_to_readingStepsFragment)
         }
     }
-
 }

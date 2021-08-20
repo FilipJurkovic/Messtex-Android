@@ -77,7 +77,8 @@ class ContactDetailsFragment : Fragment() {
                 cityInput.text.toString(),
                 floorInput.text.toString(),
                 sharedViewModel.userData.value!!.readingReason,
-                sharedViewModel.userData.value!!.meters
+                sharedViewModel.userData.value!!.meters,
+                ""
             )
             sharedViewModel.sendCopy = emailCopy.isChecked
             findNavController().navigate(R.id.action_contactDetailsFragment_to_readingStepsFragment)

@@ -16,6 +16,7 @@
         <item name="colorError">@color/danger</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="colorAccent">@color/primary</item>
 
         <item name="textAppearanceHeadline1">@style/TextAppearance.Messtex.Headline1</item>
         <item name="textAppearanceHeadline2">@style/TextAppearance.Messtex.Headline2</item>
@@ -27,6 +28,7 @@
         <item name="textAppearanceSubtitle2">@style/TextAppearance.Messtex.TinyBold</item>
 
         <item name="buttonStyle">@style/TextAppearance.Messtex.ScanButton</item>
+        <item name="switchStyle">@style/SwitchTheme</item>
     </style>
 
     <style name="TextAppearance.Messtex.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
@@ -97,6 +99,19 @@
 
     <style name="SpinnerTheme" parent="android:Widget.Spinner">
         <item name="android:background">@drawable/bg_spinner</item>
+    </style>
+
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">@color/primary</item>
+
+        <item name="colorSecondary">@color/primary</item>
+
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">@color/light</item>
+
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">@color/tertiary</item>
     </style>
 
 

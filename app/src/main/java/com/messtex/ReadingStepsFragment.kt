@@ -116,10 +116,10 @@ class ReadingStepsFragment : Fragment() {
                         sharedViewModel.utilization_code.value!!.verificationCode,
                         sharedViewModel.language_code,
                         sharedViewModel.meterData.toTypedArray(),
-                        sharedViewModel.userData.value!!.firstName,
-                        sharedViewModel.userData.value!!.lastName,
-                        sharedViewModel.userData.value!!.email,
-                        sharedViewModel.userData.value!!.phone,
+                        sharedViewModel.userData.value!!.firstName!!,
+                        sharedViewModel.userData.value!!.lastName!!,
+                        sharedViewModel.userData.value!!.email!!,
+                        sharedViewModel.userData.value!!.phone!!,
                         true
                     ).toString()
                 )

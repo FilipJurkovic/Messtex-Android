@@ -30,18 +30,22 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
     var isAppActive: Boolean = false
     var language_code: String = ""
     var scanningSuccessful: Boolean = false
+    var errorMessage: String = ""
+    var isVerificationCodeInvalid: Boolean = false
 
 
     suspend fun checkVerificationCode() {
-        val response = repository.getUtilizationUnitData(utilization_code.value!!).body()!!
-        MainScope().launch {
-            userData.value = response
-            for (i in userData.value!!.meters.indices){
-                readingStepsProgress += false
+            val response = repository.getUtilizationUnitData(utilization_code.value!!).body()!!
+            MainScope().launch {
+                userData.value = response
+                isVerificationCodeInvalid = false
+                if(response.firstName != null) {
+                    for (i in userData.value!!.meters!!.indices) {
+                        readingStepsProgress += false
+                    }
+                    readingStepsProgress += false
+                }
             }
-            readingStepsProgress += false
-        }
-
     }
 
     suspend fun sendReadings(){
@@ -50,10 +54,10 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
                 utilization_code.value!!.verificationCode,
                 language_code,
                 meterData.toTypedArray(),
-                userData.value!!.firstName,
-                userData.value!!.lastName,
-                userData.value!!.email,
-                userData.value!!.phone,
+                userData.value!!.firstName!!,
+                userData.value!!.lastName!!,
+                userData.value!!.email!!,
+                userData.value!!.phone!!,
                 sendCopy
             )
         ).body()

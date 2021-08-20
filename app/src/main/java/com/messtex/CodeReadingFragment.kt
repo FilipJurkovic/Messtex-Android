@@ -45,6 +45,8 @@ class CodeReadingFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         warningText.isVisible = false
+        verification_error_background.isVisible = false
+        verification_input_background.isVisible = true
 
         backButton.setOnClickListener() {
             findNavController().navigateUp()
@@ -72,8 +74,19 @@ class CodeReadingFragment : Fragment() {
                 try {
                     sharedViewModel.checkVerificationCode()
                     MainScope().launch {
-                        dialog.dismiss()
-                        findNavController().navigate(R.id.action_codeReadingFragment_to_readingStepsFragment)
+                        if(!(sharedViewModel.userData.value?.firstName == null)) {
+                            dialog.dismiss()
+                            warningText.isVisible = false
+                            verification_error_background.isVisible = false
+                            verification_input_background.isVisible = true
+                            findNavController().navigate(R.id.action_codeReadingFragment_to_readingStepsFragment)
+                        }else{
+                            dialog.dismiss()
+                            warningText.text = sharedViewModel.userData.value?.message
+                            warningText.isVisible = true
+                            verification_error_background.isVisible = true
+                            verification_input_background.isVisible = false
+                        }
                     }
 
                 } catch (e: Exception) {
@@ -81,7 +94,8 @@ class CodeReadingFragment : Fragment() {
                     MainScope().launch {
                         dialog.dismiss()
                         warningText.isVisible = true
-                        verificationCode.setPinBackground(resources.getDrawable(R.drawable.invalid_pin_background))
+                        verification_error_background.isVisible = true
+                        verification_input_background.isVisible = false
                     }
 
                 }

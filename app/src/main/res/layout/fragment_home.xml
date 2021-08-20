@@ -67,7 +67,7 @@
             android:layout_marginBottom="22dp"
             android:layout_marginTop="41dp"
             app:cardCornerRadius="4dp"
-            app:cardElevation="5dp">
+            android:elevation="0dp">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -78,38 +78,41 @@
                     android:layout_width="61dp"
                     android:layout_height="78dp"
                     android:layout_marginStart="29dp"
-                    android:src="@drawable/successful_read"
+                    android:src="@drawable/success_widget"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView9"
-                    style="@style/TextAppearance.Messtex.Headline2"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="29dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="10dp"
-                    android:text="@string/success_card_title"
-                    android:textColor="@color/light"
+                    android:layout_marginEnd="31dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView5"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/textView10"
-                    style="@style/TextAppearance.Messtex.Paragraph"
-                    android:textColor="@color/light"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="29dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="10dp"
-                    android:text="@string/success_card_subtitle"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView5"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
+                    <TextView
+                        android:id="@+id/textView9"
+                        style="@style/TextAppearance.Messtex.Headline2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/success_card_title"
+                        android:textColor="@color/light" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        style="@style/TextAppearance.Messtex.Paragraph"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/success_card_subtitle"
+                        android:textColor="@color/light" />
+                </LinearLayout>
+
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
@@ -122,7 +125,7 @@
             android:layout_marginBottom="60dp"
             style="@style/TextAppearance.Messtex.TinyBold"
             android:background="@drawable/background_button_outlined"
-            android:textColor="@color/primary_tint"
+            android:textColor="@color/primary_shade"
             android:gravity="center"
             android:text="@string/learn_more_about"
             android:clickable="true"
@@ -194,7 +197,7 @@
                 style="@style/TextAppearance.Messtex.Paragraph"
                 android:layout_width="222dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/co2_subtitle"
                 android:textAlignment="center"
                 android:textColor="@color/light"
@@ -249,7 +252,7 @@
             android:layout_marginTop="21dp"
             style="@style/TextAppearance.Messtex.TinyBold"
             android:background="@drawable/background_button_outlined"
-            android:textColor="@color/primary_tint"
+            android:textColor="@color/primary_shade"
             android:gravity="center"
             android:text="@string/show_more"
             android:clickable="true"
@@ -285,7 +288,7 @@
             android:layout_marginBottom="208dp"
             style="@style/TextAppearance.Messtex.TinyBold"
             android:background="@drawable/background_button_outlined"
-            android:textColor="@color/primary_tint"
+            android:textColor="@color/primary_shade"
             android:gravity="center"
             android:text="@string/share_the_app"
             android:clickable="true"

@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        if (!sharedViewModel.scanningSuccessful){
+        if (sharedViewModel.scanningSuccessful){
             startReadingButton.isVisible = false
             postScanningCard.isVisible = true
             postScanningButton.isVisible = true

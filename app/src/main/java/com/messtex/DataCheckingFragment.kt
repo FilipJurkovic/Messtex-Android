@@ -45,7 +45,7 @@ class DataCheckingFragment : Fragment() {
             val toAdd: View = inflater.inflate(R.layout.meter_confirmation_layout, confirmation_list, false)
 
             toAdd.confirmation_meter_icon.setImageResource(sharedViewModel.getMeterIcon(meterArray[i].counterType))
-            toAdd.confirmation_meter_name.text = userData.meters[i].counterTypeName
+            toAdd.confirmation_meter_name.text = userData.meters?.get(i)?.counterTypeName
             toAdd.confirmation_meter_number.text = "Nr. ${meterArray[i].counterNumber}"
             toAdd.confirmation_meter_value.text = meterArray[i].counterValue.toString()
             confirmation_list.addView(toAdd)

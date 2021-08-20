@@ -8,17 +8,6 @@
     tools:context=".CodeReadingFragment">
 
 
-
-    <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="72dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="41dp"
-        android:layout_marginEnd="30dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -98,8 +87,19 @@
                     app:pinLineColors="@color/primary_tint" />
 
                 <include
-                    android:id="@+id/include"
+                    android:id="@+id/verification_input_background"
                     layout="@layout/verification_code_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/verificationCode"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <include
+                    android:id="@+id/verification_error_background"
+                    layout="@layout/verification_code_error_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="17dp"
@@ -207,10 +207,11 @@
         android:id="@+id/backButton"
         android:layout_width="44dp"
         android:layout_height="44dp"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="24dp"
         android:clickable="true"
         android:foreground="@drawable/foreground_button_round"
+        android:background="@drawable/background_button_round"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:focusable="true">

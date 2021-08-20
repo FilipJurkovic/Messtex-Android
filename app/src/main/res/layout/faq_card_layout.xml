@@ -6,13 +6,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:gravity="center_vertical"
     app:layout_constraintEnd_toEndOf="parent"
     android:id="@+id/faq_card_layout">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="13.5dp"/>
 
 <com.github.florent37.expansionpanel.ExpansionHeader
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="25dp"
+    android:layout_marginHorizontal="24dp"
+    android:layout_gravity="center_vertical"
     app:expansion_headerIndicator="@id/headerIndicator"
     app:expansion_layout="@id/expansionLayout"
     app:expansion_toggleOnClick="true">
@@ -39,7 +45,7 @@
 <com.github.florent37.expansionpanel.ExpansionLayout
     android:id="@+id/expansionLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="0dp"
     android:layout_marginHorizontal="25dp">
 
     <TextView
@@ -53,7 +59,7 @@
 </com.github.florent37.expansionpanel.ExpansionLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="27dp"/>
+        android:layout_height="13.5dp"/>
     <View
         android:id="@+id/questionBreak"
         android:layout_width="match_parent"
@@ -61,4 +67,5 @@
         android:layout_marginHorizontal="15dp"
         android:background="@color/tertiary"
         />
+
 </LinearLayout>

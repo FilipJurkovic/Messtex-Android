@@ -29,7 +29,8 @@
 
     <TextView
         android:id="@+id/title"
-        style="@style/TextAppearance.Messtex.Headline1"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="24sp"
         android:layout_width="284dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="41dp"
@@ -43,15 +44,15 @@
         android:layout_width="287dp"
         android:layout_height="240dp"
         android:layout_marginTop="34dp"/>
-        //android:src="@drawable/watermeter_illustration"
 
     <TextView
         android:id="@+id/meterNumber"
-        style="@style/TextAppearance.Messtex.ParagraphBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
         android:layout_marginStart="24dp"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="14sp"
         android:text="@string/meter_number"
         android:layout_gravity="start"
         android:textColor="@color/primary"

@@ -41,12 +41,11 @@
                 style="@style/TextAppearance.Messtex.ParagraphBold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="9dp"
                 android:text="Heat meter"
                 android:textColor="@color/primary" />
 
             <View
-                android:layout_width="10dp"
+                android:layout_width="0dp"
                 android:layout_height="5dp"
                 android:layout_weight="1" />
 
@@ -61,7 +60,7 @@
                 android:foreground="@drawable/foreground_button_step"
                 android:gravity="center"
                 android:text="Submit"
-                android:textColor="@color/primary_tint" />
+                android:textColor="@color/primary_shade" />
         </LinearLayout>
 
     <LinearLayout

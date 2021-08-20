@@ -146,8 +146,14 @@ class MeterScanningActivity : MeterReadingActivity() {
 
         val picasso: Picasso = Picasso.Builder(context).downloader(OkHttp3Downloader(client)).build()
 
-        picasso.load(imageUrl).into(image)
-        explanation?.text = explanationText
+        if(imageUrl != ""){
+            picasso.load(imageUrl).into(image)
+            explanation?.text = explanationText
+        }
+        else{
+            image?.setImageResource(R.drawable.watermeter_illustration)
+            explanation?.text = "This is dummy text!"
+        }
 
         exitButton?.setOnClickListener {
             bottomSheetDialog.dismiss()
