@@ -54,7 +54,7 @@
                 android:id="@+id/imageView9"
                 android:layout_width="match_parent"
                 android:layout_height="267dp"
-                android:layout_marginTop="74dp"
+                android:layout_marginTop="72dp"
                 android:contentDescription="Earth illustration"
                 android:scaleType="fitXY"
                 android:src="@drawable/rectangle"

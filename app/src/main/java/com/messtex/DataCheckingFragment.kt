@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.messtex.data.models.PostModelRecord
 import com.messtex.ui.main.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.contact_confirmation_layout.view.*
 import kotlinx.android.synthetic.main.fragment_data_checking.*
@@ -68,11 +69,13 @@ class DataCheckingFragment : Fragment() {
                 try {
                     sharedViewModel.sendReadings()
                     MainScope().launch {
+
                         dialog.dismiss()
                         findNavController().navigate(R.id.action_dataCheckingFragment_to_scanningSuccessFragment)
                     }
                 } catch (e: Exception) {
                     Log.d("Error", e.toString())
+                    dialog.dismiss()
                 }
             }
 

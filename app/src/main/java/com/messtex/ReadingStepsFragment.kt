@@ -120,7 +120,9 @@ class ReadingStepsFragment : Fragment() {
                         sharedViewModel.userData.value!!.lastName!!,
                         sharedViewModel.userData.value!!.email!!,
                         sharedViewModel.userData.value!!.phone!!,
-                        true
+                        true,
+                        false,
+                        false
                     ).toString()
                 )
             )

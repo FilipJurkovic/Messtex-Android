@@ -30,20 +30,12 @@ class ContactDetailsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val isFirstNameEmpty: Boolean = firstNameInput.text.toString() == ""
-        val isLastNameEmpty: Boolean = surnameInput.text.toString() == ""
-
         val watcher: TextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable) {
-                if(isFirstNameEmpty && isLastNameEmpty){
-                    contactDetailsNextButton.setBackgroundResource(R.drawable.background_button_main_disabled)
-                    contactDetailsNextButton.isEnabled = false
-                } else{
                     contactDetailsNextButton.setBackgroundResource(R.drawable.background_button_main)
                     contactDetailsNextButton.isEnabled = true
-                }
             }
         }
 
@@ -78,6 +70,7 @@ class ContactDetailsFragment : Fragment() {
                 floorInput.text.toString(),
                 sharedViewModel.userData.value!!.readingReason,
                 sharedViewModel.userData.value!!.meters,
+                false,
                 ""
             )
             sharedViewModel.sendCopy = emailCopy.isChecked

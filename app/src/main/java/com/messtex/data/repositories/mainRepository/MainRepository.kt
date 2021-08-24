@@ -37,8 +37,12 @@ class MainRepository() {
 
     suspend fun takeMeterReadings(postModelRecord: PostModelRecord): Response<CarbonData> {
         val body: String = Gson().toJson(postModelRecord).toString()
-        // Log.d("Readings POST request", RetrofitInstance.api.takeMeterReadings(PostModel("takeMeterReadings(\"$body\")")).toString())
-        return RetrofitInstance.api.takeMeterReadings(PostModel("takeMeterReadings(\"$body\")"))
+        Log.d("Readings POST request", RetrofitInstance.api.takeMeterReadings(PostModel("takeMeterReadings(\"${
+            body.replace("\"", "\"\"")
+        }\")")).toString())
+        return RetrofitInstance.api.takeMeterReadings(PostModel("takeMeterReadings(\"${
+            body.replace("\"", "\"\"")
+        }\")"))
     }
 
     suspend fun takeContactForm(contactFormData: ContactFormData) {

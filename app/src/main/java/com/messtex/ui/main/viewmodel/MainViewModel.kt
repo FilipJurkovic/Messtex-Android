@@ -58,9 +58,11 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
                 userData.value!!.lastName!!,
                 userData.value!!.email!!,
                 userData.value!!.phone!!,
-                sendCopy
+                sendCopy,
+                getMeterReadingLetterByEmail = false,
+                subscribeNewsletter = false
             )
-        ).body()
+        ).body()!!
 
         MainScope().launch {
             co2_data.value = response

@@ -15,6 +15,7 @@ data class UserData(
     val floor: String?,
     val readingReason: String?,
     val meters: Array<MeterReceivingData>?,
+    val askForSubscribeNewsletter: Boolean?,
     val message: String?
 ): Serializable
 

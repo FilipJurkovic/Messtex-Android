@@ -41,11 +41,12 @@ class ContactFormFragment : Fragment() {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable) {
                 if (nameInput.text.toString() != "" && emailInput.text.toString() != "" && reportMessageInput.text.toString() != "") {
-                    sendButton.setBackgroundResource(R.drawable.background_button_main_disabled)
-                    sendButton.isEnabled = false
-                } else{
                     sendButton.setBackgroundResource(R.drawable.background_button_main)
                     sendButton.isEnabled = true
+                } else{
+                    sendButton.setBackgroundResource(R.drawable.background_button_main_disabled)
+                    sendButton.isEnabled = false
+
                 }
             }
         }

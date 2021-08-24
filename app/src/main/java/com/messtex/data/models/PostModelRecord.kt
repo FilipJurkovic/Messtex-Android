@@ -11,4 +11,6 @@ data class PostModelRecord(
     val email: String,
     val phone: String,
     var sendCopy: Boolean,
+    val getMeterReadingLetterByEmail: Boolean,
+    val subscribeNewsletter: Boolean
 )

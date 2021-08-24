@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.MesstexAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.MesstexAndroid" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_30</item>
@@ -29,6 +29,8 @@
 
         <item name="buttonStyle">@style/TextAppearance.Messtex.ScanButton</item>
         <item name="switchStyle">@style/SwitchTheme</item>
+
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 
     <style name="TextAppearance.Messtex.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
