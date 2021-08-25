@@ -6,10 +6,83 @@
     android:layout_height="match_parent"
     tools:context=".MeterScanningActivity">
 
+
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/overlay"/>
+        android:background="@drawable/overlay" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/returnButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:background="@drawable/background_floating_exit_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="@drawable/foreground_button_round" />
+
+        <TextView
+            android:id="@+id/dateView"
+            style="@style/TextAppearance.Messtex.Paragraph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="40dp"
+            android:text="Reading date: 25.05.2021"
+            android:textColor="@color/light" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"></LinearLayout>
+    <TextView
+        android:id="@+id/counterNumberView"
+        style="@style/TextAppearance.Messtex.Paragraph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/manual_button"
+        android:gravity="center"
+        android:text="Please scan the counter:\nNr. 01572496259"
+        android:textColor="@color/light" />
+
+    <LinearLayout
+        android:id="@+id/manual_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/buttonLayout"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@drawable/background_manual_reading_button"
+        android:foreground="@drawable/foreground_button_manual"
+        android:clickable="true"
+        android:focusable="true">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_manually"
+        style="@style/TextAppearance.Messtex.ParagraphBold"
+        android:textColor="@color/light"
+        android:drawableRight="@drawable/ic_scan_icon"
+        android:drawablePadding="13dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/buttonLayout"
@@ -44,74 +117,8 @@
             android:foreground="@drawable/foreground_button_round"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="15dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/returnButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:background="@drawable/background_floating_exit_button"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="@drawable/foreground_button_round" />
-
-        <TextView
-            android:id="@+id/dateView"
-            style="@style/TextAppearance.Messtex.Paragraph"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="40dp"
-            android:text="Reading date: 25.05.2021"
-            android:textColor="@color/light" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/manual_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/buttonLayout"
-        android:layout_marginTop="59dp"
-        android:layout_marginBottom="46dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:background="@drawable/background_manual_reading_button"
-        android:foreground="@drawable/foreground_button_manual"
-        android:clickable="true"
-        android:focusable="true">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/enter_manually"
-        style="@style/TextAppearance.Messtex.ParagraphBold"
-        android:textColor="@color/light"
-        android:drawableRight="@drawable/ic_scan_icon"
-        android:drawablePadding="13dp"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        />
-    </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/counterNumberView"
-        style="@style/TextAppearance.Messtex.Paragraph"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/manual_button"
-        android:gravity="center"
-        android:text="Please scan the counter:\nNr. 01572496259"
-        android:textColor="@color/light" />
 
 
 </RelativeLayout>

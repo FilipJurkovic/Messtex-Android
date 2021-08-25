@@ -32,87 +32,94 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="732dp"-->
-<!--        android:layout_marginTop="28dp"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/imageView15">-->
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-
-
-    <TextView
-        android:id="@+id/textView22"
-        style="@style/TextAppearance.Messtex.Headline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/your_copy"
-        android:textColor="@color/primary"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dataCheckingBackButton" />
+        app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="528dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="11dp"
-                android:layout_marginBottom="38dp"
-                android:orientation="vertical"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/textView22"
+            style="@style/TextAppearance.Messtex.Headline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="70dp"
+            android:text="@string/your_copy"
+            android:textColor="@color/primary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="528dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginBottom="38dp"
+            android:background="@drawable/reading_paper"
+            android:gravity="start"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/sendButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView22">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="start"
-                android:gravity="start"
-                app:layout_constraintBottom_toTopOf="@+id/sendButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView22"
-                android:background="@drawable/reading_paper">
-                <ScrollView
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginVertical="40dp"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:id="@+id/confirmation_list"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="start"
-                    android:fillViewport="true"
-                    android:layout_marginHorizontal="40dp"
-                    android:layout_marginVertical="40dp">
-                    <LinearLayout
-                        android:id="@+id/confirmation_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingHorizontal="10dp"
-                        android:orientation="vertical"
-                        android:gravity="start"/>
-                </ScrollView>
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp" />
+            </ScrollView>
 
-            </LinearLayout>
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/sendButton"
-                style="@style/TextAppearance.Messtex.ParagraphBold"
-                android:layout_width="327dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="38dp"
-                android:layout_marginBottom="75dp"
-                android:text="@string/send"
-                android:textColor="@color/light"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+        <TextView
+            android:id="@+id/sendButton"
+            style="@style/TextAppearance.Messtex.ParagraphBold"
+            android:layout_width="327dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="38dp"
+            android:layout_marginBottom="75dp"
+            android:background="@drawable/background_button_main"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
 
-                android:clickable="true"
-                android:focusable="true"
-                android:background="@drawable/background_button_main"
-                android:foreground="?android:attr/selectableItemBackgroundBorderless"
-                android:gravity="center"/>
+            android:text="@string/send"
+            android:textColor="@color/light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>>
+
+    </ScrollView>
 
 
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--    </ScrollView>-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,11 +6,14 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.media.Image
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.marginTop
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.jakewharton.picasso.OkHttp3Downloader
