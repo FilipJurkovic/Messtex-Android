@@ -17,12 +17,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.messtex.R
 import com.messtex.data.models.CarbonData
+import com.messtex.data.models.FaqModel
+import com.messtex.data.models.MeterReadingData
 import com.messtex.data.models.ViewModelData
 import com.messtex.data.repositories.mainRepository.MainRepository
 import com.messtex.ui.main.viewmodel.MainViewModel
 import com.messtex.utils.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.android.synthetic.main.fragment_manual_input.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -41,22 +43,23 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.menu.getItem(1).isEnabled = false
 
 
-
         val repository = MainRepository()
         val factory = ViewModelFactory(repository)
         val viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
 
         viewModel.language_code = getLocale(this.applicationContext) ?: "en"
+        viewModel.faq.postValue(intent.getSerializableExtra("FAQ") as FaqModel?)
+
 
         GlobalScope.launch(Dispatchers.IO) {
-                try {
-                    viewModel.faq.postValue(viewModel.getFaq())
-                    Log.d("response", viewModel.faq.value.toString())
-                    viewModel.co2_data.postValue(CarbonData(viewModel.getCO2_Level() ?:  0.0))
-                } catch (e: Exception) {
-                    Log.d("Error", e.toString())
-                }
+            try {
+                viewModel.faq.postValue(viewModel.getFaq())
+                Log.d("FAQ", viewModel.faq.value.toString())
+                viewModel.co2_data.postValue(CarbonData(viewModel.getCO2_Level() ?: 0.0))
+            } catch (e: Exception) {
+                Log.d("Error", e.toString())
             }
+        }
 
         val updateInterval: Long = 5000
         val handler = Handler()
@@ -64,24 +67,27 @@ class MainActivity : AppCompatActivity() {
             kotlin.run {
                 GlobalScope.launch(Dispatchers.IO) {
                     try {
-                        viewModel.co2_data.postValue(CarbonData(viewModel.getCO2_Level() ?:  0.0))
+                        viewModel.co2_data.postValue(CarbonData(viewModel.getCO2_Level() ?: 0.0))
                     } catch (e: Exception) {
                         Log.d("Error", e.toString())
                     }
                 }
-                }
+            }
         }
-        handler.postDelayed(repeatingCode, updateInterval);
+        handler.postDelayed(repeatingCode, updateInterval)
 
-        if (!checkPermission(this.applicationContext, Manifest.permission.CAMERA)){
+        if (!checkPermission(this.applicationContext, Manifest.permission.CAMERA)) {
             requestPermissions(arrayOf(Manifest.permission.CAMERA), 10)
         }
-        viewModel.isCameraAllowed = checkPermission(this.applicationContext, Manifest.permission.CAMERA)
+        viewModel.isCameraAllowed =
+            checkPermission(this.applicationContext, Manifest.permission.CAMERA)
 
         val navController = findNavController(R.id.fragmentContainerView)
         val navBuilder = NavOptions.Builder()
-        navBuilder.setEnterAnim(R.anim.nav_default_enter_anim).setExitAnim(R.anim.nav_default_exit_anim)
-            .setPopEnterAnim(R.anim.nav_default_pop_enter_anim).setPopExitAnim(R.anim.nav_default_pop_exit_anim)
+        navBuilder.setEnterAnim(R.anim.nav_default_enter_anim)
+            .setExitAnim(R.anim.nav_default_exit_anim)
+            .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
+            .setPopExitAnim(R.anim.nav_default_pop_exit_anim)
 
         floatingScanButton.setOnClickListener {
             navController.navigate(R.id.codeReadingFragment, null, navBuilder.build())
@@ -90,7 +96,7 @@ class MainActivity : AppCompatActivity() {
 
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if(destination.id == R.id.home2 || destination.id == R.id.moreFragment2) {
+            if (destination.id == R.id.home2 || destination.id == R.id.moreFragment2) {
                 bottomAppBar.visibility = View.VISIBLE
                 floatingScanButton.visibility = View.VISIBLE
 
@@ -100,11 +106,25 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        if (intent.getBooleanExtra("meterScanningExited", false)) {
+            viewModel.fetchData(intent.getSerializableExtra("ViewModel") as ViewModelData)
+            Log.d("Transformed reading", viewModel.meterValue.value.toString())
+            navController.navigate(R.id.readingStepsFragment, null, navBuilder.build())
+        }
 
-        if (intent.getStringExtra("counterValue") != null){
+        if (intent.getStringExtra("counterValue") != null) {
             viewModel.fetchData(intent.getSerializableExtra("ViewModel") as ViewModelData)
 
             viewModel.meterValue.value = intent.getStringExtra("counterValue")?.replace(",", ".")
+            viewModel.meterData[viewModel.meterIndex] = MeterReadingData(
+                viewModel.userData.value!!.meters?.get(viewModel.meterIndex)!!.counterNumber,
+                viewModel.userData.value!!.meters?.get(viewModel.meterIndex)!!.counterType,
+                viewModel.meterValue.value!!.toDouble(),
+                intent.getStringExtra("rawReadingString")!!,
+                intent.getStringExtra("cleanReadingString")!!,
+                intent.getStringExtra("readingResultStatus")!!,
+                ""
+                )
             Log.d("Transformed reading", viewModel.meterValue.value.toString())
             navController.navigate(R.id.manualInputFragment, null, navBuilder.build())
         }
@@ -114,16 +134,20 @@ class MainActivity : AppCompatActivity() {
         super.attachBaseContext(updateBaseContextLocale(newBase))
     }
 
-    private fun checkPermission(context: Context, permissionArray: String): Boolean{
-        return ContextCompat.checkSelfPermission(context, permissionArray) == PackageManager.PERMISSION_GRANTED
+    private fun checkPermission(context: Context, permissionArray: String): Boolean {
+        return ContextCompat.checkSelfPermission(
+            context,
+            permissionArray
+        ) == PackageManager.PERMISSION_GRANTED
     }
+
     private fun getLocale(context: Context?): String? {
         val sharedPref = context?.getSharedPreferences("locale", Context.MODE_PRIVATE)
-        return sharedPref?.getString("language", "en")
+        return sharedPref?.getString("language", "de")
     }
 
     private fun updateBaseContextLocale(context: Context?): Context? {
-        val language: String =  getLocale(context) ?: "en"
+        val language: String = getLocale(context) ?: "de"
         val locale = Locale(language)
         Locale.setDefault(locale)
         return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
@@ -133,8 +157,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateResourcesLocale(context: Context?, locale: Locale): Context? {
         val configuration: Configuration = Configuration(context?.resources?.configuration)
-        configuration.setLocale(locale);
-        return context?.createConfigurationContext(configuration);
+        configuration.setLocale(locale)
+        return context?.createConfigurationContext(configuration)
     }
 
     private fun updateResourcesLocaleLegacy(context: Context?, locale: Locale): Context? {

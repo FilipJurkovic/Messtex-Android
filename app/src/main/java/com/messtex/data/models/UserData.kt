@@ -16,6 +16,6 @@ data class UserData(
     val readingReason: String?,
     val meters: Array<MeterReceivingData>?,
     val askForSubscribeNewsletter: Boolean?,
-    val message: String?
-): Serializable
+    val message: String?,
+) : Serializable
 

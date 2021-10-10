@@ -13,7 +13,7 @@ import okhttp3.Request
 import retrofit2.Response
 
 
-class MainRepository() {
+class MainRepository {
 
     suspend fun getUtilizationUnitData(utilizationData: UtilizationData): Response<UserData> {
         val body: String = Gson().toJson(utilizationData).toString()
@@ -37,12 +37,22 @@ class MainRepository() {
 
     suspend fun takeMeterReadings(postModelRecord: PostModelRecord): Response<CarbonData> {
         val body: String = Gson().toJson(postModelRecord).toString()
-        Log.d("Readings POST request", RetrofitInstance.api.takeMeterReadings(PostModel("takeMeterReadings(\"${
-            body.replace("\"", "\"\"")
-        }\")")).toString())
-        return RetrofitInstance.api.takeMeterReadings(PostModel("takeMeterReadings(\"${
-            body.replace("\"", "\"\"")
-        }\")"))
+        Log.d(
+            "Readings POST request", RetrofitInstance.api.takeMeterReadings(
+                PostModel(
+                    "takeMeterReadings(\"${
+                        body.replace("\"", "\"\"")
+                    }\")"
+                )
+            ).toString()
+        )
+        return RetrofitInstance.api.takeMeterReadings(
+            PostModel(
+                "takeMeterReadings(\"${
+                    body.replace("\"", "\"\"")
+                }\")"
+            )
+        )
     }
 
     suspend fun takeContactForm(contactFormData: ContactFormData) {

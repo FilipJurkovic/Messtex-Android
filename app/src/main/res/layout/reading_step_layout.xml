@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:layout_marginBottom="32dp"
     android:id="@+id/reading_step_layout">
 
         <LinearLayout
@@ -30,24 +31,28 @@
                     android:textColor="@color/dark"
                     android:gravity="center" />
             </RelativeLayout>
-            <ImageView
-                android:id="@+id/meterIcon"
-                android:layout_width="19dp"
-                android:layout_height="18dp"
-                android:src="@drawable/ic_heat_meter"
-                android:layout_marginEnd="9dp"/>
-            <TextView
-                android:id="@+id/meterName"
-                style="@style/TextAppearance.Messtex.ParagraphBold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Heat meter"
-                android:textColor="@color/primary" />
-
-            <View
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="5dp"
-                android:layout_weight="1" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/meterName"
+                    style="@style/TextAppearance.Messtex.ParagraphBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:text="Heat meter"
+                    android:textColor="@color/primary" />
+                <TextView
+                    android:id="@+id/meterRoom"
+                    style="@style/TextAppearance.Messtex.Paragraph"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/primary" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/meterButton"
@@ -59,22 +64,7 @@
                 android:focusable="true"
                 android:foreground="@drawable/foreground_button_step"
                 android:gravity="center"
-                android:text="Submit"
+                android:text="@string/submit"
                 android:textColor="@color/primary_shade" />
         </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:id="@+id/reading_steps_connector">
-
-        <ImageView
-            android:id="@+id/imageView82"
-            android:layout_width="19dp"
-            android:layout_height="18dp"
-            android:src="@drawable/reading_step_inicator_connector"
-            android:layout_marginStart="8.5dp"/>
-    </LinearLayout>
 </LinearLayout>

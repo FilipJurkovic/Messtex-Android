@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MoreFragment">
+    tools:context=".ui.main.view.more.MoreFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,16 +13,36 @@
         android:orientation="vertical"
         android:textAlignment="center">
 
-        <ImageView
-            android:id="@+id/imageView6"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="252dp"
-            android:paddingBottom="25dp"
-            android:layout_marginBottom="19.5dp"
-            android:contentDescription="HomeImage top"
-            android:scaleType="centerCrop"
-            android:src="@drawable/more_top"
-            tools:ignore="HardcodedText" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_height="252dp"
+                android:contentDescription="HomeImage top"
+                android:paddingBottom="55dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/more_top"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+            <ImageView
+                android:layout_width="142dp"
+                android:layout_height="142dp"
+                android:layout_marginTop="171dp"
+                android:src="@drawable/logo_start"
+                app:layout_constraintEnd_toEndOf="@+id/imageView6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
       <androidx.cardview.widget.CardView
           android:layout_width="327dp"
@@ -38,8 +58,9 @@
 
               <ImageView
                   android:id="@+id/imageView5"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
+                  android:layout_width="123dp"
+                  android:layout_height="176dp"
+                  android:scaleType="centerCrop"
                   android:src="@drawable/faq_card_image"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintStart_toStartOf="parent"
@@ -167,44 +188,6 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/contactButton"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginHorizontal="12dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackgroundBorderless">
-
-            <TextView
-                android:id="@+id/textView13"
-                style="@style/TextAppearance.Messtex.Paragraph"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="@string/contact"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="HardcodedText" />
-
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_next_icon_black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/tertiary_30"
-            android:layout_marginHorizontal="12dp"/>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/contactFormButton"
             android:layout_width="match_parent"
             android:layout_height="64dp"
@@ -265,6 +248,43 @@
 
             <ImageView
                 android:id="@+id/imageView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/ic_next_icon_black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/tertiary_30"
+            android:layout_marginHorizontal="12dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/legalButton"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginHorizontal="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless">
+
+            <TextView
+                android:id="@+id/textView30"
+                style="@style/TextAppearance.Messtex.Paragraph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/legal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+            <ImageView
+                android:id="@+id/imageView30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"

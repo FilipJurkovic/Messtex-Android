@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    android:id="@+id/scrollview"
+    tools:context=".ui.main.view.home.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,15 +14,34 @@
         android:orientation="vertical"
         android:textAlignment="center">
 
-        <ImageView
-            android:id="@+id/imageView6"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="477dp"
-            android:layout_marginBottom="19.5dp"
-            android:contentDescription="HomeImage top"
-            android:scaleType="centerCrop"
-            android:src="@drawable/home_top"
-            tools:ignore="HardcodedText" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_height="252dp"
+                android:contentDescription="HomeImage top"
+                android:paddingBottom="55dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/home_top"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+            <ImageView
+                android:layout_width="142dp"
+                android:layout_height="142dp"
+                android:layout_marginTop="151dp"
+                android:src="@drawable/logo_start"
+                app:layout_constraintEnd_toEndOf="@+id/imageView6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/textView2"
@@ -81,7 +101,8 @@
                     android:src="@drawable/success_widget"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -238,6 +259,112 @@
             android:textAlignment="center"
             android:textColor="@color/primary"
             tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="33dp"
+            android:layout_marginHorizontal="24dp"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="100dp"
+                android:layout_height="135dp"
+                android:background="@drawable/background_tips_and_tricks_card"
+                android:id="@+id/waterTip">
+                <ImageView
+                    android:id="@+id/tipsIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="21dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_water_tip"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tipsTitle"
+                    android:layout_width="95dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    style="@style/TextAppearance.Messtex.SmallBold"
+                    android:textColor="@color/primary"
+                    android:text="@string/save_water"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tipsIcon" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="100dp"
+                android:layout_height="135dp"
+                android:background="@drawable/background_tips_and_tricks_card"
+                android:id="@+id/heatTip">
+                <ImageView
+                    android:id="@+id/tipsIcon1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="21dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_heat_tip" />
+
+                <TextView
+                    android:id="@+id/tipsTitle1"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    style="@style/TextAppearance.Messtex.SmallBold"
+                    android:textColor="@color/primary"
+                    android:text="@string/save_heating_costs"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tipsIcon1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                ></View>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="100dp"
+                android:layout_height="135dp"
+                android:background="@drawable/background_tips_and_tricks_card"
+                android:id="@+id/EnvironmentTip">
+                <ImageView
+                    android:id="@+id/tipsIcon2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="21dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_environment_tip" />
+
+                <TextView
+                    android:id="@+id/tipsTitle2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    style="@style/TextAppearance.Messtex.SmallBold"
+                    android:textColor="@color/primary"
+                    android:text="@string/messtex_amp_numweltschutz"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tipsIcon2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/homeFaq"

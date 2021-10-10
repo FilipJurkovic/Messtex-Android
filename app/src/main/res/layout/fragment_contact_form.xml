@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ContactFormFragment">
+    tools:context=".ui.main.view.more.ContactFormFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Get in contact with us"
+        android:text="@string/contact_form_title"
         android:textColor="@color/primary"
         app:layout_constraintStart_toStartOf="@+id/firstName"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:gravity="start"
-        android:text="Get in touch with us and describe your concern."
+        android:text="@string/contact_form_subtitle"
         android:textColor="@color/dark"
         app:layout_constraintEnd_toEndOf="@+id/firstName"
         app:layout_constraintStart_toStartOf="@+id/firstName"

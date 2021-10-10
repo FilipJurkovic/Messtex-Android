@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark"
-    tools:context=".VideoFragment">
+    tools:context=".ui.main.view.home.reading_flow.VideoFragment">
 
     <TextView
         android:id="@+id/exitButton"

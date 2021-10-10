@@ -1,7 +1,7 @@
 package com.messtex.data.models
 
 import java.io.Serializable
-import java.util.ArrayList
+import java.util.*
 
 data class ViewModelData
     (
@@ -12,7 +12,8 @@ data class ViewModelData
     val meterValue: String?,
     val faq: FaqModel?,
     val readingStepsProgress: Array<Boolean>,
+    val meterInitModelArray: ArrayList<MeterInitModel>?,
     val meterIndex: Int,
-    val isCameraAllowed : Boolean
+    val isCameraAllowed: Boolean
 
-):Serializable
+) : Serializable

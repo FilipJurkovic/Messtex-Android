@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="334dp"
+    android:layout_height="301dp"
+    android:id="@+id/confirmationLayout"
+    android:background="@drawable/background_confirmation_layout">
+
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="70.83dp"
+        android:layout_height="90.58dp"
+        android:layout_marginTop="28.4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/success_widget" />
+
+    <TextView
+        android:id="@+id/textView21"
+        style="@style/TextAppearance.Messtex.Paragraph"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="23dp"
+        android:text="@string/confirmation_text"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textColor="@color/dark"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/cancelationButton"
+            style="@style/TextAppearance.Messtex.ParagraphBold"
+            android:layout_width="138dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_cancel_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="@drawable/foreground_button_main"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/tertiary_shade" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/confirmationButton"
+            style="@style/TextAppearance.Messtex.ParagraphBold"
+            android:layout_width="138dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_button_main"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="@drawable/foreground_button_main"
+            android:gravity="center"
+            android:text="@string/confirm"
+            android:textColor="@color/light" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

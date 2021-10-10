@@ -6,7 +6,7 @@
     app:startDestination="@id/home2">
     <fragment
         android:id="@+id/home2"
-        android:name="com.messtex.HomeFragment"
+        android:name="com.messtex.ui.main.view.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -29,21 +29,61 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>/>
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_home2_to_aboutFragment"
+            app:destination="@id/aboutFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_home2_to_pdfFragment"
+            app:destination="@id/pdfFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_home2_to_heatTipFragment"
+            app:destination="@id/heatTipFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_home2_to_waterTipFragment"
+            app:destination="@id/waterTipFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_home2_to_environmentTipFragment"
+            app:destination="@id/environmentTipFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_home2_to_contactFormFragment"
+            app:destination="@id/contactFormFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.messtex.AboutFragment"
+        android:name="com.messtex.ui.main.view.more.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/codeReadingFragment"
-        android:name="com.messtex.CodeReadingFragment"
+        android:name="com.messtex.ui.main.view.home.reading_flow.CodeReadingFragment"
         android:label="fragment_code_reading"
         tools:layout="@layout/fragment_code_reading" >
         <action
             android:id="@+id/action_codeReadingFragment_to_home2"
             app:destination="@id/home2"
+            app:popUpTo="@+id/home2"
+            app:popUpToInclusive="true"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -54,7 +94,8 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_codeReadingFragment_to_exampleCodeFragment"
             app:destination="@id/exampleCodeFragment"
@@ -71,14 +112,8 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
-        android:id="@+id/contactFragment"
-        android:name="com.messtex.ContactFragment"
-        android:label="fragment_contact"
-        tools:layout="@layout/fragment_contact"
-        />
-    <fragment
         android:id="@+id/contactDetailsFragment"
-        android:name="com.messtex.ContactDetailsFragment"
+        android:name="com.messtex.ui.main.view.home.reading_flow.ContactDetailsFragment"
         android:label="fragment_contact_details"
         tools:layout="@layout/fragment_contact_details" >
         <action
@@ -88,16 +123,17 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
-             />
+            app:popUpTo="@id/codeReadingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/contactFormFragment"
-        android:name="com.messtex.ContactFormFragment"
+        android:name="com.messtex.ui.main.view.more.ContactFormFragment"
         android:label="fragment_contact_form"
         tools:layout="@layout/fragment_contact_form" />
     <fragment
         android:id="@+id/dataCheckingFragment"
-        android:name="com.messtex.DataCheckingFragment"
+        android:name="com.messtex.ui.main.view.home.reading_flow.DataCheckingFragment"
         android:label="fragment_data_checking"
         tools:layout="@layout/fragment_data_checking" >
         <action
@@ -106,7 +142,9 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/home2"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_dataCheckingFragment_to_readingStepsFragment"
             app:destination="@id/readingStepsFragment"
@@ -117,22 +155,22 @@
     </fragment>
     <fragment
         android:id="@+id/exampleCodeFragment"
-        android:name="com.messtex.ExampleCodeFragment"
+        android:name="com.messtex.ui.main.view.home.reading_flow.ExampleCodeFragment"
         android:label="fragment_example_code"
         tools:layout="@layout/fragment_example_code" />
     <fragment
         android:id="@+id/faqFragment"
-        android:name="com.messtex.FaqFragment"
+        android:name="com.messtex.ui.main.view.more.FaqFragment"
         android:label="fragment_faq"
         tools:layout="@layout/fragment_faq" />
     <fragment
         android:id="@+id/imprintFragment"
-        android:name="com.messtex.ImprintFragment"
+        android:name="com.messtex.ui.main.view.more.ImprintFragment"
         android:label="fragment_imprint"
         tools:layout="@layout/fragment_imprint" />
     <fragment
         android:id="@+id/manualInputFragment"
-        android:name="com.messtex.ManualInputFragment"
+        android:name="com.messtex.ui.main.view.home.reading_flow.ManualInputFragment"
         android:label="fragment_manual_input"
         tools:layout="@layout/fragment_manual_input" >
         <action
@@ -147,7 +185,7 @@
     </fragment>
     <dialog
         android:id="@+id/modalBottomSheetFragment"
-        android:name="com.messtex.ModalBottomSheetFragment"
+        android:name="com.messtex.ui.main.view.home.reading_flow.ModalBottomSheetFragment"
         android:label="fragment_modal_bottom_sheet"
         tools:layout="@layout/fragment_modal_bottom_sheet" >
         <action
@@ -160,12 +198,12 @@
     </dialog>
     <fragment
         android:id="@+id/privacyFragment"
-        android:name="com.messtex.PrivacyFragment"
+        android:name="com.messtex.ui.main.view.more.PrivacyFragment"
         android:label="fragment_privacy"
         tools:layout="@layout/fragment_privacy" />
     <fragment
         android:id="@+id/readingStepsFragment"
-        android:name="com.messtex.ReadingStepsFragment"
+        android:name="com.messtex.ui.main.view.home.reading_flow.ReadingStepsFragment"
         android:label="fragment_reading_steps"
         tools:layout="@layout/fragment_reading_steps" >
         <action
@@ -174,7 +212,8 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_readingStepsFragment_to_dataCheckingFragment"
             app:destination="@id/dataCheckingFragment"
@@ -195,11 +234,17 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_readingStepsFragment_to_codeReadingFragment"
+            app:destination="@id/codeReadingFragment"
+            app:popUpTo="@id/readingStepsFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/scanningSuccessFragment"
-        android:name="com.messtex.ScanningSuccessFragment"
+        android:name="com.messtex.ui.main.view.home.reading_flow.ScanningSuccessFragment"
         android:label="fragment_scanning_success"
         tools:layout="@layout/fragment_scanning_success" >
         <action
@@ -209,16 +254,20 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/home2"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_scanningSuccessFragment_to_aboutFragment"
             app:destination="@id/aboutFragment"
-            app:popUpTo="@id/home2"
-            app:popUpToInclusive="true" />
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/home2" />
     </fragment>
     <fragment
         android:id="@+id/moreFragment2"
-        android:name="com.messtex.MoreFragment"
+        android:name="com.messtex.ui.main.view.more.MoreFragment"
         android:label="fragment_more"
         tools:layout="@layout/fragment_more" >
         <action
@@ -236,13 +285,6 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/moreFragment2" />
-        <action
-            android:id="@+id/action_moreFragment2_to_contactFragment"
-            app:destination="@id/contactFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action
             android:id="@+id/action_moreFragment2_to_contactFormFragment"
             app:destination="@id/contactFormFragment"
@@ -276,10 +318,16 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_moreFragment2_to_legalFragment"
+            app:destination="@id/legalFragment" />
+        <action
+            android:id="@+id/action_moreFragment2_to_pdfFragment"
+            app:destination="@id/pdfFragment" />
     </fragment>
     <fragment
         android:id="@+id/meterReadingFragment"
-        android:name="com.messtex.MeterScanningActivity"
+        android:name="com.messtex.ui.meter_reading.MeterScanningActivity"
         android:label="fragment_meter_reading"
         tools:layout="@layout/fragment_meter_reading" >
         <action
@@ -292,7 +340,32 @@
     </fragment>
     <fragment
         android:id="@+id/videoFragment"
-        android:name="com.messtex.VideoFragment"
+        android:name="com.messtex.ui.main.view.home.reading_flow.VideoFragment"
         android:label="fragment_video"
         tools:layout="@layout/fragment_video" />
+    <fragment
+        android:id="@+id/legalFragment"
+        android:name="com.messtex.ui.main.view.more.LegalFragment"
+        android:label="fragment_legal"
+        tools:layout="@layout/fragment_legal" />
+    <fragment
+        android:id="@+id/pdfFragment"
+        android:name="com.messtex.utils.PdfFragment"
+        android:label="fragment_pdf"
+        tools:layout="@layout/fragment_pdf" />
+    <fragment
+        android:id="@+id/waterTipFragment"
+        android:name="com.messtex.ui.main.view.home.tips_and_tricks.WaterTipFragment"
+        android:label="fragment_water_tip"
+        tools:layout="@layout/fragment_water_tip" />
+    <fragment
+        android:id="@+id/environmentTipFragment"
+        android:name="com.messtex.ui.main.view.home.tips_and_tricks.EnvironmentTipFragment"
+        android:label="fragment_environment_tip"
+        tools:layout="@layout/fragment_environment_tip" />
+    <fragment
+        android:id="@+id/heatTipFragment"
+        android:name="com.messtex.ui.main.view.home.tips_and_tricks.HeatTipFragment"
+        android:label="fragment_heat_tip"
+        tools:layout="@layout/fragment_heat_tip" />
 </navigation>

@@ -31,6 +31,23 @@
         android:layout_marginTop="8dp"
         android:text="Jessica Miessen"
         android:textColor="@color/dark" />
+
+        <TextView
+            android:id="@+id/address"
+            style="@style/TextAppearance.Messtex.Paragraph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Hopfenweg 21"
+            android:textColor="@color/dark" />
+        <TextView
+            android:id="@+id/city"
+            style="@style/TextAppearance.Messtex.Paragraph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="85276 Pfaffenhofen"
+            android:textColor="@color/dark" />
     <TextView
         android:id="@+id/email"
         style="@style/TextAppearance.Messtex.Paragraph"
@@ -39,28 +56,23 @@
 
         android:text="jessica.miessen@messtex.de"
         android:textColor="@color/dark" />
-    <TextView
-        android:id="@+id/address"
-        style="@style/TextAppearance.Messtex.Paragraph"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:text="Hopfenweg 21"
-        android:textColor="@color/dark" />
-    <TextView
-        android:id="@+id/city"
-        style="@style/TextAppearance.Messtex.Paragraph"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/phone"
+            style="@style/TextAppearance.Messtex.Paragraph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        android:text="85276 Pfaffenhofen"
-        android:textColor="@color/dark" />
+            android:text="0916647669"
+            android:textColor="@color/dark" />
+
+
 </LinearLayout>
 
     <View
         android:id="@+id/break1"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginTop="18dp"
         android:background="@color/tertiary"
         />

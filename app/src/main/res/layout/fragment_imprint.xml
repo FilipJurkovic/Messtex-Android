@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ImprintFragment">
+    tools:context=".ui.main.view.more.ImprintFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -19,7 +19,7 @@
             style="@style/TextAppearance.Messtex.Headline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Imprint"
+            android:text="@string/imprint"
             android:textColor="@color/primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="23dp"
-                android:text="Contact:"
+                android:text="@string/contact"
                 android:textColor="@color/primary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -142,7 +142,7 @@
                 android:clickable="true"
 
                 android:focusable="true"
-                android:text="Schießstattstraße 14a\n84072 Au in der Hallertau"
+                android:text="Schießstattstraße 14a\n84072 Au i.d. Hallertau"
                 android:textColor="@color/dark"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5"
@@ -158,11 +158,10 @@
                 android:layout_marginTop="5dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="Phone: 0151/41888186\nE-Mail: info@messtex.de"
+                android:text="@string/imprint_contact"
                 android:textColor="@color/dark"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/emailText"
-                tools:ignore="HardcodedText" />
+                app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -240,11 +239,14 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="24dp"
+                android:layout_marginBottom="50dp"
                 android:text="@string/disclaimer_paragraph"
                 android:textColor="@color/dark"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView35" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

@@ -7,12 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.messtex.R
-import com.messtex.ViewPagerAdapter
 import com.messtex.ui.main.view.MainActivity
-import kotlinx.android.synthetic.main.fragment_onboarding.*
+import com.messtex.utils.ViewPagerAdapter
 import kotlinx.android.synthetic.main.fragment_onboarding.view.*
 
 
@@ -31,7 +29,8 @@ class OnboardingFragment : Fragment() {
             OnboardingStepThreeFragment()
         )
 
-        val adapter = ViewPagerAdapter(fragmentList, requireActivity().supportFragmentManager, lifecycle)
+        val adapter =
+            ViewPagerAdapter(fragmentList, requireActivity().supportFragmentManager, lifecycle)
         view.onboardingViewPager.adapter = adapter
 
         view.onboardingViewPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
@@ -45,11 +44,11 @@ class OnboardingFragment : Fragment() {
 
         view.onboardingButton.setOnClickListener {
 
-            if (view.onboardingViewPager?.currentItem == 2){
+            if (view.onboardingViewPager?.currentItem == 2) {
                 startActivity(Intent(this.context, MainActivity::class.java))
                 onboardingFinished()
-
-            }else{
+                this.requireActivity().finish()
+            } else {
                 view.onboardingViewPager?.currentItem = view.onboardingViewPager?.currentItem!! + 1
             }
 
@@ -59,11 +58,12 @@ class OnboardingFragment : Fragment() {
         view.skipButton.setOnClickListener {
             startActivity(Intent(this.context, MainActivity::class.java))
             onboardingFinished()
+            this.requireActivity().finish()
         }
         return view
     }
 
-    private fun onboardingFinished(){
+    private fun onboardingFinished() {
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.putBoolean("Finished", true)

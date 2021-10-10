@@ -1,11 +1,9 @@
 package com.messtex.data.models
 
-import com.google.gson.annotations.SerializedName
-
 data class PostModelRecord(
     val verificationCode: String,
     val language: String,
-    val meterReadings : Array<MeterReadingData>,
+    val meterReadings: Array<MeterReadingData>,
     val firstName: String,
     val lastName: String,
     val email: String,

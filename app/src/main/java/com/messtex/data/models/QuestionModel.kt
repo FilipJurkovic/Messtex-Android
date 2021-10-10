@@ -7,4 +7,4 @@ data class QuestionModel(
     val sortNumber: Int,
     val question: String,
     val answer: String,
-): Serializable
+) : Serializable

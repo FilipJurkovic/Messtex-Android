@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".ReadingStepsFragment">
+    tools:context=".ui.main.view.home.reading_flow.ReadingStepsFragment">
 
 
     <ScrollView
@@ -44,21 +44,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
-            <LinearLayout
-                android:id="@+id/reading_steps_layout"
+            <FrameLayout
+                android:id="@+id/frameLayout"
                 android:layout_width="328dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="42dp"
                 android:background="@android:color/transparent"
-                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView23">
 
+                <include
+                    layout="@layout/line_layout" />
 
+                <LinearLayout
+                    android:id="@+id/reading_steps_layout"
+                    android:layout_width="328dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView23">
+                </LinearLayout>
 
-            </LinearLayout>
-
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/textView23"
@@ -90,7 +100,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reading_steps_layout" />
+                app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
     <androidx.constraintlayout.widget.ConstraintLayout

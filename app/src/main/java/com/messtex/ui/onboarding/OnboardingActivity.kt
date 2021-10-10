@@ -7,7 +7,6 @@ import android.content.res.Resources
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.messtex.R
-import com.messtex.ui.splash.SplashActivity
 import java.util.*
 
 
@@ -19,9 +18,9 @@ class OnboardingActivity : AppCompatActivity() {
 
     }
 
-    private fun getLocale(): String?{
+    private fun getLocale(): String? {
         val sharedPref = getSharedPreferences("locale", Context.MODE_PRIVATE)
-        return sharedPref.getString("language", "en")
+        return sharedPref.getString("language", "de")
     }
 
     private fun setLocale(activity: Activity, languageCode: String?) {

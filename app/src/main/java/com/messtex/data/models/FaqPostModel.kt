@@ -4,4 +4,4 @@ import java.io.Serializable
 
 data class FaqPostModel(
     val language: String
-): Serializable
+) : Serializable

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ScanningSuccessFragment">
+    tools:context=".ui.main.view.home.reading_flow.ScanningSuccessFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

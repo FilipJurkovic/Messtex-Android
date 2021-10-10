@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutFragment">
+    tools:context=".ui.main.view.more.AboutFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -65,7 +65,8 @@
             <ImageView
                 android:id="@+id/topImage"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="262dp"
+                android:paddingBottom="30dp"
                 android:contentDescription="HomeImage top"
                 android:scaleType="centerCrop"
                 android:src="@drawable/faq_top"
@@ -81,11 +82,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:text="@string/about_title"
                 android:textColor="@color/primary"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/topImage" />
 

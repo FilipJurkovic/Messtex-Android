@@ -9,5 +9,6 @@ data class MeterReceivingData(
     val counterRoom: String,
     val counterTypeName: String,
     val counterDescriptionText: String,
-    val counterDescriptionImage: String
-): Serializable
+    val counterDescriptionImage: String,
+    val configuration: MeterConfigurationModel?
+) : Serializable
