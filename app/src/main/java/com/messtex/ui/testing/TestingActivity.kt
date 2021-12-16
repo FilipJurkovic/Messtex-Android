@@ -3,7 +3,6 @@ package com.messtex.ui.testing
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
-import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -12,36 +11,21 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Debug
 import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.fragment.findNavController
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.jakewharton.picasso.OkHttp3Downloader
 import com.messtex.R
 import com.messtex.data.models.MeterConfigurationModel
-import com.messtex.data.models.MeterReceivingData
-import com.messtex.data.models.ViewModelData
 import com.messtex.ui.main.view.MainActivity
 import com.pixolus.meterreading.Metadata
 import com.pixolus.meterreading.MeterReadingActivity
 import com.pixolus.meterreading.MeterReadingFragment
 import com.pixolus.meterreading.MeterReadingResult
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_meter_reading.view.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class TestingActivity : MeterReadingActivity() {
@@ -49,6 +33,8 @@ class TestingActivity : MeterReadingActivity() {
     private var configuration: MeterConfigurationModel? = null
     private var testIndex: Int = 0
     private var testingResultsList: Array<Double> = emptyArray()
+    private var resultsHeat: Array<Double> = arrayOf(6.090, 6.090, 6.090, 6.090, 6.090, 6.090)
+    private var resultsWater: Array<Double> = arrayOf(6.090, 6.090, 6.090, 6.090, 6.090, 6.090)
 
     @SuppressLint("EmptyMethod")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -93,6 +79,8 @@ class TestingActivity : MeterReadingActivity() {
             finish()
         }
 
+
+
         return overlayView
     }
 
@@ -129,6 +117,7 @@ class TestingActivity : MeterReadingActivity() {
         image: Bitmap,
         metadata: Metadata
     ) {
+        meterReadingFragment.meterReadingView.disableView()
         showMeterTestingDialog(this, results[0].cleanReadingString(), results[0].rawReadingString(), results[0].status().name)
     }
 
@@ -190,15 +179,19 @@ class TestingActivity : MeterReadingActivity() {
 
         cancelationButton.setOnClickListener {
             dialog.dismiss()
+            meterReadingFragment.meterReadingView.enableView()
         }
 
         confirmationButton.setOnClickListener {
             dialog.dismiss()
+            meterReadingFragment.meterReadingView.enableView()
             testingResultsList.plus(meterCounterValue.toDouble())
             testIndex += 1
 
-            if (testIndex == 7){
-                showFinalDialog(this)
+            Log.d("Test index", testIndex.toString())
+
+            if (testIndex == 6){
+                showFinalDialog(this,)
             }
         }
     }
@@ -211,16 +204,18 @@ class TestingActivity : MeterReadingActivity() {
         dialog.setContentView(R.layout.testing_result)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        val exitButton: Button = dialog.findViewById<Button>(R.id.exitButton)
+        val exitButton: Button = dialog.findViewById<Button>(R.id.nextButton)
 
         val overallScore: TextView = dialog.findViewById<TextView>(R.id.overallScore)
         val passValue: TextView = dialog.findViewById<TextView>(R.id.passValue)
 
         var score : Int = 0
-        val resultsArray = resources.getStringArray(if (configuration?.meterAppearance == "AUTO_DE_WATER_HOME") R.array.Water else R.array.Heat)
+        val resultsArray = if (configuration?.meterAppearance == "AUTO_DE_WATER_HOME") resultsWater else resultsHeat
+
+        Log.d("Test index", resultsWater.toString())
 
         testingResultsList.forEachIndexed { index, element ->
-            if(element == resultsArray[index].toDouble()){
+            if(element == resultsArray[index]){
                 score += 1
             }
         }

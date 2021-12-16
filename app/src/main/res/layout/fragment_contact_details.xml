@@ -115,6 +115,7 @@
                 <Switch
                     android:id="@+id/emailCopy"
                     style="@style/SwitchTheme"
+                    android:checked="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -133,6 +134,70 @@
                     app:layout_constraintTop_toBottomOf="@+id/email" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/newsletter"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/email"
+                app:layout_constraintStart_toStartOf="@id/email"
+                app:layout_constraintTop_toBottomOf="@id/linearLAyout">
+
+                <Switch
+                    android:id="@+id/newsletterToggle"
+                    style="@style/SwitchTheme"
+                    android:checked="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    app:layout_constraintStart_toStartOf="@+id/email"
+                    app:layout_constraintTop_toBottomOf="@+id/email" />
+
+                <TextView
+                    android:id="@+id/textView38"
+                    style="@style/TextAppearance.Messtex.Paragraph"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/newsletter"
+                    app:layout_constraintEnd_toEndOf="@+id/email"
+                    app:layout_constraintStart_toEndOf="@+id/emailCopy"
+                    app:layout_constraintTop_toBottomOf="@+id/email" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/receiveViaEmail"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/email"
+                app:layout_constraintStart_toStartOf="@id/email"
+                app:layout_constraintTop_toBottomOf="@id/newsletter">
+
+                <Switch
+                    android:id="@+id/receiveViaEmailToggle"
+                    style="@style/SwitchTheme"
+                    android:checked="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    app:layout_constraintStart_toStartOf="@+id/email"
+                    app:layout_constraintTop_toBottomOf="@+id/email" />
+
+                <TextView
+                    android:id="@+id/textView48"
+                    style="@style/TextAppearance.Messtex.Paragraph"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/receiveViaEmail"
+                    app:layout_constraintEnd_toEndOf="@+id/email"
+                    app:layout_constraintStart_toEndOf="@+id/emailCopy"
+                    app:layout_constraintTop_toBottomOf="@+id/email" />
+            </LinearLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/phoneNumber"
@@ -141,7 +206,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLAyout">
+                app:layout_constraintTop_toBottomOf="@+id/receiveViaEmail">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/phoneNumberInput"

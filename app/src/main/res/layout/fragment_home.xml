@@ -216,7 +216,7 @@
             <TextView
                 android:id="@+id/textView5"
                 style="@style/TextAppearance.Messtex.Paragraph"
-                android:layout_width="222dp"
+                android:layout_width="322dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/co2_subtitle"

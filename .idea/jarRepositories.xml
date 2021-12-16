@@ -29,7 +29,7 @@
     <remote-repository>
       <option name="id" value="maven" />
       <option name="name" value="maven" />
-      <option name="url" value="file:$PROJECT_DIR$/../../../development_pc/Documents/MesstexAndroid/pixolous_ocr" />
+      <option name="url" value="file:$USER_HOME$/development_pc/Documents/MesstexAndroid/pixolous_ocr" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="MavenRepo" />
@@ -45,6 +45,16 @@
       <option name="id" value="maven2" />
       <option name="name" value="maven2" />
       <option name="url" value="https://dl.bintray.com/sysdata/maven" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="file:$PROJECT_DIR$/../../MesstexAndroid/pixolous_ocr" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="file:$PROJECT_DIR$/../pixolous_ocr" />
     </remote-repository>
   </component>
 </project>

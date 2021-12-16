@@ -13,12 +13,12 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="home">Haus</string>
-    <string name="scan">Scannen</string>
+    <string name="home">Home</string>
+    <string name="scan">Starten</string>
     <string name="more">Mehr</string>
     <string name="contact">Kontakt:</string>
     <string name="about">Über uns</string>
-    <string name="about_title">Wir sind der Ansprechpartner, dem Sie vertrauen können. Wir sind immer für Sie da.</string>
+    <string name="about_title">Durch jahrelange Erfahrung haben wir festgestellt, wie wichtig eine Modernisierung unseres Berufsfeldes ist. Für Sie als Mieter, für Sie als Eigentümer und für unser Land und unsere Erde.</string>
     <string name="about_paragraph_one">Wir von Messtex haben es uns zur Aufgabe gemacht den Ablese-Sektor zu modernisieren und gemeinsam mit unseren Partnern und Kunden den Markt zu reformieren. Das 21. Jahrhundert hat uns bereits vieles gebracht: die Digitalisierung überholt und verbessert fortlaufend bestehende Alt-Systeme und gibt diesen einen neuen Schwung.</string>
     <string name="about_subtitle">Wir steigen auf diesen Zug der Innovation auf und machen uns die Vision der Revolutionierung des Ablesesektors zur Aufgabe! Dafür haben wir uns strikte Prinzipien gesetzt, nach denen wir tagtäglich leben und handeln:</string>
     <string name="about_bulletpoint_one">Durch die Ablesung mit der Messtex-App müssen Sie keine Urlaubstage mehr für manuelle Ablesungen durch Service-Techniker verschwenden</string>
@@ -46,6 +46,8 @@
     <string name="first_name">Vorname*</string>
     <string name="surname">Nachname*</string>
     <string name="contact_copy">Bitte senden Sie mir die Ablese-Übersicht als E-Mail zu</string>
+    <string name="newsletter">Dürfen wir Sie ab sofort einfach und schnell per E-Mail über Neuerungen informieren?</string>
+    <string name="receiveViaEmail">Dürfen wir Sie zukünftig per Mail statt per Post an Ihre Ablesung erinnern?</string>
     <string name="phone_number">Handy/Telefonnummer</string>
     <string name="address">Adresse</string>
     <string name="street">Straße</string>
@@ -63,14 +65,14 @@
     <string name="home_subtitle">Erfassen Sie Ihre Zählerstände. Einfach, schnell und ohne Termin.</string>
     <string name="start_reading">Zählerstände erfassen</string>
     <string name="co2_title">Helfen Sie uns die Umwelt zu schützen.</string>
-    <string name="co2_subtitle">kg of CO₂ haben wir zusammen schon eingespart</string>
+    <string name="co2_subtitle">So viel Kilogramm an CO₂ Emissionen\nhaben wir zusammen schon eingespart</string>
     <string name="tips_and_tricks">Tipps und Tricks</string>
     <string name="tips_and_tricks_subtitle">Hier finden Sie hilfreiche Tipps für Ihren Alltag.</string>
     <string name="show_more">Mehr anzeigen</string>
     <string name="get_in_contact">Treten Sie mit uns in Kontakt</string>
     <string name="share_the_app">Kontaktieren Sie uns</string>
     <string name="manual_input_title">Manuelle Eingabe</string>
-    <string name="manual_input_subtitle">Tragen Sie nun den Zählerstand Ihres Zählers mit 2 Nachkommastellen ein:</string>
+    <string name="manual_input_subtitle">Tragen Sie nun den Zählerstand Ihres Zählers ein:</string>
     <string name="counter_number">Zählernummer</string>
     <string name="counter_type">Zählerart</string>
     <string name="reading_date">Ablesedatum</string>
@@ -91,7 +93,7 @@
     <string name="onboarding_subtitle_one">Tragen Sie Ihre Wasser- und Heizkostenstände ganz bequem digital von zuhause aus ein.</string>
     <string name="onboarding_subtitle_two">Und das ohne Wartezeiten, ohne förmliche Aufräumaktionen und ohne fremdes Eindringen in Ihre Privatssphäre.</string>
     <string name="reading_steps_title">Ablesung starten</string>
-    <string name="reading_steps_subtitle">Bitte lesen Sie die folgenden Zählerstände ein:</string>
+    <string name="reading_steps_subtitle">Bitte lesen Sie die folgenden Zählerstände ab:</string>
     <string name="submit_meter_readings">Zählerstände übermitteln</string>
     <string name="success_title">Ihre Zählerstände wurden erfolgreich übermittelt</string>
     <string name="success_subtitle">Danke %1$s für Ihre Ablesung! Ihre Daten wurden erfolgreich übermittelt. Mit Ihrer Hilfe haben wir der Umwelt etwas Gutes getan und CO₂ eingespart.</string>

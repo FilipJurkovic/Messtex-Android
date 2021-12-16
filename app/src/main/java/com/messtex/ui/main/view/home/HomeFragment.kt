@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.forEach
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -19,6 +20,7 @@ import com.messtex.R
 import com.messtex.data.models.QuestionModel
 import com.messtex.ui.main.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.faq_card_layout.view.*
+import kotlinx.android.synthetic.main.fragment_faq.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -50,7 +52,7 @@ class HomeFragment : Fragment() {
         sharedViewModel.co2_data.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 //co2_livedata.text = it.co2Level.toString()
-                co2_livedata.text = it.co2Level.toString()
+                co2_livedata.text = "${it.co2Level.toString()} CO₂"
             }
 
         })
@@ -144,6 +146,15 @@ class HomeFragment : Fragment() {
                 if (expansionLayout.isExpanded) {
                     toAdd.card_question.setTextAppearance(R.style.TextAppearance_Messtex_ParagraphBold)
                     toAdd.questionBreak.isVisible = false
+
+                    var index: Int = 0
+                    homeFaq.forEach {
+                        if(index != i) {
+                            it.expansionLayout.collapse(true)
+                        }
+
+                        index++
+                    }
                 } else {
                     toAdd.card_question.setTextAppearance(R.style.TextAppearance_Messtex_Paragraph)
                     if (i != faqSubarray.lastIndex) {
@@ -160,7 +171,7 @@ class HomeFragment : Fragment() {
 
     }
 
-    fun checkPermission(context: Context, permissionArray: String): Boolean {
+    private fun checkPermission(context: Context, permissionArray: String): Boolean {
         return ContextCompat.checkSelfPermission(
             context,
             permissionArray

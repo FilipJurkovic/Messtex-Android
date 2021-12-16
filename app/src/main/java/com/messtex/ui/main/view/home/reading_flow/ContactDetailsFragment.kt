@@ -77,7 +77,12 @@ class ContactDetailsFragment : Fragment() {
                     false,
                     ""
                 )
+
                 sharedViewModel.sendCopy = emailCopy.isChecked
+                sharedViewModel.receiveNewsletter = newsletterToggle.isChecked
+                sharedViewModel.receiveViaEmail = receiveViaEmailToggle.isChecked
+
+                sharedViewModel.readingStepsProgress[sharedViewModel.readingStepsProgress.size - 1] = true
                 findNavController().navigate(R.id.action_contactDetailsFragment_to_readingStepsFragment)
             }else{
                 emailInput.error = "Invalid E-mail"

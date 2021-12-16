@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.messtex.R
+import com.messtex.ui.main.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_example_code.*
 
 class ExampleCodeFragment : Fragment() {
+    private val sharedViewModel: MainViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -20,6 +23,12 @@ class ExampleCodeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        if(sharedViewModel.language_code == "en"){
+            exampleImage.setImageResource(R.drawable.example_eng)
+        } else {
+            exampleImage.setImageResource(R.drawable.example_de)
+        }
 
         exitButton.setOnClickListener {
             findNavController().navigateUp()

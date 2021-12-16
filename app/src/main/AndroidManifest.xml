@@ -23,7 +23,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.MesstexAndroid">
-        <activity android:name=".ui.testing.TestingActivity"></activity>
+        <activity android:name=".ui.testing.TestingActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ui.onboarding.OnboardingActivity"
             android:label="@string/title_activity_onboarding"

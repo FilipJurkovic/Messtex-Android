@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.forEach
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -49,11 +50,21 @@ class FaqFragment : Fragment() {
                 if (expansionLayout.isExpanded) {
                     toAdd.card_question.setTextAppearance(R.style.TextAppearance_Messtex_ParagraphBold)
                     toAdd.questionBreak.isVisible = false
+
+                    var index: Int = 0
+                    faq_layout.forEach {
+                        if(index != i) {
+                            it.expansionLayout.collapse(true)
+                        }
+
+                        index++
+                    }
                 } else {
                     toAdd.card_question.setTextAppearance(R.style.TextAppearance_Messtex_Paragraph)
                     toAdd.questionBreak.isVisible = true
                 }
             }
+
             faq_layout.addView(toAdd)
         }
 

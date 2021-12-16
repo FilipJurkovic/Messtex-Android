@@ -59,6 +59,9 @@ class ManualInputFragment : Fragment() {
         }
 
         manualInputBackButton.setOnClickListener {
+            if(manualInputValue.text.toString() == ""){
+                sharedViewModel.readingStepsProgress[meterIndex] = false
+            }
             findNavController().navigate(R.id.action_manualInputFragment_to_readingStepsFragment)
         }
 
@@ -85,45 +88,13 @@ class ManualInputFragment : Fragment() {
         val date: Date = standardFormat.parse(Date().toString())
         readingDateInput.setText(formatter.format(date))
 
-        pinText.text = sharedViewModel.meterValue.value?.replace(".", "")
-        manualInputValue.setText(sharedViewModel.meterValue.value?.replace(".", ""))
-        manualInputValue.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable) {}
-            override fun beforeTextChanged(
-                s: CharSequence, start: Int,
-                count: Int, after: Int
-            ) {
-            }
-
-            override fun onTextChanged(
-                s: CharSequence, start: Int,
-                before: Int, count: Int
-            ) {
-                if (s.length <= 8) {
-                    pinText.text = s
-                }else{
-                    s.dropLast(s.length-2)
-                }
-            }
-        })
+        val counterValue: String = sharedViewModel.meterData[sharedViewModel.meterIndex].counterValue.toString().replace(".",",")
+        manualInputValue.setText(if(counterValue != "null") counterValue else "")
         nextButtonManualInput.setOnClickListener {
-            counterValueFormatted = if (manualInputValue.text != null) {
-                manualInputValue.text?.substring(
-                    0,
-                    manualInputValue.text?.length!! - 2
-                ) + "." + manualInputValue.text?.substring(
-                    manualInputValue.text?.length!! - 2,
-                    manualInputValue.text?.length!!
-                )
-            } else {
-                "0.0"
-            }
-
-            sharedViewModel.meterValue.value = counterValueFormatted
             sharedViewModel.meterData[sharedViewModel.meterIndex] = MeterReadingData(
                 sharedViewModel.userData.value!!.meters?.get(sharedViewModel.meterIndex)!!.counterNumber,
                 sharedViewModel.userData.value!!.meters?.get(sharedViewModel.meterIndex)!!.counterType,
-                sharedViewModel.meterValue.value!!.toDouble(),
+                manualInputValue.text.toString().replace(",", ".").toDouble(),
                 sharedViewModel.meterData[sharedViewModel.meterIndex].rawReadingString,
                 sharedViewModel.meterData[sharedViewModel.meterIndex].cleanReadingString,
                 sharedViewModel.meterData[sharedViewModel.meterIndex].readingResultStatus,

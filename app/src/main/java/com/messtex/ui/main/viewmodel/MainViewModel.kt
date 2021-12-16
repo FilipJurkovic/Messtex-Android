@@ -30,7 +30,9 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
 
     var meterIndex: Int = 0
     var isCameraAllowed: Boolean = false
-    var sendCopy: Boolean = false
+    var sendCopy: Boolean = true
+    var receiveNewsletter: Boolean = true
+    var receiveViaEmail: Boolean = true
     var isAppActive: Boolean = false
     var language_code: String = ""
     var scanningSuccessful: Boolean = false
@@ -72,24 +74,24 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
     }
 
     suspend fun sendReadings() {
-        val response = repository.takeMeterReadings(
-            PostModelRecord(
-                utilization_code.value!!.verificationCode,
-                language_code,
-                meterData.toTypedArray(),
-                userData.value!!.firstName!!,
-                userData.value!!.lastName!!,
-                userData.value!!.email!!,
-                userData.value!!.phone!!,
-                sendCopy,
-                getMeterReadingLetterByEmail = false,
-                subscribeNewsletter = false
-            )
-        ).body()!!
+            val response = repository.takeMeterReadings(
+                PostModelRecord(
+                    utilization_code.value!!.verificationCode,
+                    language_code,
+                    meterData.toTypedArray(),
+                    userData.value!!.firstName!!,
+                    userData.value!!.lastName!!,
+                    userData.value!!.email!!,
+                    userData.value!!.phone!!,
+                    sendCopy,
+                    receiveViaEmail,
+                    receiveNewsletter
+                )
+            ).body()!!
 
-        MainScope().launch {
-            co2_data.value = response
-        }
+            MainScope().launch {
+                co2_data.value = response
+            }
     }
 
     suspend fun getFaq(): FaqModel? {
@@ -169,13 +171,13 @@ class MainViewModel(private val repository: MainRepository) : ViewModel() {
 
             "LCD" -> return MeterAppearance.LCD
 
-            "mechanicalBlack" -> return MeterAppearance.MECHANICAL_BLACK
+            "MECHANICAL_BLACK" -> return MeterAppearance.MECHANICAL_BLACK
 
-            "mechanicalWhite" -> return MeterAppearance.MECHANICAL_WHITE
+            "MECHANICAL_WHITE" -> return MeterAppearance.MECHANICAL_WHITE
 
-            "auto_DE_Water_Home" -> return MeterAppearance.AUTO_DE_WATER_HOME
+            "AUTO_DE_WATER_HOME" -> return MeterAppearance.AUTO_DE_WATER_HOME
 
-            "auto_DE_Gas_Home" -> return MeterAppearance.AUTO_DE_GAS_HOME
+            "AUTO_DE_GAS_HOME" -> return MeterAppearance.AUTO_DE_GAS_HOME
         }
 
         return MeterAppearance.MECHANICAL_BLACK_OR_LCD_EDL21

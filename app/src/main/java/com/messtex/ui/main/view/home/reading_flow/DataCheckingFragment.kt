@@ -82,7 +82,6 @@ class DataCheckingFragment : Fragment() {
                     try {
                         sharedViewModel.sendReadings()
                         MainScope().launch {
-
                             dialog.dismiss()
                             findNavController().navigate(R.id.action_dataCheckingFragment_to_scanningSuccessFragment)
                         }

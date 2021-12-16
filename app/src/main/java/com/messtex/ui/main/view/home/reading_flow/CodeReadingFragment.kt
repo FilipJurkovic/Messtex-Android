@@ -18,12 +18,12 @@ import com.messtex.data.models.MeterConfigurationModel
 import com.messtex.data.models.UtilizationData
 import com.messtex.ui.main.view.MainActivity
 import com.messtex.ui.main.viewmodel.MainViewModel
+import com.messtex.ui.meter_reading.MeterScanningActivity
 import com.messtex.ui.testing.TestingActivity
+import com.pixolus.meterreading.MeterReadingActivity
+import com.pixolus.meterreading.MeterReadingFragment
 import kotlinx.android.synthetic.main.fragment_code_reading.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class CodeReadingFragment : Fragment() {
 
@@ -70,13 +70,32 @@ class CodeReadingFragment : Fragment() {
 
         verificationCode?.setOnPinEnteredListener { str ->
             if (str.toString().length == 6) {
-                codeVerification()
+                when(str.toString()){
+                    "000000" -> startTestingActivity(MeterConfigurationModel(  // Water meters
+                        "AUTO_DE_WATER_HOME",
+                        fractionDigitsAuto = true,
+                        integerDigitsAuto = true,
+                        numberOfCountersAuto = true,
+                        fractionDigits = null,
+                        integerDigits = null,
+                        numberOfCounters = null
+                    ))
+                    "111111" -> startTestingActivity(MeterConfigurationModel( // SensoStar U
+                        "LCD",
+                        fractionDigitsAuto = false,
+                        integerDigitsAuto = false,
+                        numberOfCountersAuto = true,
+                        fractionDigits = 3,
+                        integerDigits = 5,
+                        numberOfCounters = null
+                    ))
+                    else -> codeVerification()
+                }
             }
         }
 
 
         nextButton.setOnClickListener {
-            if(BuildConfig.DEBUG){
                 when(verificationCode.text.toString()){
                     "000000" -> startTestingActivity(MeterConfigurationModel(  // Water meters
                         "AUTO_DE_WATER_HOME",
@@ -98,20 +117,33 @@ class CodeReadingFragment : Fragment() {
                     ))
                     else -> codeVerification()
                 }
-            } else{
-                codeVerification()
-            }
+
         }
 
     }
 
     private fun startTestingActivity(configuration: MeterConfigurationModel){
-        val intent = Intent(this.context, TestingActivity::class.java)
+        val intent: Intent = Intent(this.context, TestingActivity::class.java)
+            .putExtra(MeterReadingActivity.EXTRA_METER_APPEARANCE, sharedViewModel.getCounterType(configuration.meterAppearance))
+            .putExtra(MeterReadingActivity.EXTRA_INTEGER_DIGITS, if (configuration.integerDigitsAuto) MeterReadingFragment.AUTOMATIC else configuration.integerDigits)
+            .putExtra(MeterReadingActivity.EXTRA_FRACTION_DIGITS, if (configuration.fractionDigitsAuto) MeterReadingFragment.AUTOMATIC else configuration.fractionDigits)
+            .putExtra(
+                MeterReadingActivity.EXTRA_NUMBER_OF_COUNTERS,
+                if (configuration.numberOfCountersAuto) MeterReadingFragment.AUTOMATIC else configuration.numberOfCounters
+            )
+            .putExtra(MeterReadingActivity.EXTRA_TIMEOUT_UNREADABLE_COUNTER, 0)
+            .putExtra(MeterReadingActivity.EXTRA_TIMEOUT_AFTER_LAST_DETECTION, 0)
+            .putExtra(MeterReadingActivity.EXTRA_TIMEOUT, 0)
+            .putExtra(MeterReadingActivity.EXTRA_ALLOWS_ROTATION, true)
+            .putExtra(MeterReadingActivity.EXTRA_ZOOM, 1.3)
+            .putExtra(MeterReadingActivity.EXTRA_IS_RESULTS_OVERLAY_VISIBLE, true)
+            .putExtra(MeterReadingActivity.EXTRA_IS_DEBUG_OVERLAY_VISIBLE, BuildConfig.DEBUG)
         intent.putExtra("configuration", configuration)
         startActivity(intent)
         this.requireActivity().finish()
     }
 
+    @DelicateCoroutinesApi
     private fun codeVerification() {
         sharedViewModel.utilization_code.value =
             UtilizationData(

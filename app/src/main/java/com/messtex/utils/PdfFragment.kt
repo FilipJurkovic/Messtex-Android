@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.github.barteksc.pdfviewer.util.Constants
 import com.messtex.R
 import com.messtex.ui.main.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_pdf.*
@@ -27,8 +28,10 @@ class PdfFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         pdfViewTitle.text = sharedViewModel.getPDFTitle()
-
+        Constants.Pinch.MINIMUM_ZOOM = 1F;
+        Constants.Pinch.MAXIMUM_ZOOM = 1F;
         pdfView.fromAsset(sharedViewModel.pdfFile).load()
+
 
         pdfBackButton.setOnClickListener {
             findNavController().navigateUp()

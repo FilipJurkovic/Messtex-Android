@@ -82,7 +82,7 @@ class ReadingStepsFragment : Fragment() {
             if (sharedViewModel.readingStepsProgress[i]) {
                 toAdd.meterButton.setBackgroundResource(R.drawable.background_button_step_change)
                 toAdd.meterButton.setTextColor(resources.getColor(R.color.light))
-                toAdd.meterButton.text = "Change"
+                toAdd.meterButton.text = getString(R.string.change)
             }
 
 
@@ -92,17 +92,16 @@ class ReadingStepsFragment : Fragment() {
         val toAdd: View =
             inflater.inflate(R.layout.reading_step_layout, reading_steps_layout, false)
 
-        if (sharedViewModel.userData.value?.firstName != null) {
+        if (sharedViewModel.readingStepsProgress[sharedViewModel.readingStepsProgress.size - 1]) {
             toAdd.readingIndex.text = ""
             toAdd.readingIndexShape.setBackgroundResource(R.drawable.bullet_point)
 
             toAdd.meterButton.setBackgroundResource(R.drawable.background_button_step_change)
             toAdd.meterButton.setTextColor(resources.getColor(R.color.light))
             toAdd.meterButton.text = getString(R.string.change)
-
-
-            sharedViewModel.readingStepsProgress[sharedViewModel.readingStepsProgress.size - 1] =
-                true
+        }else{
+            toAdd.readingIndex.text = (sharedViewModel.readingStepsProgress.size).toString()
+            toAdd.readingIndex.setTextAppearance(R.style.TextAppearance_Messtex_ParagraphBold)
         }
         toAdd.meterName.text = getString(R.string.contact_and_contract_data)
         toAdd.meterRoom.visibility = View.GONE

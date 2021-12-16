@@ -89,9 +89,14 @@ class MeterScanningActivity : MeterReadingActivity() {
             showBottomModalSheet(this, imageUrl ?: "", explanation ?: "")
         }
 
+        val counterValue: String = passedData?.meterData?.get(passedData!!.meterIndex)?.counterValue.toString().replace(",", ".")
+
         overlayView.manual_button.setOnClickListener {
             val intent = Intent(applicationContext, MainActivity::class.java)
-            intent.putExtra("counterValue", "")
+            intent.putExtra("counterValue", if(counterValue != "null") counterValue else "")
+            intent.putExtra("rawReadingString", "")
+            intent.putExtra("cleanReadingString", "")
+            intent.putExtra("readingResultStatus", "")
             intent.putExtra("ViewModel", passedData)
             startActivity(intent)
             finish()

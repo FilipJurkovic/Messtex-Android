@@ -119,7 +119,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.meterData[viewModel.meterIndex] = MeterReadingData(
                 viewModel.userData.value!!.meters?.get(viewModel.meterIndex)!!.counterNumber,
                 viewModel.userData.value!!.meters?.get(viewModel.meterIndex)!!.counterType,
-                viewModel.meterValue.value!!.toDouble(),
+                if(intent.getStringExtra("counterValue") == "") null else viewModel.meterValue.value!!.toDouble(),
                 intent.getStringExtra("rawReadingString")!!,
                 intent.getStringExtra("cleanReadingString")!!,
                 intent.getStringExtra("readingResultStatus")!!,

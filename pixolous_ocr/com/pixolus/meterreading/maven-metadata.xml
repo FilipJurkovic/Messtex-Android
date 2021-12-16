@@ -3,11 +3,11 @@
   <groupId>com.pixolus</groupId>
   <artifactId>meterreading</artifactId>
   <versioning>
-    <latest>3.5.2</latest>
-    <release>3.5.2</release>
+    <latest>3.5.3</latest>
+    <release>3.5.3</release>
     <versions>
-      <version>3.5.2</version>
+      <version>3.5.3</version>
     </versions>
-    <lastUpdated>20210528120745</lastUpdated>
+    <lastUpdated>20211123083025</lastUpdated>
   </versioning>
 </metadata>
